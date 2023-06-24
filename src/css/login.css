@@ -1,0 +1,14 @@
+.root{
+    -fx-background-color: linear-gradient(to bottom,#43c6ac, #f8ffae );
+
+}
+
+.white-form{
+    -fx-background-color: #fff;
+}
+
+.head-label{
+    -fx-border-color: #43c6ac;
+    -fx-border-width: 0 0 5 0; /* top right bottom left */
+    -fx-padding: 0 0 5 0 ;
+}
