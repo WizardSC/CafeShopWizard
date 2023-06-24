@@ -2,6 +2,9 @@
     -fx-background-color: linear-gradient(to bottom,#43c6ac, #f8ffae );
 
 }
+.transparent{
+    -fx-background-color: transparent;
+}
 
 .white-form{
     -fx-background-color: #fff;
@@ -11,4 +14,42 @@
     -fx-border-color: #43c6ac;
     -fx-border-width: 0 0 5 0; /* top right bottom left */
     -fx-padding: 0 0 5 0 ;
+}
+
+.login-btn{
+    -fx-background-color: linear-gradient(to bottom, #43c6ac, #f8ffae);
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+
+}
+
+.login-btn:hover {
+    /*-fx-opacity: 0.8; !* Làm mờ nút *!*/
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.2) , 10,0.0 , 4 , 4 );
+}
+.login-btn:hover{
+    -fx-opacity: 0.7;
+}
+/* dùng chung cho những text-field */
+.textfield-login{
+    -fx-background-color: transparent;
+    -fx-border-color: #36b197;
+    -fx-border-width: 0.8px;
+}
+
+.textfield-login:focused{
+    -fx-border-width: 1.5px;
+
+}
+
+.create-account-btn{
+    -fx-background-color: #2FD4B4FF;
+    -fx-cursor: hand;
+    -fx-background-radius: 10;
+}
+
+.create-account-btn:hover{
+    -fx-background-color: #1E9F85FF;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.4) , 10,0.0 , 2 , 2 );
+    -fx-text-fill: white; /* Màu chữ trắng khi hover */
 }
