@@ -32,6 +32,7 @@
 }
 /* dùng chung cho những text-field */
 .textfield-login{
+
     -fx-background-color: transparent;
     -fx-border-color: #36b197;
     -fx-border-width: 0.8px;
