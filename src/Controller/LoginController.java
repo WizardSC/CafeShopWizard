@@ -94,6 +94,7 @@ public class LoginController implements Initializable {
 
         }
     }
+
     @FXML
     void btnDangKyMouseClicked(ActionEvent event) {
         if (txtUsernameRegister.getText().isEmpty() || pwdPasswordRegister.getText().isEmpty() || txtAnswerRegister.getText().isEmpty()
@@ -105,38 +106,55 @@ public class LoginController implements Initializable {
             alert.showAndWait();
         } else {
             taiKhoanRepository = new TaiKhoanRepository();
-            String MaNV= "NV02";
+            String MaNV = "NV02";
             String TenDangNhap = txtUsernameRegister.getText();
             String MatKhau = pwdPasswordRegister.getText();
             String CauHoi = cbxQuestion.getSelectionModel().getSelectedItem();
             String CauTraLoi = txtAnswerRegister.getText();
             Date NgayTao = new java.util.Date();
             NgayTao.getTime();
-            TaiKhoan taikhoan = new TaiKhoan(MaNV,TenDangNhap,MatKhau,CauHoi,CauTraLoi,NgayTao);
-            taiKhoanRepository.insertTaiKhoan(taikhoan);
 
-            Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
-            alert1.setTitle("Thông báo");
-            alert1.setHeaderText(null);
-            alert1.setContentText("Tạo tài khoản thành công");
-            alert1.showAndWait();
+            ArrayList<TaiKhoan> dstaikhoan = taiKhoanRepository.getListTaiKhoan();
+            boolean isDuplicate = false;
+            for (TaiKhoan tk : dstaikhoan) {
+                if (TenDangNhap.equals(tk.getTenDangNhap())) {
+                    isDuplicate = true;
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Lỗi");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Tên tài khoản đã có trong hệ thống");
+                    alert.showAndWait();
 
-            TranslateTransition slider = new TranslateTransition();
-            slider.setNode(DangKyContainer);
-            slider.setToX(0);
-            slider.setDuration(Duration.seconds(0.5));
-            slider.play();
+                    break;
+                }
+            }
+            if (!isDuplicate) {
 
-            txtUsernameRegister.setText("");
-            txtAnswerRegister.setText("");
-            pwdPasswordRegister.setText("");
+                TaiKhoan taikhoan = new TaiKhoan(MaNV, TenDangNhap, MatKhau, CauHoi, CauTraLoi, NgayTao);
+                taiKhoanRepository.insertTaiKhoan(taikhoan);
 
-            cbxQuestion.getSelectionModel().clearSelection();
+                Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+                alert1.setTitle("Thông báo");
+                alert1.setHeaderText(null);
+                alert1.setContentText("Tạo tài khoản thành công");
+                alert1.showAndWait();
 
+                TranslateTransition slider = new TranslateTransition();
+                slider.setNode(DangKyContainer);
+                slider.setToX(0);
+                slider.setDuration(Duration.seconds(0.5));
+                slider.play();
 
+                txtUsernameRegister.setText("");
+                txtAnswerRegister.setText("");
+                pwdPasswordRegister.setText("");
+
+                cbxQuestion.getSelectionModel().clearSelection();
+            }
 
 
         }
+
     }
 
 
@@ -144,6 +162,7 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         cauHoiRepository = new CauHoiRepository();
+        taiKhoanRepository = new TaiKhoanRepository();
         ArrayList<CauHoi> dscauhoi = cauHoiRepository.getListCauHoi();
         for (CauHoi cauhoi : dscauhoi) {
             String TenCH = cauhoi.getTenCH();

@@ -118,7 +118,7 @@
                   </VBox>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="DangKyContainer" layoutX="-2.0" layoutY="18.0" prefHeight="518.0" prefWidth="400.0" styleClass="root" stylesheets="@../css/login.css">
+            <AnchorPane fx:id="DangKyContainer" layoutX="-2.0" layoutY="18.0" prefHeight="518.0" prefWidth="400.0" styleClass="root" stylesheets="@../css/login.css" visible="false">
                <children>
                   <VBox layoutX="-1.0" layoutY="3.0" prefHeight="500.0" prefWidth="400.0" spacing="25.0">
                      <children>
