@@ -16,7 +16,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
    <children>
       <AnchorPane prefHeight="512.0" prefWidth="800.0">
@@ -46,18 +45,18 @@
                                        </font>
                                     </PasswordField>
                                     <ComboBox fx:id="cbxQuestion" prefHeight="45.0" prefWidth="360.0" promptText="Câu hỏi" style="-fx-font-size: 16px;" styleClass="textfield-login" stylesheets="@../css/login.css" />
-                                    <PasswordField fx:id="txtAnswerRegister" maxWidth="-Infinity" prefHeight="45.0" prefWidth="357.0" promptText="Answer" styleClass="textfield-login" stylesheets="@../css/login.css">
+                                    <TextField fx:id="txtAnswerRegister" maxWidth="-Infinity" prefHeight="45.0" prefWidth="356.0" promptText="Câu trả lời" styleClass="textfield-login" stylesheets="@../css/login.css">
                                        <font>
                                           <Font name="Cambria" size="16.0" />
                                        </font>
-                                    </PasswordField>
+                                    </TextField>
                                  </children>
                               </VBox>
                            </children>
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="76.0" prefWidth="400.0" stylesheets="@../css/login.css">
                            <children>
-                              <Button fx:id="btnRegister" alignment="CENTER" mnemonicParsing="false" prefHeight="61.0" prefWidth="180.0" styleClass="login-btn" stylesheets="@../css/login.css" text="ĐĂNG KÝ">
+                              <Button fx:id="btnRegister" alignment="CENTER" mnemonicParsing="false" onAction="#btnDangKyMouseClicked" prefHeight="61.0" prefWidth="180.0" styleClass="login-btn" stylesheets="@../css/login.css" text="ĐĂNG KÝ">
                                  <font>
                                     <Font name="Cambria" size="16.0" />
                                  </font>
