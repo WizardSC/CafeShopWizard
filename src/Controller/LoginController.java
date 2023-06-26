@@ -20,6 +20,9 @@ import java.util.ResourceBundle;
 public class LoginController implements Initializable {
 
     @FXML
+    private AnchorPane CauHoi;
+
+    @FXML
     private AnchorPane DangKy;
 
     @FXML
@@ -29,25 +32,55 @@ public class LoginController implements Initializable {
     private AnchorPane DangNhap;
 
     @FXML
+    private AnchorPane DoiMatKhau;
+
+    @FXML
     private Button btnCreateNewAccount;
+
+    @FXML
+    private Button btnDoiMKPass;
 
     @FXML
     private Button btnLogin;
 
     @FXML
+    private Button btnQuayLaiChangedPass;
+
+    @FXML
+    private Button btnQuayLaiForgot;
+
+    @FXML
     private Button btnRegister;
+
+    @FXML
+    private Button btnXacNhanForgot;
 
     @FXML
     private ComboBox<String> cbxQuestion;
 
     @FXML
+    private ComboBox<String> cbxQuestionForgot;
+
+    @FXML
     private Hyperlink hplForgot;
+
+    @FXML
+    private Label lblCreateAccount;
+
+    @FXML
+    private PasswordField pwdNewPassword;
+
+    @FXML
+    private PasswordField pwdOldPassword;
 
     @FXML
     private PasswordField pwdPasswordLogin;
 
     @FXML
     private PasswordField pwdPasswordRegister;
+
+    @FXML
+    private TextField txtAnswerForgot;
 
     @FXML
     private TextField txtAnswerRegister;
@@ -57,9 +90,6 @@ public class LoginController implements Initializable {
 
     @FXML
     private TextField txtUsernameRegister;
-
-    @FXML
-    private Label lblCreateAccount;
 
     private CauHoiRepository cauHoiRepository;
     private TaiKhoanRepository taiKhoanRepository;
@@ -187,6 +217,30 @@ public class LoginController implements Initializable {
             return;
         }
     }
+    //Quên mật khẩu
+    @FXML
+    void hplForgotMouseClicked(ActionEvent event) {
+        DangKy.setVisible(false);
+        CauHoi.setVisible(true);
+    }
+    @FXML
+    void btnXacNhanForgotMouseClicked(ActionEvent event) {
+
+    }
+    @FXML
+    void btnDoiMKPassMouseClicked(ActionEvent event) {
+
+    }
+    @FXML
+    void btnQuayLaiChangedPassMouseClicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnQuayLaiForgotMouseClicked(ActionEvent event) {
+
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
