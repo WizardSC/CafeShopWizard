@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
+import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
@@ -82,8 +83,12 @@ public class LoginController implements Initializable {
     @FXML
     private TextField txtAnswerForgot;
 
+
     @FXML
     private TextField txtAnswerRegister;
+
+    @FXML
+    private TextField txtUsernameForgot;
 
     @FXML
     private TextField txtUsernameLogin;
@@ -143,7 +148,7 @@ public class LoginController implements Initializable {
             String CauTraLoi = txtAnswerRegister.getText();
             Date NgayTao = new java.util.Date();
             NgayTao.getTime();
-            if(MatKhau.length() < 8){
+            if (MatKhau.length() < 8) {
                 alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Lỗi");
                 alert.setHeaderText(null);
@@ -193,11 +198,12 @@ public class LoginController implements Initializable {
         }
 
     }
+
     @FXML
     void btnLoginMouseClicked(ActionEvent event) {
         String TenDangNhap = txtUsernameLogin.getText();
         String MatKhau = pwdPasswordLogin.getText();
-        if(TenDangNhap.equals("") || MatKhau.equals("")){
+        if (TenDangNhap.equals("") || MatKhau.equals("")) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Lỗi");
             alert.setHeaderText(null);
@@ -205,8 +211,8 @@ public class LoginController implements Initializable {
             alert.showAndWait();
             return;
         }
-        boolean Check = taiKhoanRepository.Login(TenDangNhap,MatKhau);
-        if(Check){
+        boolean Check = taiKhoanRepository.Login(TenDangNhap, MatKhau);
+        if (Check) {
             System.out.println("Thành công");
         } else {
             alert = new Alert(Alert.AlertType.ERROR);
@@ -217,27 +223,49 @@ public class LoginController implements Initializable {
             return;
         }
     }
+
     //Quên mật khẩu
     @FXML
     void hplForgotMouseClicked(ActionEvent event) {
         DangKy.setVisible(false);
         CauHoi.setVisible(true);
-    }
-    @FXML
-    void btnXacNhanForgotMouseClicked(ActionEvent event) {
+        lblCreateAccount.setVisible(false);
+        btnCreateNewAccount.setVisible(false);
+        if (!txtUsernameLogin.getText().equals("")) {
+            txtUsernameForgot.setText(txtUsernameLogin.getText());
+        }
 
-    }
-    @FXML
-    void btnDoiMKPassMouseClicked(ActionEvent event) {
-
-    }
-    @FXML
-    void btnQuayLaiChangedPassMouseClicked(ActionEvent event) {
 
     }
 
     @FXML
     void btnQuayLaiForgotMouseClicked(ActionEvent event) {
+        DangKy.setVisible(true);
+        CauHoi.setVisible(false);
+        lblCreateAccount.setVisible(true);
+        btnCreateNewAccount.setVisible(true);
+
+    }
+
+    @FXML
+    void btnXacNhanForgotMouseClicked(ActionEvent event) {
+
+    }
+    @FXML
+    void txtAnswerForgotMouseClicked(ActionEvent event) {
+        if(txtUsernameForgot.getText().equals("")){
+            System.out.println("Điền đầy đủ thông tin");
+        }
+    }
+
+
+    @FXML
+    void btnDoiMKPassMouseClicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnQuayLaiChangedPassMouseClicked(ActionEvent event) {
 
     }
 
@@ -251,6 +279,7 @@ public class LoginController implements Initializable {
         for (CauHoi cauhoi : dscauhoi) {
             String TenCH = cauhoi.getTenCH();
             cbxQuestion.getItems().add(TenCH);
+            cbxQuestionForgot.getItems().add(TenCH);
         }
     }
 }

@@ -159,7 +159,7 @@
                   </VBox>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="CauHoi" layoutX="410.0" layoutY="10.0" minHeight="-Infinity" prefHeight="500.0" prefWidth="400.0" styleClass="white-form" stylesheets="@../css/login.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="CauHoi" layoutX="410.0" layoutY="10.0" minHeight="-Infinity" prefHeight="500.0" prefWidth="400.0" styleClass="white-form" stylesheets="@../css/login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <VBox alignment="CENTER" layoutX="83.0" layoutY="68.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
@@ -169,12 +169,17 @@
                               <Font name="Cambria Bold" size="25.0" />
                            </font>
                         </Label>
-                        <VBox alignment="CENTER_LEFT" prefHeight="153.0" prefWidth="400.0" spacing="20.0">
+                        <VBox alignment="CENTER_LEFT" prefHeight="198.0" prefWidth="400.0" spacing="20.0">
                            <children>
-                              <VBox alignment="CENTER" spacing="25.0">
+                              <VBox alignment="CENTER" prefHeight="186.0" prefWidth="400.0" spacing="25.0">
                                  <children>
+                                    <TextField fx:id="txtUsernameForgot" maxWidth="-Infinity" prefHeight="45.0" prefWidth="356.0" promptText="Tên đăng nhập" styleClass="textfield-login" stylesheets="@../css/login.css">
+                                       <font>
+                                          <Font name="Cambria" size="16.0" />
+                                       </font>
+                                    </TextField>
                                     <ComboBox fx:id="cbxQuestionForgot" prefHeight="45.0" prefWidth="360.0" promptText="Câu hỏi" style="-fx-font-size: 16px;" styleClass="textfield-login" stylesheets="@../css/login.css" />
-                                    <TextField fx:id="txtAnswerForgot" maxWidth="-Infinity" prefHeight="45.0" prefWidth="356.0" promptText="Câu trả lời" styleClass="textfield-login" stylesheets="@../css/login.css">
+                                    <TextField fx:id="txtAnswerForgot" maxWidth="-Infinity" onAction="#txtAnswerForgotMouseClicked" prefHeight="45.0" prefWidth="356.0" promptText="Câu trả lời" styleClass="textfield-login" stylesheets="@../css/login.css">
                                        <font>
                                           <Font name="Cambria" size="16.0" />
                                        </font>
@@ -192,8 +197,8 @@
                               </Button>
                            </children>
                         </VBox>
-                        <Pane prefHeight="17.0" prefWidth="400.0" VBox.vgrow="ALWAYS" />
-                        <VBox alignment="CENTER" prefHeight="110.0" prefWidth="400.0" stylesheets="@../css/login.css">
+                        <Pane prefHeight="0.0" prefWidth="400.0" VBox.vgrow="ALWAYS" />
+                        <VBox alignment="CENTER" prefHeight="74.0" prefWidth="400.0" stylesheets="@../css/login.css">
                            <children>
                               <Button fx:id="btnQuayLaiForgot" alignment="CENTER" mnemonicParsing="false" onAction="#btnQuayLaiForgotMouseClicked" prefHeight="46.0" prefWidth="141.0" styleClass="login-btn" stylesheets="@../css/login.css" text="QUAY LẠI">
                                  <font>
