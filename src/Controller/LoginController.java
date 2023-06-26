@@ -113,7 +113,14 @@ public class LoginController implements Initializable {
             String CauTraLoi = txtAnswerRegister.getText();
             Date NgayTao = new java.util.Date();
             NgayTao.getTime();
-
+            if(MatKhau.length() < 8){
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Lỗi");
+                alert.setHeaderText(null);
+                alert.setContentText("Mật khẩu phải trên 8 kí tự");
+                alert.showAndWait();
+                return;
+            }
             ArrayList<TaiKhoan> dstaikhoan = taiKhoanRepository.getListTaiKhoan();
             boolean isDuplicate = false;
             for (TaiKhoan tk : dstaikhoan) {
@@ -156,7 +163,30 @@ public class LoginController implements Initializable {
         }
 
     }
-
+    @FXML
+    void btnLoginMouseClicked(ActionEvent event) {
+        String TenDangNhap = txtUsernameLogin.getText();
+        String MatKhau = pwdPasswordLogin.getText();
+        if(TenDangNhap.equals("") || MatKhau.equals("")){
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Lỗi");
+            alert.setHeaderText(null);
+            alert.setContentText("Vui lòng điền đầy đủ tên đăng nhập & mật khẩu");
+            alert.showAndWait();
+            return;
+        }
+        boolean Check = taiKhoanRepository.Login(TenDangNhap,MatKhau);
+        if(Check){
+            System.out.println("Thành công");
+        } else {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Lỗi");
+            alert.setHeaderText(null);
+            alert.setContentText("Sai tên tài khoản hoặc mật khẩu");
+            alert.showAndWait();
+            return;
+        }
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

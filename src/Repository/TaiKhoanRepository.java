@@ -56,4 +56,25 @@ public class TaiKhoanRepository {
         }
 
     }
+
+    public boolean Login(String TenDangNhap, String MatKhau){
+        try {
+            String sql = "select * from taikhoan where TenDangNhap = " + TenDangNhap + " and MatKhau = " + MatKhau;
+
+
+            ResultSet rs = mssql.executeQuery(sql);
+
+            if(rs.next()){
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(TaiKhoanRepository.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            mssql.Disconnect();
+        }
+        return false;
+    }
 }

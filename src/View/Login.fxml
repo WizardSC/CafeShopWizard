@@ -18,11 +18,11 @@
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
    <children>
-      <AnchorPane prefHeight="512.0" prefWidth="800.0">
+      <AnchorPane maxHeight="-Infinity" prefHeight="511.0" prefWidth="789.0">
          <children>
-            <AnchorPane fx:id="DangKy" layoutX="-20.0" layoutY="5.0" prefHeight="504.0" prefWidth="412.0" styleClass="white-form" stylesheets="@../css/login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="DangKy" layoutX="-20.0" layoutY="19.0" prefHeight="537.0" prefWidth="400.0" styleClass="white-form" stylesheets="@../css/login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <VBox alignment="CENTER" layoutX="83.0" layoutY="68.0" prefHeight="504.0" prefWidth="400.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="0.0">
+                  <VBox alignment="CENTER" layoutX="83.0" prefHeight="518.0" prefWidth="400.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Pane prefHeight="45.0" prefWidth="400.0" />
                         <Label alignment="CENTER" prefHeight="34.0" prefWidth="284.0" styleClass="head-label" stylesheets="@../css/login.css" text="ĐĂNG KÝ TÀI KHOẢN">
@@ -106,7 +106,7 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="46.0" prefWidth="308.0" stylesheets="@../css/login.css">
                            <children>
-                              <Button fx:id="btnLogin" alignment="CENTER" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" styleClass="login-btn" stylesheets="@../css/login.css" text="ĐĂNG NHẬP">
+                              <Button fx:id="btnLogin" alignment="CENTER" mnemonicParsing="false" onAction="#btnLoginMouseClicked" prefHeight="45.0" prefWidth="180.0" styleClass="login-btn" stylesheets="@../css/login.css" text="ĐĂNG NHẬP">
                                  <font>
                                     <Font name="Cambria" size="16.0" />
                                  </font>
@@ -118,7 +118,7 @@
                   </VBox>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="DangKyContainer" layoutX="-2.0" layoutY="18.0" prefHeight="518.0" prefWidth="400.0" styleClass="root" stylesheets="@../css/login.css" visible="false">
+            <AnchorPane fx:id="DangKyContainer" layoutX="-2.0" layoutY="18.0" prefHeight="518.0" prefWidth="400.0" styleClass="root" stylesheets="@../css/login.css">
                <children>
                   <VBox layoutX="-1.0" layoutY="3.0" prefHeight="500.0" prefWidth="400.0" spacing="25.0">
                      <children>
