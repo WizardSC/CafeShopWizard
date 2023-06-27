@@ -1,8 +1,15 @@
 .linear-background{
-    -fx-background-color: linear-gradient(to bottom, #FFFF99, #FFD95A);;
+    -fx-background-color: linear-gradient(to left, #FFFF99, #FFD95A);
 }
 .white-background{
     -fx-background-color: #fff;
+}
+.yellow-background{
+    -fx-background-color: rgba(255, 217, 90, 0.9);
+}
+
+.transparent-background{
+    -fx-background-color: rgba(0,0,0,0);
 }
 
 .label-shop{
