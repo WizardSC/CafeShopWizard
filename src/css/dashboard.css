@@ -5,7 +5,7 @@
     -fx-background-color: #fff;
 }
 .yellow-background{
-    -fx-background-color: rgba(255, 217, 90, 0.9);
+    -fx-background-color: rgba(255, 217, 90, 0.91);
 }
 
 .transparent-background{
@@ -16,6 +16,9 @@
     -fx-border-width: 0 5 5 0;
     -fx-border-color: #000;
 
+}
+.menu-label{
+    -fx-background-radius: 20 0 0 20;
 }
 
 .my-account{
@@ -32,3 +35,18 @@
     -fx-background-radius: 30;
     -fx-background-color: #fff;
 }
+
+.menu-label{
+    -fx-background-color: transparent;
+}
+.menu-label:hover{
+    -fx-background-radius: 20 0 0 20;
+    -fx-background-color: #fff;
+    -fx-border-width: 2 0 2 2;
+    -fx-border-color: black;
+    -fx-border-style: solid;
+    -fx-border-radius: 20 0 0 20;
+
+}
+
+/* bảng màu: https://colorhunt.co/palette/fff7d4ffd95ac07f004c3d3d */

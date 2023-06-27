@@ -15,6 +15,8 @@ public class Main extends Application {
         primaryStage.setTitle("CafeWizard");
         Image icon = new Image(getClass().getResourceAsStream("/img/icons8-cafe-100 (1).png"));
         primaryStage.getIcons().add(icon);
+
+
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
