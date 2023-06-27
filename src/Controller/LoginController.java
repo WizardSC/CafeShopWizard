@@ -99,6 +99,7 @@ public class LoginController implements Initializable {
     private CauHoiRepository cauHoiRepository;
     private TaiKhoanRepository taiKhoanRepository;
     private Alert alert;
+    private String MaCH;
 
     @FXML
     public void switchForm(ActionEvent event) {
@@ -171,8 +172,13 @@ public class LoginController implements Initializable {
                 }
             }
             if (!isDuplicate) {
-
-                TaiKhoan taikhoan = new TaiKhoan(MaNV, TenDangNhap, MatKhau, CauHoi, CauTraLoi, NgayTao);
+                ArrayList<CauHoi> dscauhoi = cauHoiRepository.getListCauHoi();
+                for(CauHoi ch : dscauhoi){
+                    if(ch.getTenCH().equals(CauHoi)){
+                        MaCH = ch.getMaCH();
+                    }
+                }
+                TaiKhoan taikhoan = new TaiKhoan(MaNV, TenDangNhap, MatKhau, MaCH, CauTraLoi, NgayTao);
                 taiKhoanRepository.insertTaiKhoan(taikhoan);
 
                 Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
@@ -249,6 +255,20 @@ public class LoginController implements Initializable {
 
     @FXML
     void btnXacNhanForgotMouseClicked(ActionEvent event) {
+        if(txtUsernameForgot.getText().equals("")){
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Lỗi");
+            alert.setHeaderText(null);
+            alert.setContentText("Vui lòng điền tên đăng nhập");
+            return;
+        }
+        if(txtAnswerForgot.getText().equals("")){
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Lỗi");
+            alert.setHeaderText(null);
+            alert.setContentText("Vui lòng điền đầy đủ thông tin");
+            return;
+        }
 
     }
     @FXML

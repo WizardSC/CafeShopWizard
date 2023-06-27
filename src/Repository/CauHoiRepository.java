@@ -21,8 +21,7 @@ public class CauHoiRepository {
             while (rs.next()){
                 CauHoi cauhoi = new CauHoi(
                         rs.getString("MaCH"),
-                        rs.getString("TenCH"),
-                        rs.getString("CauTL")
+                        rs.getString("TenCH")
                 );
                 dscauhoi.add(cauhoi);
             }

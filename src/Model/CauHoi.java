@@ -3,12 +3,12 @@ package Model;
 public class CauHoi {
     private String MaCH;
     private String TenCH;
-    private String CauTL;
 
-    public CauHoi(String maCH, String tenCH, String cauTL) {
+
+    public CauHoi(String maCH, String tenCH) {
         MaCH = maCH;
         TenCH = tenCH;
-        CauTL = cauTL;
+
     }
 
     public String getMaCH() {
@@ -27,11 +27,4 @@ public class CauHoi {
         TenCH = tenCH;
     }
 
-    public String getCauTL() {
-        return CauTL;
-    }
-
-    public void setCauTL(String cauTL) {
-        CauTL = cauTL;
-    }
 }
