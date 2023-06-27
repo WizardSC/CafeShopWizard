@@ -218,7 +218,7 @@
                   </VBox>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="DoiMatKhau" layoutX="410.0" layoutY="10.0" minHeight="-Infinity" prefHeight="500.0" prefWidth="400.0" styleClass="white-form" stylesheets="@../css/login.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="DoiMatKhau" layoutX="410.0" layoutY="10.0" minHeight="-Infinity" prefHeight="500.0" prefWidth="400.0" styleClass="white-form" stylesheets="@../css/login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <VBox alignment="CENTER" layoutX="83.0" layoutY="68.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>

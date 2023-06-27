@@ -1,0 +1,27 @@
+.linear-background{
+    -fx-background-color: linear-gradient(to bottom, #FFFF99, #FFD95A);;
+}
+.white-background{
+    -fx-background-color: #fff;
+}
+
+.label-shop{
+    -fx-border-width: 0 5 5 0;
+    -fx-border-color: #000;
+
+}
+
+.my-account{
+    -fx-background-color:  #FFD95A;
+    -fx-background-radius: 30 30 30 30 ;
+}
+
+.header{
+    -fx-background-color: white;
+    -fx-background-radius: 0 25 25 0;
+}
+
+.center{
+    -fx-background-radius: 30;
+    -fx-background-color: #fff;
+}
