@@ -173,8 +173,8 @@ public class LoginController implements Initializable {
             }
             if (!isDuplicate) {
                 ArrayList<CauHoi> dscauhoi = cauHoiRepository.getListCauHoi();
-                for(CauHoi ch : dscauhoi){
-                    if(ch.getTenCH().equals(CauHoi)){
+                for (CauHoi ch : dscauhoi) {
+                    if (ch.getTenCH().equals(CauHoi)) {
                         MaCH = ch.getMaCH();
                     }
                 }
@@ -255,25 +255,68 @@ public class LoginController implements Initializable {
 
     @FXML
     void btnXacNhanForgotMouseClicked(ActionEvent event) {
-        if(txtUsernameForgot.getText().equals("")){
+        String TenCH = cbxQuestionForgot.getSelectionModel().getSelectedItem();
+        String TenDangNhap = txtUsernameForgot.getText();
+        String CauTraLoi = txtAnswerForgot.getText();
+        if (TenDangNhap.equals("")) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Lỗi");
             alert.setHeaderText(null);
             alert.setContentText("Vui lòng điền tên đăng nhập");
+            alert.showAndWait();
             return;
         }
-        if(txtAnswerForgot.getText().equals("")){
+        if (CauTraLoi.equals("")) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Lỗi");
             alert.setHeaderText(null);
             alert.setContentText("Vui lòng điền đầy đủ thông tin");
+            alert.showAndWait();
             return;
         }
 
+        ArrayList<CauHoi> dscauhoi = cauHoiRepository.getListCauHoi();
+        for (CauHoi ch : dscauhoi) {
+            if (ch.getTenCH().equals(TenCH)) {
+                MaCH = ch.getMaCH();
+            }
+        }
+        ArrayList<TaiKhoan> dstaikhoan = taiKhoanRepository.getListTaiKhoan();
+        boolean foundCauTL = false;
+        boolean foundCauHoi = false;
+        for (TaiKhoan tk : dstaikhoan) {
+            if (tk.getTenDangNhap().equals(TenDangNhap) && tk.getCauHoi().equals(MaCH)){
+                foundCauHoi = true;
+                if(tk.getCauTraLoi().equals(CauTraLoi)){
+                    foundCauTL = true;
+                    break;
+                }
+            }
+        }
+        if(!foundCauHoi){
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Lỗi");
+            alert.setHeaderText(null);
+            alert.setContentText("Câu hỏi bảo mật không khớp");
+            alert.showAndWait();
+            return;
+        }
+        else if(!foundCauTL){
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Lỗi");
+            alert.setHeaderText(null);
+            alert.setContentText("Câu trả lời không chính xác");
+            alert.showAndWait();
+            return;
+        } else {
+            CauHoi.setVisible(false);
+            DoiMatKhau.setVisible(true);
+        }
     }
+
     @FXML
     void txtAnswerForgotMouseClicked(ActionEvent event) {
-        if(txtUsernameForgot.getText().equals("")){
+        if (txtUsernameForgot.getText().equals("")) {
             System.out.println("Điền đầy đủ thông tin");
         }
     }

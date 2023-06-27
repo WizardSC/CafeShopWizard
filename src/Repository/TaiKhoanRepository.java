@@ -59,11 +59,8 @@ public class TaiKhoanRepository {
 
     public boolean Login(String TenDangNhap, String MatKhau){
         try {
-            String sql = "select * from taikhoan where TenDangNhap = " + TenDangNhap + " and MatKhau = " + MatKhau;
-
-
+            String sql = "select * from taikhoan where TenDangNhap = '" + TenDangNhap + "' and MatKhau = '" + MatKhau +"'";
             ResultSet rs = mssql.executeQuery(sql);
-
             if(rs.next()){
                 return true;
             } else {
@@ -77,4 +74,6 @@ public class TaiKhoanRepository {
         }
         return false;
     }
+
+    public void updateMatKhau(String TenDangNhap, )
 }
