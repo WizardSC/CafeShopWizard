@@ -13,6 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
 import java.awt.event.MouseEvent;
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
@@ -100,7 +101,9 @@ public class LoginController implements Initializable {
     private TaiKhoanRepository taiKhoanRepository;
     private Alert alert;
     private String MaCH;
-
+    private ArrayList<TaiKhoan> dstaikhoan;
+    private ArrayList<CauHoi> dscauhoi;
+    private String TenDangNhapRegister;
     @FXML
     public void switchForm(ActionEvent event) {
         TranslateTransition slider = new TranslateTransition();
@@ -157,7 +160,7 @@ public class LoginController implements Initializable {
                 alert.showAndWait();
                 return;
             }
-            ArrayList<TaiKhoan> dstaikhoan = taiKhoanRepository.getListTaiKhoan();
+//            dstaikhoan = taiKhoanRepository.getListTaiKhoan();
             boolean isDuplicate = false;
             for (TaiKhoan tk : dstaikhoan) {
                 if (TenDangNhap.equals(tk.getTenDangNhap())) {
@@ -172,7 +175,7 @@ public class LoginController implements Initializable {
                 }
             }
             if (!isDuplicate) {
-                ArrayList<CauHoi> dscauhoi = cauHoiRepository.getListCauHoi();
+//                dscauhoi = cauHoiRepository.getListCauHoi();
                 for (CauHoi ch : dscauhoi) {
                     if (ch.getTenCH().equals(CauHoi)) {
                         MaCH = ch.getMaCH();
@@ -256,9 +259,9 @@ public class LoginController implements Initializable {
     @FXML
     void btnXacNhanForgotMouseClicked(ActionEvent event) {
         String TenCH = cbxQuestionForgot.getSelectionModel().getSelectedItem();
-        String TenDangNhap = txtUsernameForgot.getText();
+        TenDangNhapRegister = txtUsernameForgot.getText();
         String CauTraLoi = txtAnswerForgot.getText();
-        if (TenDangNhap.equals("")) {
+        if (TenDangNhapRegister.equals("")) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Lỗi");
             alert.setHeaderText(null);
@@ -275,17 +278,17 @@ public class LoginController implements Initializable {
             return;
         }
 
-        ArrayList<CauHoi> dscauhoi = cauHoiRepository.getListCauHoi();
+//       dscauhoi = cauHoiRepository.getListCauHoi();
         for (CauHoi ch : dscauhoi) {
             if (ch.getTenCH().equals(TenCH)) {
                 MaCH = ch.getMaCH();
             }
         }
-        ArrayList<TaiKhoan> dstaikhoan = taiKhoanRepository.getListTaiKhoan();
+//        dstaikhoan = taiKhoanRepository.getListTaiKhoan();
         boolean foundCauTL = false;
         boolean foundCauHoi = false;
         for (TaiKhoan tk : dstaikhoan) {
-            if (tk.getTenDangNhap().equals(TenDangNhap) && tk.getCauHoi().equals(MaCH)){
+            if (tk.getTenDangNhap().equals(TenDangNhapRegister) && tk.getCauHoi().equals(MaCH)){
                 foundCauHoi = true;
                 if(tk.getCauTraLoi().equals(CauTraLoi)){
                     foundCauTL = true;
@@ -324,12 +327,52 @@ public class LoginController implements Initializable {
 
     @FXML
     void btnDoiMKPassMouseClicked(ActionEvent event) {
+        String MatKhauCu = pwdOldPassword.getText();
+        String MatKhauMoi = pwdNewPassword.getText();
+        if(MatKhauCu.equals("")){
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Lỗi");
+            alert.setHeaderText(null);
+            alert.setContentText("Không được để trống thông tin");
+            alert.showAndWait();
+            return;
+        }
+        if (MatKhauMoi.length() < 8) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Lỗi");
+            alert.setHeaderText(null);
+            alert.setContentText("Mật khẩu mới phải trên 8 kí tự");
+            alert.showAndWait();
+            return;
+        }
+        boolean checkMKCu = false;
+        for(TaiKhoan tk : dstaikhoan){
+            if(tk.getMatKhau().equals(MatKhauCu)){
+                checkMKCu = true;
+                taiKhoanRepository.updateMatKhau(TenDangNhapRegister,MatKhauMoi);
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Thông báo");
+                alert.setHeaderText(null);
+                alert.setContentText("Đổi mật khẩu thành công");
+                alert.showAndWait();
+                break;
+            }
+        }
+        if(!checkMKCu){
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Lỗi");
+            alert.setHeaderText(null);
+            alert.setContentText("Mật khẩu cũ không chính xác");
+            alert.showAndWait();
+            return;
+        }
 
     }
 
     @FXML
     void btnQuayLaiChangedPassMouseClicked(ActionEvent event) {
-
+        CauHoi.setVisible(true);
+        DoiMatKhau.setVisible(false);
     }
 
 
@@ -338,7 +381,8 @@ public class LoginController implements Initializable {
 
         cauHoiRepository = new CauHoiRepository();
         taiKhoanRepository = new TaiKhoanRepository();
-        ArrayList<CauHoi> dscauhoi = cauHoiRepository.getListCauHoi();
+        dscauhoi = cauHoiRepository.getListCauHoi();
+        dstaikhoan = taiKhoanRepository.getListTaiKhoan();
         for (CauHoi cauhoi : dscauhoi) {
             String TenCH = cauhoi.getTenCH();
             cbxQuestion.getItems().add(TenCH);

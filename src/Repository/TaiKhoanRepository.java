@@ -28,7 +28,7 @@ public class TaiKhoanRepository {
                 dstaikhoan.add(taikhoan);
             }
             return dstaikhoan;
-        }  catch (SQLException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(TaiKhoanRepository.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             mssql.Disconnect();
@@ -57,11 +57,11 @@ public class TaiKhoanRepository {
 
     }
 
-    public boolean Login(String TenDangNhap, String MatKhau){
+    public boolean Login(String TenDangNhap, String MatKhau) {
         try {
-            String sql = "select * from taikhoan where TenDangNhap = '" + TenDangNhap + "' and MatKhau = '" + MatKhau +"'";
+            String sql = "select * from taikhoan where TenDangNhap = '" + TenDangNhap + "' and MatKhau = '" + MatKhau + "'";
             ResultSet rs = mssql.executeQuery(sql);
-            if(rs.next()){
+            if (rs.next()) {
                 return true;
             } else {
                 return false;
@@ -75,5 +75,17 @@ public class TaiKhoanRepository {
         return false;
     }
 
-    public void updateMatKhau(String TenDangNhap, )
+    public void updateMatKhau(String TenDangNhap, String MatKhau) {
+        try {
+            String sql = "update taikhoan set MatKhau = ? where TenDangNhap = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, MatKhau);
+            ps.setString(2, TenDangNhap);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(TaiKhoanRepository.class.getName()).log(Level.SEVERE, null, ex);
+
+
+        }
+    }
 }
