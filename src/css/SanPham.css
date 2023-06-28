@@ -1,3 +1,9 @@
+.white-background{
+    -fx-background-color: #fff;
+}
+.top-radius-15{
+    -fx-background-radius: 15 15 0 0;
+}
 .bottom-radius{
     -fx-background-radius: 0 0 30 30;
 }
@@ -14,7 +20,7 @@
     -fx-background-radius: 15;
 }
 .shadow{
-    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 5.0, 0.0,0.0,5.0);
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0, 0.0,0.0,10.0);
 }
 
 .table-view .column-header-background {
@@ -32,6 +38,24 @@
     -fx-font-weight: bold;
 }
 
+.header-chuc-nang{
+    -fx-font-size: 18px;
+    -fx-font-family: Cambria;
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(to right, #FFF7D4, #FFEBA3, #FFDE72);
+    -fx-letter-spacing: 5px;
+}
+
+.button{
+    -fx-text-fill: #FFD95A;
+    -fx-background-radius: 10;
+    -fx-background-color: #fff;
+    -fx-border-color: #FFD95A;
+    -fx-border-radius: 10;
+    -fx-border-width: 1.5;
+    -fx-font-size: 18px;
+
+}
 
 /*.root{*/
 /*    -fx-background-radius: 0 0 30 30;*/
