@@ -48,5 +48,20 @@
     -fx-border-radius: 20 0 0 20;
 
 }
+/* dùng khi click vào 1 HBox ở thanh menu và HBox đó giữ nguyên màu được hover*/
+.hbox-hover{
+    -fx-background-radius: 20 0 0 20;
+    -fx-background-color: #fff;
+    -fx-border-width: 2 0 2 2;
+    -fx-border-color: black;
+    -fx-border-style: solid;
+    -fx-border-radius: 20 0 0 20;
+}
+.shadow{
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0, 0.0,0.0,10.0);
+}
 
+.pane-trung-tam-radius{
+    -fx-background-radius: 0 0 30 30;
+}
 /* bảng màu: https://colorhunt.co/palette/fff7d4ffd95ac07f004c3d3d */

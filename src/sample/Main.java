@@ -11,11 +11,11 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("../View/Dashboard.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../View/GiaoDien.fxml"));
         primaryStage.setTitle("CafeWizard");
         Image icon = new Image(getClass().getResourceAsStream("/img/icons8-cafe-100 (1).png"));
         primaryStage.getIcons().add(icon);
-
+//        primaryStage.initStyle(StageStyle.UNDECORATED);
 
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
