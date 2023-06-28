@@ -28,6 +28,9 @@ public class GiaoDienController implements Initializable {
     @FXML
     private HBox formSanPham;
     @FXML
+    private HBox formTrangChu;
+
+    @FXML
     private VBox paneMenu;
 
     @FXML
@@ -35,31 +38,15 @@ public class GiaoDienController implements Initializable {
 
     private boolean isFormBanHangHovered = false;
     private ArrayList<MenuItem> menuItems = new ArrayList<>();
-    @FXML
-    void formBanHangMouseClicked(MouseEvent event) {
 
-        try {
-            paneRoot.getChildren().clear();
-            FXMLLoader newLoader = new FXMLLoader(getClass().getResource("../View/BanHang.fxml"));
-            Parent newRoot = null;
-            newRoot = newLoader.load();
-            paneRoot.getChildren().add(newRoot);
-
-            if (isFormBanHangHovered) {
-                formBanHang.getStyleClass().add("hbox-hover");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        MenuItem trangChuItem = new MenuItem(formTrangChu,"../View/TrangChu.fxml");
         MenuItem banHangItem = new MenuItem(formBanHang,"../View/BanHang.fxml");
         MenuItem sanPhamItem = new MenuItem(formSanPham,"../View/SanPham.fxml");
-
+        menuItems.add(trangChuItem);
         menuItems.add(banHangItem);
         menuItems.add(sanPhamItem);
 
@@ -94,13 +81,8 @@ public class GiaoDienController implements Initializable {
 
     // Hiển thị giao diện mặc định
     private void showDefaultFXMl(){
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/TrangChu.fxml"));
-            Parent root = loader.load();
-            paneRoot.getChildren().add(root);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        MenuItem defaultItem = menuItems.get(0);
+        handleMenuItemClick(defaultItem);
     }
 
 }

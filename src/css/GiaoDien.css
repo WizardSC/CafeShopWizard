@@ -42,8 +42,8 @@
 .menu-label:hover{
     -fx-background-radius: 20 0 0 20;
     -fx-background-color: #fff;
-    -fx-border-width: 2 0 2 2;
-    -fx-border-color: black
+    -fx-border-width: 0 2 0 0;
+    -fx-border-color: transparent;
     -fx-border-style: solid;
     -fx-border-radius: 20 0 0 20;
 
@@ -52,8 +52,8 @@
 .hbox-hover{
     -fx-background-radius: 20 0 0 20;
     -fx-background-color: #fff;
-    -fx-border-width: 2 0 2 2;
-    -fx-border-color: black
+    -fx-border-width: 0 2 0 0;
+    -fx-border-color: transparent;
     -fx-border-style: solid;
     -fx-border-radius: 20 0 0 20;
 }
