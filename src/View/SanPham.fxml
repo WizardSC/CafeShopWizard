@@ -1,8 +1,152 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane prefHeight="715.2" prefWidth="1111.2" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SanPhamController">
-
+<AnchorPane prefHeight="715.2" prefWidth="1111.2" styleClass="bottom-radius" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SanPhamController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="bottom-radius" stylesheets="@../css/SanPham.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox fx:id="tblSanPham" prefHeight="402.0" prefWidth="1111.0" style="-fx-background-color: #fff;" stylesheets="@../css/SanPham.css">
+               <children>
+                  <TableView prefHeight="387.0" prefWidth="1078.0" styleClass="box-radius" stylesheets="@../css/SanPham.css">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="C1" />
+                      <TableColumn prefWidth="75.0" text="C2" />
+                        <TableColumn prefWidth="75.0" text="Column X" />
+                    </columns>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="10.0" right="10.0" />
+               </VBox.margin>
+               <styleClass>
+                  <String fx:value="box-radius" />
+                  <String fx:value="shadow" />
+               </styleClass>
+            </HBox>
+            <HBox prefHeight="298.0" prefWidth="1111.0" style="-fx-background-color: #345;" stylesheets="@../css/SanPham.css">
+               <children>
+                  <VBox prefHeight="298.0" prefWidth="762.0">
+                     <children>
+                        <HBox prefHeight="301.0" prefWidth="750.0">
+                           <children>
+                              <HBox prefHeight="299.0" prefWidth="984.0">
+                                 <children>
+                                    <VBox alignment="CENTER" prefHeight="299.0" prefWidth="284.0">
+                                       <children>
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <Label text="Label" />
+                                                <TextField />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <Label text="Label" />
+                                                <TextField />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <Label text="Label" />
+                                                <TextField />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <Label text="Label" />
+                                                <TextField />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <Label text="Label" />
+                                                <TextField />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefHeight="299.0" prefWidth="284.0">
+                                       <children>
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <Label text="Label" />
+                                                <TextField />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <Label text="Label" />
+                                                <TextField />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <Label text="Label" />
+                                                <TextField />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <Label text="Label" />
+                                                <TextField />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <Label text="Label" />
+                                                <TextField />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <VBox alignment="CENTER" prefHeight="299.0" prefWidth="602.0">
+                                 <children>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/cafe.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="298.0" prefWidth="375.0" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" />
+               </VBox.margin>
+               <styleClass>
+                  <String fx:value="box-radius" />
+                  <String fx:value="shadow" />
+               </styleClass>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+   <stylesheets>
+      <URL value="@../css" />
+      <URL value="@../css/SanPham.css" />
+   </stylesheets>
 </AnchorPane>
