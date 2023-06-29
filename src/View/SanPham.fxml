@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import java.lang.String?>
 <?import java.net.URL?>
@@ -17,16 +18,16 @@
 
 <AnchorPane fx:id="pnSanPham" prefHeight="715.2" prefWidth="1111.2" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SanPhamController">
    <children>
-      <HBox prefHeight="651.0" prefWidth="625.0" stylesheets="@../css/SanPham.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox fillHeight="false" layoutX="-7.0" prefHeight="651.0" prefWidth="625.0" spacing="5.0" stylesheets="@../css/SanPham.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox prefHeight="706.0" prefWidth="794.0" spacing="15.0" styleClass="left-radius" stylesheets="@../css/SanPham.css">
+            <VBox prefHeight="701.0" prefWidth="842.0" spacing="15.0" styleClass="left-radius" stylesheets="@../css/SanPham.css" HBox.hgrow="NEVER">
                <HBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="150.0" top="5.0" />
+                  <Insets bottom="10.0" left="10.0" top="5.0" />
                </HBox.margin>
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="675.0">
                      <children>
-                        <JFXComboBox focusColor="BLACK" labelFloat="true" prefHeight="34.3" prefWidth="94.0" promptText="Tìm kiếm " unFocusColor="#00000080" />
+                        <JFXComboBox fx:id="cbxTimKiem" focusColor="BLACK" labelFloat="true" onAction="#cbxTimKiemMouseClicked" prefHeight="34.3" prefWidth="94.0" promptText="Tìm kiếm " unFocusColor="#00000080" />
                         <HBox fx:id="btnTimKiem" alignment="CENTER_LEFT" fillHeight="false" maxHeight="-Infinity" prefHeight="38.0" prefWidth="263.0" styleClass="search-btn" stylesheets="@../css/SanPham.css">
                            <children>
                               <TextField fx:id="txtTimKiem" prefHeight="31.0" prefWidth="235.0" styleClass="transparent" stylesheets="@../css/SanPham.css" />
@@ -38,15 +39,18 @@
                            </children>
                         </HBox>
                      </children>
+                     <VBox.margin>
+                        <Insets left="5.0" />
+                     </VBox.margin>
                   </HBox>
-                  <TableView maxHeight="-Infinity" prefHeight="646.0" prefWidth="675.0" styleClass="box-radius" stylesheets="@../css/SanPham.css">
+                  <TableView maxHeight="-Infinity" prefHeight="646.0" prefWidth="847.0" styleClass="box-radius" stylesheets="@../css/SanPham.css">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="Mã SP" />
-                      <TableColumn prefWidth="75.0" text="Tên SP" />
-                        <TableColumn prefWidth="102.40005493164062" text="Số lượng" />
-                        <TableColumn prefWidth="121.5999755859375" text="Đơn giá" />
-                        <TableColumn prefWidth="75.0" text="Mã loại" />
-                        <TableColumn prefWidth="75.0" text="IMG" />
+                      <TableColumn prefWidth="50.0" resizable="false" text="Mã SP" />
+                      <TableColumn prefWidth="400.0" resizable="false" text="Tên SP" />
+                        <TableColumn prefWidth="70.0" resizable="false" text="Số lượng" />
+                        <TableColumn prefWidth="130.0" resizable="false" text="Đơn giá" />
+                        <TableColumn prefWidth="90.0" resizable="false" text="Mã loại" />
+                        <TableColumn prefWidth="90.0" text="IMG" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -54,42 +58,125 @@
                   </TableView>
                </children>
             </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="715.0" prefWidth="322.0">
+            <VBox alignment="TOP_CENTER" prefHeight="715.0" prefWidth="256.0" spacing="5.0">
                <children>
-                  <VBox alignment="CENTER" prefHeight="254.0" prefWidth="427.0">
+                  <VBox alignment="CENTER" prefHeight="254.0" prefWidth="211.0">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/cafe.png" />
-                           </image>
-                           <styleClass>
-                              <String fx:value="white-background" />
-                              <String fx:value="shadow" />
-                           </styleClass>
-                        </ImageView>
+                        <VBox alignment="CENTER" prefHeight="146.0" prefWidth="201.0" spacing="10.0" stylesheets="@../css/SanPham.css">
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/cafe.png" />
+                                 </image>
+                                 <styleClass>
+                                    <String fx:value="white-background" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                              </ImageView>
+                              <JFXButton maxHeight="-Infinity" minHeight="-Infinity" prefHeight="41.0" prefWidth="136.0" text="Tải ảnh lên">
+                                 <graphic>
+                                    <ImageView fitHeight="15300.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/icons8-upload-50.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                           </children>
+                        </VBox>
                      </children>
                   </VBox>
-                  <VBox prefHeight="350.0" prefWidth="414.0" styleClass="white-background" stylesheets="@../css/SanPham.css">
+                  <VBox fx:id="vbThongTinSanPham" alignment="CENTER" prefHeight="306.0" prefWidth="222.0" spacing="15.0" styleClass="white-background" stylesheets="@../css/SanPham.css">
                      <children>
-                        <VBox stylesheets="@../css/SanPham.css">
+                        <VBox spacing="5.0" stylesheets="@../css/SanPham.css">
                            <children>
                               <Label text="Mã SP" />
                               <TextField maxWidth="-Infinity" prefHeight="26.0" prefWidth="270.0" VBox.vgrow="NEVER" />
                            </children>
                         </VBox>
-                        <VBox>
+                        <VBox spacing="5.0">
                            <children>
                               <Label text="Tên SP" />
                               <TextField maxWidth="-Infinity" prefHeight="26.0" prefWidth="270.0" />
                            </children>
                         </VBox>
-                        <VBox />
-                        <VBox />
-                        <VBox />
-                        <Button fx:id="btnThem" mnemonicParsing="false" onAction="#btnThemMouseClicked" text="Button" />
+                        <VBox spacing="5.0">
+                           <children>
+                              <Label text="Số lượng" />
+                              <TextField maxWidth="-Infinity" prefHeight="26.0" prefWidth="270.0" />
+                           </children>
+                        </VBox>
+                        <VBox spacing="5.0">
+                           <children>
+                              <Label text="Đơn giá" />
+                              <TextField maxWidth="-Infinity" prefHeight="26.0" prefWidth="270.0" />
+                           </children>
+                        </VBox>
+                        <VBox spacing="5.0">
+                           <children>
+                              <Label text="Mã loại" />
+                              <HBox spacing="10.0">
+                                 <children>
+                                    <TextField maxWidth="-Infinity" prefHeight="26.0" prefWidth="203.0" />
+                                    <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="42.0">
+                                       <graphic>
+                                          <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../img/icons8-extend-50.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="247.0">
+                     <children>
+                        <JFXButton maxHeight="-Infinity" minHeight="-Infinity" prefHeight="41.0" prefWidth="136.0" text="Tải ảnh lên">
+                           <graphic>
+                              <ImageView fitHeight="15300.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/icons8-upload-50.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton maxHeight="-Infinity" minHeight="-Infinity" prefHeight="41.0" prefWidth="136.0" text="Tải ảnh lên">
+                           <graphic>
+                              <ImageView fitHeight="15300.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/icons8-upload-50.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton maxHeight="-Infinity" minHeight="-Infinity" prefHeight="41.0" prefWidth="136.0" text="Tải ảnh lên">
+                           <graphic>
+                              <ImageView fitHeight="15300.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/icons8-upload-50.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton maxHeight="-Infinity" minHeight="-Infinity" prefHeight="41.0" prefWidth="136.0" text="Tải ảnh lên">
+                           <graphic>
+                              <ImageView fitHeight="15300.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/icons8-upload-50.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
                      </children>
                   </VBox>
                </children>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
             </VBox>
          </children>
          <styleClass>
