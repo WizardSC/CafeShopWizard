@@ -4,6 +4,7 @@
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -14,21 +15,21 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="715.2" prefWidth="1111.2" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SanPhamController">
+<AnchorPane fx:id="pnSanPham" prefHeight="715.2" prefWidth="1111.2" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SanPhamController">
    <children>
-      <HBox prefHeight="651.0" prefWidth="625.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox prefHeight="651.0" prefWidth="625.0" stylesheets="@../css/SanPham.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox prefHeight="706.0" prefWidth="794.0" spacing="15.0">
+            <VBox prefHeight="706.0" prefWidth="794.0" spacing="15.0" styleClass="left-radius" stylesheets="@../css/SanPham.css">
                <HBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                  <Insets bottom="10.0" left="10.0" right="150.0" top="5.0" />
                </HBox.margin>
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="675.0">
                      <children>
-                        <JFXComboBox labelFloat="true" prefHeight="35.0" prefWidth="94.0" promptText="Tìm kiếm " />
-                        <HBox alignment="CENTER_LEFT" fillHeight="false" maxHeight="-Infinity" prefHeight="38.0" prefWidth="201.0" styleClass="search-btn" stylesheets="@../css/SanPham.css">
+                        <JFXComboBox focusColor="BLACK" labelFloat="true" prefHeight="34.3" prefWidth="94.0" promptText="Tìm kiếm " unFocusColor="#00000080" />
+                        <HBox fx:id="btnTimKiem" alignment="CENTER_LEFT" fillHeight="false" maxHeight="-Infinity" prefHeight="38.0" prefWidth="263.0" styleClass="search-btn" stylesheets="@../css/SanPham.css">
                            <children>
-                              <TextField prefHeight="26.0" prefWidth="170.0" styleClass="transparent" stylesheets="@../css/SanPham.css" />
+                              <TextField fx:id="txtTimKiem" prefHeight="31.0" prefWidth="235.0" styleClass="transparent" stylesheets="@../css/SanPham.css" />
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../img/icons8-search-50.png" />
@@ -53,20 +54,24 @@
                   </TableView>
                </children>
             </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="715.0" prefWidth="545.0">
+            <VBox alignment="TOP_CENTER" prefHeight="715.0" prefWidth="322.0">
                <children>
                   <VBox alignment="CENTER" prefHeight="254.0" prefWidth="427.0">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" style="-fx-border-color: red;">
+                        <ImageView fitHeight="150.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../img/cafe.png" />
                            </image>
+                           <styleClass>
+                              <String fx:value="white-background" />
+                              <String fx:value="shadow" />
+                           </styleClass>
                         </ImageView>
                      </children>
                   </VBox>
-                  <VBox prefHeight="350.0" prefWidth="427.0">
+                  <VBox prefHeight="350.0" prefWidth="414.0" styleClass="white-background" stylesheets="@../css/SanPham.css">
                      <children>
-                        <VBox>
+                        <VBox stylesheets="@../css/SanPham.css">
                            <children>
                               <Label text="Mã SP" />
                               <TextField maxWidth="-Infinity" prefHeight="26.0" prefWidth="270.0" VBox.vgrow="NEVER" />
@@ -78,29 +83,19 @@
                               <TextField maxWidth="-Infinity" prefHeight="26.0" prefWidth="270.0" />
                            </children>
                         </VBox>
-                        <VBox>
-                           <children>
-                              <Label text="Số lượng" />
-                              <TextField />
-                           </children>
-                        </VBox>
-                        <VBox>
-                           <children>
-                              <Label text="Đơn giá" />
-                              <TextField />
-                           </children>
-                        </VBox>
-                        <VBox>
-                           <children>
-                              <Label text="Mã loại" />
-                              <TextField />
-                           </children>
-                        </VBox>
+                        <VBox />
+                        <VBox />
+                        <VBox />
+                        <Button fx:id="btnThem" mnemonicParsing="false" onAction="#btnThemMouseClicked" text="Button" />
                      </children>
                   </VBox>
                </children>
             </VBox>
          </children>
+         <styleClass>
+            <String fx:value="bottom-radius" />
+            <String fx:value="white-background" />
+         </styleClass>
       </HBox>
    </children>
    <stylesheets>
