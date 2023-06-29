@@ -1,12 +1,14 @@
 package Controller;
 
+import Model.SanPham;
+import Repository.SanPhamRepository;
 import com.jfoenix.controls.JFXComboBox;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -35,6 +37,27 @@ public class SanPhamController implements Initializable {
     private JFXComboBox<Label> cbxTimKiem;
 
     @FXML
+    private TableView<SanPham> tblDSSP;
+
+    @FXML
+    private TableColumn<SanPham, Integer> tcDonGia;
+
+    @FXML
+    private TableColumn<SanPham, String> tcIMG;
+
+    @FXML
+    private TableColumn<SanPham, String> tcMaLoai;
+
+    @FXML
+    private TableColumn<SanPham, String> tcMaSP;
+
+    @FXML
+    private TableColumn<SanPham, Integer> tcSoLuong;
+
+    @FXML
+    private TableColumn<SanPham, String> tcTenSP;
+
+    @FXML
     void btnThemMouseClicked(ActionEvent event) {
 
 
@@ -47,12 +70,29 @@ public class SanPhamController implements Initializable {
         System.out.println(TuKhoa);
     }
 
+
     //Thêm dữ liệu vào combobox
-    public void addLabeltoComboBox(){
+    public void addLabeltoComboBox() {
         cbxTimKiem.getItems().add(new Label("Mã SP"));
         cbxTimKiem.getItems().add(new Label("Tên SP"));
         cbxTimKiem.getItems().add(new Label("Mã loại"));
     }
+
+    public void loadDatatoDSSPTable() {
+        tcMaSP.setCellValueFactory(new PropertyValueFactory<>("maSP"));
+        tcTenSP.setCellValueFactory(new PropertyValueFactory<>("tenSP"));
+        tcSoLuong.setCellValueFactory(new PropertyValueFactory<>("soLuong"));
+        tcDonGia.setCellValueFactory(new PropertyValueFactory<>("donGia"));
+        tcMaLoai.setCellValueFactory(new PropertyValueFactory<>("maLoai"));
+        tcIMG.setCellValueFactory(new PropertyValueFactory<>("IMG"));
+
+        tblDSSP.setItems(dsSanPham);
+
+    }
+
+    private ObservableList<SanPham> dsSanPham;
+    private SanPhamRepository sanPhamRepository;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -68,6 +108,8 @@ public class SanPhamController implements Initializable {
         });
 
         addLabeltoComboBox();
-
+        sanPhamRepository = new SanPhamRepository();
+        dsSanPham = sanPhamRepository.getListSanPham();
+        loadDatatoDSSPTable();
     }
 }
