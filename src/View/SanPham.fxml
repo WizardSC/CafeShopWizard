@@ -45,9 +45,9 @@
                   </HBox>
                   <TableView fx:id="tblDSSP" maxHeight="-Infinity" prefHeight="646.0" prefWidth="847.0" styleClass="box-radius" stylesheets="@../css/SanPham.css">
                     <columns>
-                      <TableColumn fx:id="tcMaSP" prefWidth="50.0" resizable="false" text="Mã SP" />
-                      <TableColumn fx:id="tcTenSP" prefWidth="400.0" resizable="false" text="Tên SP" />
-                        <TableColumn fx:id="tcSoLuong" prefWidth="70.0" resizable="false" text="Số lượng" />
+                      <TableColumn fx:id="tcMaSP" prefWidth="90.0" resizable="false" text="Mã SP" />
+                      <TableColumn fx:id="tcTenSP" prefWidth="330.0" resizable="false" text="Tên SP" />
+                        <TableColumn fx:id="tcSoLuong" prefWidth="100.0" resizable="false" text="Số lượng" />
                         <TableColumn fx:id="tcDonGia" prefWidth="130.0" resizable="false" text="Đơn giá" />
                         <TableColumn fx:id="tcMaLoai" prefWidth="90.0" resizable="false" text="Mã loại" />
                         <TableColumn fx:id="tcIMG" prefWidth="90.0" text="IMG" />

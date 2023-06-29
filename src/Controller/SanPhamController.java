@@ -90,6 +90,46 @@ public class SanPhamController implements Initializable {
 
     }
 
+    private void customizeRowHeight() {
+        tblDSSP.setRowFactory(tv -> new TableRow<SanPham>() {
+            private static final int ROW_HEIGHT = 30; // Chiều cao mong muốn cho hàng
+
+            @Override
+            protected void updateItem(SanPham item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setStyle(""); // Đặt style cho hàng rỗng
+                    setPrefHeight(ROW_HEIGHT); // Đặt chiều cao cho hàng
+                } else {
+
+                    getStyleClass().add("high-price-row");
+
+                    setPrefHeight(ROW_HEIGHT); // Đặt chiều cao cho hàng
+                }
+            }
+        });
+    }
+
+    private void setRowClickEvent() {
+        tblDSSP.setRowFactory(tv -> {
+            TableRow<SanPham> row = new TableRow<>();
+
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 1 && !row.isEmpty()) {
+                    // Xóa màu nền của các hàng khác
+                    tblDSSP.getSelectionModel().clearSelection();
+
+                    // Đặt màu nền cho hàng được nhấp chuột
+                    row.setStyle("-fx-background-color: #FFF7D4;");
+                    tblDSSP.getSelectionModel().select(row.getItem());
+                }
+            });
+
+            return row;
+        });
+    }
+
+
     private ObservableList<SanPham> dsSanPham;
     private SanPhamRepository sanPhamRepository;
 
@@ -107,9 +147,12 @@ public class SanPhamController implements Initializable {
             btnTimKiem.getStyleClass().remove("click-search-btn");
         });
 
+
         addLabeltoComboBox();
         sanPhamRepository = new SanPhamRepository();
         dsSanPham = sanPhamRepository.getListSanPham();
+        customizeRowHeight();
+
         loadDatatoDSSPTable();
     }
 }

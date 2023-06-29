@@ -29,18 +29,26 @@
     -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.5),5,0,0,0);
 }
 .table-view .column-header-background {
-    -fx-background-color: #FFF7D4;
+    -fx-background-color: #FFDE72;
     -fx-background-radius: 15 15 0 0;
 }
 
 .table-view .column-header {
-    -fx-background-color: #FFF7D4;
+    -fx-background-color: #FFDE72;
     -fx-background-radius: 15 15 0 0;
 }
 
 .table-view .column-header .label {
     -fx-padding: 5;
     -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+
+.high-price-row {
+    -fx-font-size: 14px;
+    -fx-font-family: Cambria;
+
 }
 
 .header-chuc-nang{
