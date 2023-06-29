@@ -46,7 +46,15 @@
     -fx-border-color: transparent;
     -fx-border-style: solid;
     -fx-border-radius: 20 0 0 20;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+    -fx-font-family: Cambria;
 
+}
+.menu-label .label{
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+    -fx-font-family: Cambria;
 }
 /* dùng khi click vào 1 HBox ở thanh menu và HBox đó giữ nguyên màu được hover*/
 .hbox-hover{

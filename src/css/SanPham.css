@@ -1,3 +1,6 @@
+.transparent{
+    -fx-background-color: transparent;
+}
 .white-background{
     -fx-background-color: #fff;
 }
@@ -55,6 +58,16 @@
     -fx-border-width: 1.5;
     -fx-font-size: 18px;
 
+}
+
+.search-btn{
+    -fx-border-radius: 20;
+    -fx-border-color: #ccc;
+}
+
+.img{
+    -fx-border-color: red;
+    -fx-border-width: 2;
 }
 
 /*.root{*/
