@@ -97,15 +97,15 @@ public class SanPhamController implements Initializable {
             @Override
             protected void updateItem(SanPham item, boolean empty) {
                 super.updateItem(item, empty);
-                if (empty || item == null) {
-                    setStyle(""); // Đặt style cho hàng rỗng
-                    setPrefHeight(ROW_HEIGHT); // Đặt chiều cao cho hàng
-                } else {
+//                if (empty || item == null) {
+//                    setStyle(""); // Đặt style cho hàng rỗng
+//                    setPrefHeight(ROW_HEIGHT); // Đặt chiều cao cho hàng
+//                } else {
 
                     getStyleClass().add("high-price-row");
 
                     setPrefHeight(ROW_HEIGHT); // Đặt chiều cao cho hàng
-                }
+//                }
             }
         });
     }

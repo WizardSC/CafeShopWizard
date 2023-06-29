@@ -18,9 +18,9 @@
 
 <AnchorPane fx:id="pnSanPham" prefHeight="715.2" prefWidth="1111.2" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SanPhamController">
    <children>
-      <HBox fillHeight="false" layoutX="-7.0" prefHeight="651.0" prefWidth="625.0" spacing="5.0" stylesheets="@../css/SanPham.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox fillHeight="false" layoutX="-7.0" prefHeight="651.0" prefWidth="625.0" spacing="10.0" stylesheets="@../css/SanPham.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox prefHeight="701.0" prefWidth="842.0" spacing="15.0" styleClass="left-radius" stylesheets="@../css/SanPham.css" HBox.hgrow="NEVER">
+            <VBox prefHeight="701.0" prefWidth="822.0" spacing="15.0" styleClass="left-radius" stylesheets="@../css/SanPham.css" HBox.hgrow="NEVER">
                <HBox.margin>
                   <Insets bottom="10.0" left="10.0" top="5.0" />
                </HBox.margin>
@@ -43,10 +43,10 @@
                         <Insets left="5.0" />
                      </VBox.margin>
                   </HBox>
-                  <TableView fx:id="tblDSSP" maxHeight="-Infinity" prefHeight="646.0" prefWidth="847.0" styleClass="box-radius" stylesheets="@../css/SanPham.css">
+                  <TableView fx:id="tblDSSP" maxHeight="-Infinity" prefHeight="637.0" prefWidth="811.0" styleClass="box-radius" stylesheets="@../css/SanPham.css">
                     <columns>
                       <TableColumn fx:id="tcMaSP" prefWidth="90.0" resizable="false" text="Mã SP" />
-                      <TableColumn fx:id="tcTenSP" prefWidth="330.0" resizable="false" text="Tên SP" />
+                      <TableColumn fx:id="tcTenSP" prefWidth="320.0" resizable="false" text="Tên SP" />
                         <TableColumn fx:id="tcSoLuong" prefWidth="100.0" resizable="false" text="Số lượng" />
                         <TableColumn fx:id="tcDonGia" prefWidth="130.0" resizable="false" text="Đơn giá" />
                         <TableColumn fx:id="tcMaLoai" prefWidth="90.0" resizable="false" text="Mã loại" />
