@@ -12,8 +12,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -57,20 +59,34 @@ public class SanPhamController implements Initializable {
     @FXML
     private TableColumn<SanPham, String> tcTenSP;
 
-    @FXML
-    void btnThemMouseClicked(ActionEvent event) {
+    private ObservableList<SanPham> dsSanPham;
+    private SanPhamRepository sanPhamRepository;
+
+    //Các hàm khởi tạo và phương thức initialize
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        txtTimKiem.setOnMouseClicked(mouseEvent -> {
 
 
+            btnTimKiem.getStyleClass().remove("search-btn");
+            btnTimKiem.getStyleClass().add("click-search-btn");
+        });
+        txtTimKiem.setOnMouseExited(mouseEvent -> {
+            btnTimKiem.getStyleClass().add("search-btn");
+            btnTimKiem.getStyleClass().remove("click-search-btn");
+        });
+
+
+        addLabeltoComboBox();
+        sanPhamRepository = new SanPhamRepository();
+        dsSanPham = sanPhamRepository.getListSanPham();
+        customizeRowHeight();
+
+        loadDatatoDSSPTable();
     }
-
-    @FXML
-    void cbxTimKiemMouseClicked(ActionEvent event) {
-        Label selectedLabel = cbxTimKiem.getSelectionModel().getSelectedItem();
-        String TuKhoa = selectedLabel.getText();
-        System.out.println(TuKhoa);
-    }
-
-
+    //Các hàm hỗ trợ
     //Thêm dữ liệu vào combobox
     public void addLabeltoComboBox() {
         cbxTimKiem.getItems().add(new Label("Mã SP"));
@@ -102,9 +118,9 @@ public class SanPhamController implements Initializable {
 //                    setPrefHeight(ROW_HEIGHT); // Đặt chiều cao cho hàng
 //                } else {
 
-                    getStyleClass().add("high-price-row");
+                getStyleClass().add("high-price-row");
 
-                    setPrefHeight(ROW_HEIGHT); // Đặt chiều cao cho hàng
+                setPrefHeight(ROW_HEIGHT); // Đặt chiều cao cho hàng
 //                }
             }
         });
@@ -129,30 +145,27 @@ public class SanPhamController implements Initializable {
         });
     }
 
+    public void importImage(){
+        FileChooser openFileChooser = new FileChooser();
+        openFileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("File hình ảnh", "*png", "*jpg"));
+        File file = openFileChooser.showOpenDialog(pnSanPham.getScene().getWindow());
+        if(file != null){
 
-    private ObservableList<SanPham> dsSanPham;
-    private SanPhamRepository sanPhamRepository;
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        txtTimKiem.setOnMouseClicked(mouseEvent -> {
-
-
-            btnTimKiem.getStyleClass().remove("search-btn");
-            btnTimKiem.getStyleClass().add("click-search-btn");
-        });
-        txtTimKiem.setOnMouseExited(mouseEvent -> {
-            btnTimKiem.getStyleClass().add("search-btn");
-            btnTimKiem.getStyleClass().remove("click-search-btn");
-        });
-
-
-        addLabeltoComboBox();
-        sanPhamRepository = new SanPhamRepository();
-        dsSanPham = sanPhamRepository.getListSanPham();
-        customizeRowHeight();
-
-        loadDatatoDSSPTable();
+        }
     }
+
+    //Các hàm xử lý sự kiện
+    @FXML
+    void cbxTimKiemMouseClicked(ActionEvent event) {
+        Label selectedLabel = cbxTimKiem.getSelectionModel().getSelectedItem();
+        String TuKhoa = selectedLabel.getText();
+        System.out.println(TuKhoa);
+    }
+
+    @FXML
+    void btnThemMouseClicked(ActionEvent event) {
+
+
+    }
+
 }
