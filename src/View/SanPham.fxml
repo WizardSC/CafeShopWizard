@@ -73,19 +73,19 @@
                <children>
                   <VBox stylesheets="@../css/SanPham.css">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="221.0" prefWidth="256.0" stylesheets="@../css/SanPham.css">
+                        <VBox alignment="CENTER" prefHeight="221.0" prefWidth="256.0" styleClass="shadow" stylesheets="@../css/SanPham.css">
                            <children>
-                              <VBox alignment="CENTER" prefHeight="146.0" prefWidth="201.0" spacing="10.0" stylesheets="@../css/SanPham.css">
+                              <VBox alignment="CENTER" spacing="10.0">
                                  <children>
-                                    <ImageView fx:id="imgSanPham" fitHeight="150.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../img/cafe.png" />
-                                       </image>
+                                    <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="150.0" prefWidth="145.0" spacing="10.0" stylesheets="@../css/SanPham.css">
+                                       <children>
+                                          <ImageView fx:id="imgSanPham" fitHeight="150.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true" styleClass="shadow-1" />
+                                       </children>
                                        <styleClass>
+                                          <String fx:value="shadow-1" />
                                           <String fx:value="white-background" />
-                                          <String fx:value="shadow" />
                                        </styleClass>
-                                    </ImageView>
+                                    </VBox>
                                     <JFXButton fx:id="btnImportImage" graphicTextGap="10.0" maxHeight="-Infinity" minHeight="-Infinity" onAction="#btnImportImageMouseClicked" prefHeight="29.0" prefWidth="136.0" text="Tải ảnh lên">
                                        <graphic>
                                           <ImageView fitHeight="15300.0" fitWidth="30.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">

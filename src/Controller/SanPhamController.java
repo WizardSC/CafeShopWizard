@@ -186,7 +186,7 @@ public class SanPhamController implements Initializable {
     void btnImportImageMouseClicked(ActionEvent event) {
 
         FileChooser fileChooser = new FileChooser();
-        File initialDirectory = new File("./src/img");
+        File initialDirectory = new File("./src/img/SanPham");
         fileChooser.setInitialDirectory(initialDirectory);
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("File hình ảnh", "*.png", "*.jpg"));
         File file = fileChooser.showOpenDialog(pnSanPham.getScene().getWindow());
