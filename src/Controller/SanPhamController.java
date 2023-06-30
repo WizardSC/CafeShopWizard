@@ -20,14 +20,22 @@ import javafx.stage.FileChooser;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class SanPhamController implements Initializable {
+
     @FXML
-    private JFXButton btnImportImage;
+    private JFXButton btnSua;
+
+    @FXML
+    private JFXButton btnThem;
 
     @FXML
     private HBox btnTimKiem;
+
+    @FXML
+    private JFXButton btnXoa;
 
     @FXML
     private JFXComboBox<Label> cbxTimKiem;
@@ -70,10 +78,10 @@ public class SanPhamController implements Initializable {
     private TextField txtMaSP;
 
     @FXML
-    private VBox txtSoLuong;
+    private TextField txtSoLuong;
 
     @FXML
-    private VBox txtTenSP;
+    private TextField txtTenSP;
 
     @FXML
     private TextField txtTimKiem;
@@ -82,7 +90,9 @@ public class SanPhamController implements Initializable {
     private VBox vbThongTinSanPham;
 
     private ObservableList<SanPham> dsSanPham;
+    private ArrayList<SanPham> dssp;
     private SanPhamRepository sanPhamRepository;
+
     private Image img;
     //Các hàm khởi tạo và phương thức initialize
 
@@ -176,11 +186,7 @@ public class SanPhamController implements Initializable {
         System.out.println(TuKhoa);
     }
 
-    @FXML
-    void btnThemMouseClicked(ActionEvent event) {
 
-
-    }
 
     @FXML
     void btnImportImageMouseClicked(ActionEvent event) {
@@ -194,5 +200,38 @@ public class SanPhamController implements Initializable {
             img = new Image(file.toURI().toString(), 145, 150, false, true);
             imgSanPham.setImage(img);
         }
+    }
+    @FXML
+    void btnSuaMouseClicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnThemMouseClicked(ActionEvent event) {
+
+
+        if(txtMaSP.getText().equals("") || txtTenSP.getText().equals("") || txtMaLoai.getText().equals("") || txtSoLuong.getText().equals("") || txtDonGia.getText().equals("")){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Lỗi");
+            alert.setHeaderText(null);
+            alert.setContentText("Vui lòng điền đầy đủ thông tin sản phẩm");
+            alert.showAndWait();
+            return;
+        }
+        String MaSP = txtMaSP.getText();
+        String TenSP = txtTenSP.getText();
+        int SoLuong = Integer.parseInt(txtSoLuong.getText());
+        int DonGia = Integer.parseInt(txtDonGia.getText());
+        String MaLoai = txtMaLoai.getText();
+        String IMG = null;
+        SanPham sp = new SanPham(MaSP,TenSP,SoLuong,DonGia,MaLoai,IMG);
+        sanPhamRepository.insertSanPham(sp);
+
+        loadDatatoDSSPTable();
+    }
+
+    @FXML
+    void btnXoaMouseClicked(ActionEvent event) {
+
     }
 }

@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -41,5 +42,22 @@ public class SanPhamRepository {
             mySQLConnect.Disconnect();
         }
         return null;
+    }
+
+    public void insertSanPham(SanPham sp){
+        try {
+            String sql = "insert into sanpham values(?,?,?,?,?,?)";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1,sp.getMaSP());
+            ps.setString(2,sp.getTenSP());
+            ps.setInt(3,sp.getSoLuong());
+            ps.setInt(4,sp.getDonGia());
+            ps.setString(5,sp.getMaLoai());
+            ps.setString(6,sp.getIMG());
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(SanPhamRepository.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
     }
 }

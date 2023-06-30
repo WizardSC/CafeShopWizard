@@ -107,16 +107,16 @@
                                     <TextField fx:id="txtMaSP" maxWidth="-Infinity" prefHeight="26.0" prefWidth="270.0" VBox.vgrow="NEVER" />
                                  </children>
                               </VBox>
-                              <VBox fx:id="txtTenSP" spacing="5.0">
+                              <VBox spacing="5.0">
                                  <children>
                                     <Label text="Tên SP" />
-                                    <TextField maxWidth="-Infinity" prefHeight="26.0" prefWidth="270.0" />
+                                    <TextField fx:id="txtTenSP" maxWidth="-Infinity" prefHeight="26.0" prefWidth="270.0" />
                                  </children>
                               </VBox>
-                              <VBox fx:id="txtSoLuong" spacing="5.0">
+                              <VBox spacing="5.0">
                                  <children>
                                     <Label text="Số lượng" />
-                                    <TextField maxWidth="-Infinity" prefHeight="26.0" prefWidth="270.0" />
+                                    <TextField fx:id="txtSoLuong" maxWidth="-Infinity" prefHeight="26.0" prefWidth="270.0" />
                                  </children>
                               </VBox>
                               <VBox spacing="5.0">
@@ -164,42 +164,37 @@
                   </VBox>
                   <VBox prefHeight="152.0" prefWidth="256.0" stylesheets="@../css/SanPham.css">
                      <children>
-                        <JFXButton cancelButton="true" ellipsisString="" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="41.0" prefWidth="136.0" ripplerFill="#c7c7c7">
-                           <graphic>
-                              <ImageView fitHeight="15300.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../img/icons8-upload-50.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton maxHeight="-Infinity" minHeight="-Infinity" prefHeight="41.0" prefWidth="136.0" text="Tải ảnh lên">
-                           <graphic>
-                              <ImageView fitHeight="15300.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../img/icons8-upload-50.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton maxHeight="-Infinity" minHeight="-Infinity" prefHeight="41.0" prefWidth="136.0" text="Tải ảnh lên">
-                           <graphic>
-                              <ImageView fitHeight="15300.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../img/icons8-upload-50.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton maxHeight="-Infinity" minHeight="-Infinity" prefHeight="41.0" prefWidth="136.0" text="Tải ảnh lên">
-                           <graphic>
-                              <ImageView fitHeight="15300.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../img/icons8-upload-50.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
+                        <VBox alignment="CENTER" prefHeight="150.0" prefWidth="256.0" spacing="10.0">
+                           <children>
+                              <JFXButton fx:id="btnThem" alignment="CENTER" ellipsisString="" lineSpacing="15.0" maxHeight="-Infinity" minHeight="-Infinity" onAction="#btnThemMouseClicked" prefHeight="41.0" prefWidth="136.0" ripplerFill="#c7c7c7" text="Thêm">
+                                 <graphic>
+                                    <ImageView fitHeight="15300.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/icons8-add-50.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                              <JFXButton fx:id="btnXoa" alignment="CENTER" lineSpacing="15.0" maxHeight="-Infinity" minHeight="-Infinity" onAction="#btnXoaMouseClicked" prefHeight="41.0" prefWidth="136.0" text="Xóa">
+                                 <graphic>
+                                    <ImageView fitHeight="15300.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/icons8-update-48.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                              <JFXButton fx:id="btnSua" alignment="CENTER" lineSpacing="15.0" maxHeight="-Infinity" minHeight="-Infinity" onAction="#btnSuaMouseClicked" prefHeight="41.0" prefWidth="136.0" text="Sửa">
+                                 <graphic>
+                                    <ImageView fitHeight="15300.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/icons8-upload-50.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                           </children>
+                        </VBox>
                      </children>
                      <styleClass>
                         <String fx:value="white-background" />
