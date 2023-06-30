@@ -77,7 +77,7 @@
                            <children>
                               <VBox alignment="CENTER" prefHeight="146.0" prefWidth="201.0" spacing="10.0" stylesheets="@../css/SanPham.css">
                                  <children>
-                                    <ImageView fitHeight="150.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="imgSanPham" fitHeight="150.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../img/cafe.png" />
                                        </image>
@@ -86,9 +86,9 @@
                                           <String fx:value="shadow" />
                                        </styleClass>
                                     </ImageView>
-                                    <JFXButton graphicTextGap="10.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="29.0" prefWidth="136.0" text="Tải ảnh lên">
+                                    <JFXButton fx:id="btnImportImage" graphicTextGap="10.0" maxHeight="-Infinity" minHeight="-Infinity" onAction="#btnImportImageMouseClicked" prefHeight="29.0" prefWidth="136.0" text="Tải ảnh lên">
                                        <graphic>
-                                          <ImageView fitHeight="15300.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="15300.0" fitWidth="30.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@../img/icons8-upload.gif" />
                                              </image>
@@ -113,7 +113,7 @@
                                     <TextField maxWidth="-Infinity" prefHeight="26.0" prefWidth="270.0" />
                                  </children>
                               </VBox>
-                              <VBox spacing="5.0">
+                              <VBox fx:id="txtSoLuong" spacing="5.0">
                                  <children>
                                     <Label text="Số lượng" />
                                     <TextField maxWidth="-Infinity" prefHeight="26.0" prefWidth="270.0" />
@@ -122,7 +122,7 @@
                               <VBox spacing="5.0">
                                  <children>
                                     <Label text="Đơn giá" />
-                                    <TextField maxWidth="-Infinity" prefHeight="26.0" prefWidth="270.0" />
+                                    <TextField fx:id="txtDonGia" maxWidth="-Infinity" prefHeight="26.0" prefWidth="270.0" />
                                  </children>
                               </VBox>
                               <VBox spacing="5.0">
@@ -130,12 +130,12 @@
                                     <Label text="Mã loại" />
                                     <HBox spacing="10.0">
                                        <children>
-                                          <TextField maxWidth="-Infinity" prefHeight="26.0" prefWidth="203.0" />
+                                          <TextField fx:id="txtMaLoai" maxWidth="-Infinity" prefHeight="26.0" prefWidth="203.0" />
                                           <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="42.0">
                                              <graphic>
                                                 <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
-                                                      <Image url="@../img/icons8-extend-50.png" />
+                                                      <Image url="@../img/icons8-open-64.png" />
                                                    </image>
                                                 </ImageView>
                                              </graphic>
@@ -164,7 +164,7 @@
                   </VBox>
                   <VBox prefHeight="152.0" prefWidth="256.0" stylesheets="@../css/SanPham.css">
                      <children>
-                        <JFXButton maxHeight="-Infinity" minHeight="-Infinity" prefHeight="41.0" prefWidth="136.0" text="Tải ảnh lên">
+                        <JFXButton cancelButton="true" ellipsisString="" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="41.0" prefWidth="136.0" ripplerFill="#c7c7c7">
                            <graphic>
                               <ImageView fitHeight="15300.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

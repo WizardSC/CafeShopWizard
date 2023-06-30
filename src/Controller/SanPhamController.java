@@ -2,6 +2,7 @@ package Controller;
 
 import Model.SanPham;
 import Repository.SanPhamRepository;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,6 +10,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -21,22 +24,20 @@ import java.util.ResourceBundle;
 
 public class SanPhamController implements Initializable {
     @FXML
-    private Button btnThem;
-
-    @FXML
-    private TextField txtTimKiem;
+    private JFXButton btnImportImage;
 
     @FXML
     private HBox btnTimKiem;
 
     @FXML
+    private JFXComboBox<Label> cbxTimKiem;
+
+    @FXML
+    private ImageView imgSanPham;
+
+    @FXML
     private AnchorPane pnSanPham;
 
-    @FXML
-    private VBox vbThongTinSanPham;
-
-    @FXML
-    private JFXComboBox<Label> cbxTimKiem;
 
     @FXML
     private TableView<SanPham> tblDSSP;
@@ -59,9 +60,30 @@ public class SanPhamController implements Initializable {
     @FXML
     private TableColumn<SanPham, String> tcTenSP;
 
+    @FXML
+    private TextField txtDonGia;
+
+    @FXML
+    private TextField txtMaLoai;
+
+    @FXML
+    private TextField txtMaSP;
+
+    @FXML
+    private VBox txtSoLuong;
+
+    @FXML
+    private VBox txtTenSP;
+
+    @FXML
+    private TextField txtTimKiem;
+
+    @FXML
+    private VBox vbThongTinSanPham;
+
     private ObservableList<SanPham> dsSanPham;
     private SanPhamRepository sanPhamRepository;
-
+    private Image img;
     //Các hàm khởi tạo và phương thức initialize
 
     @Override
@@ -86,6 +108,7 @@ public class SanPhamController implements Initializable {
 
         loadDatatoDSSPTable();
     }
+
     //Các hàm hỗ trợ
     //Thêm dữ liệu vào combobox
     public void addLabeltoComboBox() {
@@ -145,15 +168,6 @@ public class SanPhamController implements Initializable {
         });
     }
 
-    public void importImage(){
-        FileChooser openFileChooser = new FileChooser();
-        openFileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("File hình ảnh", "*png", "*jpg"));
-        File file = openFileChooser.showOpenDialog(pnSanPham.getScene().getWindow());
-        if(file != null){
-
-        }
-    }
-
     //Các hàm xử lý sự kiện
     @FXML
     void cbxTimKiemMouseClicked(ActionEvent event) {
@@ -168,4 +182,17 @@ public class SanPhamController implements Initializable {
 
     }
 
+    @FXML
+    void btnImportImageMouseClicked(ActionEvent event) {
+
+        FileChooser fileChooser = new FileChooser();
+        File initialDirectory = new File("./src/img");
+        fileChooser.setInitialDirectory(initialDirectory);
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("File hình ảnh", "*.png", "*.jpg"));
+        File file = fileChooser.showOpenDialog(pnSanPham.getScene().getWindow());
+        if (file != null) {
+            img = new Image(file.toURI().toString(), 145, 150, false, true);
+            imgSanPham.setImage(img);
+        }
+    }
 }
