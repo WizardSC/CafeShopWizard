@@ -16,10 +16,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
+import javafx.stage.Window;
 
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.net.URL;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -98,7 +100,6 @@ public class SanPhamController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         txtTimKiem.setOnMouseClicked(mouseEvent -> {
 
 
@@ -177,6 +178,10 @@ public class SanPhamController implements Initializable {
             return row;
         });
     }
+    //Hàm load mã SP mới nhất lên form
+    public void loadMaSP(){
+
+    }
 
     //Các hàm xử lý sự kiện
     @FXML
@@ -225,7 +230,16 @@ public class SanPhamController implements Initializable {
         String MaLoai = txtMaLoai.getText();
         String IMG = null;
         SanPham sp = new SanPham(MaSP,TenSP,SoLuong,DonGia,MaLoai,IMG);
-        sanPhamRepository.insertSanPham(sp);
+        try {
+            sanPhamRepository.insertSanPham(sp);
+        } catch (SQLIntegrityConstraintViolationException ex) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Lỗi");
+            alert.setHeaderText(null);
+            alert.setContentText("Trùng mã sản phẩm. Hãy thử lại với mã sản phẩm khác");
+            alert.showAndWait();
+        }
+
 
         loadDatatoDSSPTable();
     }

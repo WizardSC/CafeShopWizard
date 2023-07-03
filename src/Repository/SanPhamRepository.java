@@ -4,11 +4,9 @@ import Model.CauHoi;
 import Model.SanPham;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,7 +42,7 @@ public class SanPhamRepository {
         return null;
     }
 
-    public void insertSanPham(SanPham sp){
+    public void insertSanPham(SanPham sp) throws SQLIntegrityConstraintViolationException {
         try {
             String sql = "insert into sanpham values(?,?,?,?,?,?)";
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -56,7 +54,12 @@ public class SanPhamRepository {
             ps.setString(6,sp.getIMG());
             ps.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(SanPhamRepository.class.getName()).log(Level.SEVERE, null, ex);
+            if(ex instanceof SQLIntegrityConstraintViolationException){
+                throw (SQLIntegrityConstraintViolationException) ex;
+            } else {
+                Logger.getLogger(SanPhamRepository.class.getName()).log(Level.SEVERE, null, ex);
+
+            }
 
         }
     }
