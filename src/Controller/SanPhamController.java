@@ -25,6 +25,8 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.*;
 
 public class SanPhamController implements Initializable {
+    @FXML
+    private JFXButton btnImportImage;
 
     @FXML
     private JFXButton btnSua;
@@ -99,6 +101,7 @@ public class SanPhamController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //Hành động
         txtTimKiem.setOnMouseClicked(mouseEvent -> {
 
 
@@ -109,6 +112,16 @@ public class SanPhamController implements Initializable {
             btnTimKiem.getStyleClass().add("search-btn");
             btnTimKiem.getStyleClass().remove("click-search-btn");
         });
+
+        txtTenSP.textProperty().addListener((observableValue, s, t1) ->{
+            if(t1.equals("")){
+                btnImportImage.setDisable(true);
+            } else {
+                btnImportImage.setDisable(false);
+            }
+        });
+        txtMaSP.setDisable(true);
+
 
 
         addLabeltoComboBox();
@@ -122,6 +135,20 @@ public class SanPhamController implements Initializable {
     }
 
     //Các hàm hỗ trợ
+    public void refreshForm() {
+        dsSanPham = sanPhamRepository.getListSanPham();
+        clear();
+        loadDatatoDSSPTable();
+        loadDataMaSP();
+    }
+    public void clear(){
+        txtMaSP.setText("");
+        txtTenSP.setText("");
+        txtMaLoai.setText("");
+        txtDonGia.setText("");
+        txtSoLuong.setText("");
+        imgSanPham.setImage(null);
+    }
     //Thêm dữ liệu vào combobox
     public void addLabeltoComboBox() {
         cbxTimKiem.getItems().add(new Label("Mã SP"));
@@ -130,6 +157,8 @@ public class SanPhamController implements Initializable {
     }
 
     public void loadDatatoDSSPTable() {
+
+
         tcMaSP.setCellValueFactory(new PropertyValueFactory<>("maSP"));
         tcTenSP.setCellValueFactory(new PropertyValueFactory<>("tenSP"));
         tcSoLuong.setCellValueFactory(new PropertyValueFactory<>("soLuong"));
@@ -264,6 +293,8 @@ public class SanPhamController implements Initializable {
         SanPham sp = new SanPham(MaSP, TenSP, SoLuong, DonGia, MaLoai, IMG);
         try {
             sanPhamRepository.insertSanPham(sp);
+            tblDSSP.getItems().clear(); //Xóa dữ liệu hiện tại trong tableview
+            refreshForm();
         } catch (SQLIntegrityConstraintViolationException ex) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Lỗi");
@@ -273,8 +304,7 @@ public class SanPhamController implements Initializable {
         }
 
 
-        loadDatatoDSSPTable();
-        loadDataMaSP();
+
     }
 
     @FXML

@@ -45,6 +45,7 @@
 }
 
 
+
 .high-price-row {
     -fx-font-size: 14px;
     -fx-font-family: Cambria;
@@ -89,6 +90,7 @@
 
 #vbThongTinSanPham .text-field, .button{
     -fx-background-radius: 5;
+    -fx-font-weight: bold;
 }
 /*.root{*/
 /*    -fx-background-radius: 0 0 30 30;*/
