@@ -18,11 +18,19 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
 
+import javax.imageio.ImageIO;
 import java.awt.event.MouseEvent;
-import java.io.File;
+import java.awt.image.BufferedImage;
+import java.io.*;
 import java.net.URL;
+import java.nio.file.Path;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.scene.image.Image;
+
+
 
 public class SanPhamController implements Initializable {
     @FXML
@@ -95,8 +103,9 @@ public class SanPhamController implements Initializable {
     private ObservableList<SanPham> dsSanPham;
     private ArrayList<SanPham> dssp;
     private SanPhamRepository sanPhamRepository;
-
     private Image img;
+    private String path;
+    private String imgName;
     //Các hàm khởi tạo và phương thức initialize
 
     @Override
@@ -262,6 +271,7 @@ public class SanPhamController implements Initializable {
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("File hình ảnh", "*.png", "*.jpg"));
         File file = fileChooser.showOpenDialog(pnSanPham.getScene().getWindow());
         if (file != null) {
+            path = file.getAbsolutePath();
             img = new Image(file.toURI().toString(), 145, 150, false, true);
             imgSanPham.setImage(img);
         }
@@ -289,12 +299,14 @@ public class SanPhamController implements Initializable {
         int SoLuong = Integer.parseInt(txtSoLuong.getText());
         int DonGia = Integer.parseInt(txtDonGia.getText());
         String MaLoai = txtMaLoai.getText();
-        String IMG = null;
+        imgName = path.replace("\\","\\\\");
+        String IMG = imgName;
         SanPham sp = new SanPham(MaSP, TenSP, SoLuong, DonGia, MaLoai, IMG);
         try {
             sanPhamRepository.insertSanPham(sp);
             tblDSSP.getItems().clear(); //Xóa dữ liệu hiện tại trong tableview
             refreshForm();
+
         } catch (SQLIntegrityConstraintViolationException ex) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Lỗi");
@@ -311,4 +323,21 @@ public class SanPhamController implements Initializable {
     void btnXoaMouseClicked(ActionEvent event) {
 
     }
+
+    @FXML
+    void tblDSSPMouseClicked() {
+        SanPham sp = tblDSSP.getSelectionModel().getSelectedItem();
+        int k = tblDSSP.getSelectionModel().getSelectedIndex();
+        if((k-1) < -1) return;
+        txtMaSP.setText(sp.getMaSP());
+        txtTenSP.setText(sp.getTenSP());
+        txtSoLuong.setText(String.valueOf(sp.getSoLuong()));
+        txtDonGia.setText(String.valueOf(sp.getDonGia()));
+
+        imgName = sp.getIMG();
+
+        Image image1 = new Image( "File:"+imgName, 145, 150, false, true);
+        imgSanPham.setImage(image1);
+    }
+
 }
