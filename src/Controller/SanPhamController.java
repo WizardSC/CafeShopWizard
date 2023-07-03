@@ -22,8 +22,7 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.net.URL;
 import java.sql.SQLIntegrityConstraintViolationException;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class SanPhamController implements Initializable {
 
@@ -115,9 +114,11 @@ public class SanPhamController implements Initializable {
         addLabeltoComboBox();
         sanPhamRepository = new SanPhamRepository();
         dsSanPham = sanPhamRepository.getListSanPham();
+
         customizeRowHeight();
 
         loadDatatoDSSPTable();
+        loadDataMaSP();
     }
 
     //Các hàm hỗ trợ
@@ -178,8 +179,39 @@ public class SanPhamController implements Initializable {
             return row;
         });
     }
+
     //Hàm load mã SP mới nhất lên form
-    public void loadMaSP(){
+    public String findMissingMaSP(ObservableList<SanPham> dssp){
+        Set<String> maSPSet = new HashSet<>();
+        for(SanPham sp : dssp){
+            maSPSet.add(sp.getMaSP());
+        }
+        for(int i=1 ; i <= dssp.size() + 1; i++){
+            String MaSP = String.format("SP%03d",i);
+            if(!maSPSet.contains(MaSP)){
+                return MaSP;
+            }
+        }
+        return null;
+    }
+
+
+
+    public void loadDataMaSP(){
+        String missingMaSP = findMissingMaSP(dsSanPham);
+        if (missingMaSP != null) {
+            txtMaSP.setText(missingMaSP);
+        } else {
+            if(dsSanPham.isEmpty()){
+                txtMaSP.setText("SP001");
+            } else {
+                SanPham lastSP = dsSanPham.get(dsSanPham.size()-1);
+                String MaSP = lastSP.getMaSP();
+                int sum = Integer.parseInt(MaSP.substring(3)) +1;
+                String newMaSP = String.format("SP%03d",sum);
+                txtMaSP.setText(newMaSP);
+            }
+        }
 
     }
 
@@ -190,7 +222,6 @@ public class SanPhamController implements Initializable {
         String TuKhoa = selectedLabel.getText();
         System.out.println(TuKhoa);
     }
-
 
 
     @FXML
@@ -206,6 +237,7 @@ public class SanPhamController implements Initializable {
             imgSanPham.setImage(img);
         }
     }
+
     @FXML
     void btnSuaMouseClicked(ActionEvent event) {
 
@@ -215,7 +247,7 @@ public class SanPhamController implements Initializable {
     void btnThemMouseClicked(ActionEvent event) {
 
 
-        if(txtMaSP.getText().equals("") || txtTenSP.getText().equals("") || txtMaLoai.getText().equals("") || txtSoLuong.getText().equals("") || txtDonGia.getText().equals("")){
+        if (txtMaSP.getText().equals("") || txtTenSP.getText().equals("") || txtMaLoai.getText().equals("") || txtSoLuong.getText().equals("") || txtDonGia.getText().equals("")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Lỗi");
             alert.setHeaderText(null);
@@ -229,7 +261,7 @@ public class SanPhamController implements Initializable {
         int DonGia = Integer.parseInt(txtDonGia.getText());
         String MaLoai = txtMaLoai.getText();
         String IMG = null;
-        SanPham sp = new SanPham(MaSP,TenSP,SoLuong,DonGia,MaLoai,IMG);
+        SanPham sp = new SanPham(MaSP, TenSP, SoLuong, DonGia, MaLoai, IMG);
         try {
             sanPhamRepository.insertSanPham(sp);
         } catch (SQLIntegrityConstraintViolationException ex) {
@@ -242,6 +274,7 @@ public class SanPhamController implements Initializable {
 
 
         loadDatatoDSSPTable();
+        loadDataMaSP();
     }
 
     @FXML
