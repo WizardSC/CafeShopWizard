@@ -80,4 +80,15 @@ public class SanPhamRepository {
         }
 
     }
+
+    public void deleteSanPhan(String MaSP){
+        try {
+            String sql = "delete from sanpham where MaSP = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1,MaSP);
+            ps.executeUpdate();
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
 }

@@ -167,7 +167,7 @@ public class SanPhamController implements Initializable {
         imgSanPham.setImage(null);
         btnSua.setDisable(true);
         btnXoa.setDisable(true);
-
+        btnThem.setDisable(false);
         loadDataMaSP();
     }
     //Thêm dữ liệu vào combobox
@@ -348,11 +348,49 @@ public class SanPhamController implements Initializable {
 
     @FXML
     void btnXoaMouseClicked(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Xác nhận");
+        alert.setHeaderText(null);
+        alert.setContentText("Bạn thực sự muốn xóa sản phẩm");
+        Optional<ButtonType> result = alert.showAndWait();
+        if(result.get() == ButtonType.OK){
+            String MaSP = txtMaSP.getText();
+            sanPhamRepository.deleteSanPhan(MaSP);
+            tblDSSP.getItems().clear();
+            refreshForm();
 
+            Alert thanhcong = new Alert(Alert.AlertType.INFORMATION);
+            thanhcong.setTitle("Thông báo");
+            thanhcong.setContentText("Xóa sản phẩm thành công!");
+            thanhcong.setHeaderText(null);
+            thanhcong.showAndWait();
+            return;
+        }
     }
+//    @FXML
+//    void btnXoaClicked(ActionEvent event) {
+//        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+//        alert.setTitle("Xác nhận");
+//        alert.setHeaderText("Bạn có muốn xóa không?");
+//        ButtonType Yes = new ButtonType("Có", ButtonBar.ButtonData.YES);
+//        ButtonType No = new ButtonType("Không",ButtonBar.ButtonData.NO);
+//        alert.getButtonTypes().setAll(Yes,No);
+//        Optional<ButtonType> result = alert.showAndWait();
+//        if(result.get() == Yes){
+//            Alert thanhcong = new Alert(Alert.AlertType.INFORMATION);
+//            thanhcong.setTitle("Thông báo");
+//            thanhcong.setContentText("Bạn đã xóa thành công");
+//            thanhcong.setHeaderText(null);
+//            thanhcong.showAndWait();
+//        } else if (result.get()==No){
+//            System.out.println("Khong");
+//        }
+//
+//    }
 
     @FXML
     void tblDSSPMouseClicked() {
+        btnThem.setDisable(true);
         btnSua.setDisable(false);
         btnXoa.setDisable(false);
 
