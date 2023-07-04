@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Main extends Application {
 
@@ -15,7 +16,7 @@ public class Main extends Application {
         primaryStage.setTitle("CafeWizard");
         Image icon = new Image(getClass().getResourceAsStream("/img/icons8-cafe-100 (1).png"));
         primaryStage.getIcons().add(icon);
-//        primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.initStyle(StageStyle.UNDECORATED);
 
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
