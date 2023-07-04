@@ -133,6 +133,8 @@ public class SanPhamController implements Initializable {
 
 
 
+
+
         addLabeltoComboBox();
         sanPhamRepository = new SanPhamRepository();
         dsSanPham = sanPhamRepository.getListSanPham();
@@ -279,7 +281,22 @@ public class SanPhamController implements Initializable {
 
     @FXML
     void btnSuaMouseClicked(ActionEvent event) {
-
+        String MaSP = txtMaSP.getText();
+        String TenSP = txtTenSP.getText();
+        int SoLuong = Integer.parseInt(txtSoLuong.getText());
+        int DonGia = Integer.parseInt(txtDonGia.getText());
+        String MaLoai = txtMaLoai.getText();
+        String IMG;
+        if(path == null){
+            IMG = imgName;
+        } else {
+            imgName = path.replace("//","////");
+            IMG = imgName;
+        }
+        SanPham sp = new SanPham(MaSP, TenSP, SoLuong, DonGia, MaLoai, IMG);
+        sanPhamRepository.updateSanPham(sp);
+        tblDSSP.getItems().clear();
+        refreshForm();
     }
 
     @FXML
@@ -333,7 +350,7 @@ public class SanPhamController implements Initializable {
         txtTenSP.setText(sp.getTenSP());
         txtSoLuong.setText(String.valueOf(sp.getSoLuong()));
         txtDonGia.setText(String.valueOf(sp.getDonGia()));
-
+        txtMaLoai.setText(sp.getMaLoai());
         imgName = sp.getIMG();
 
         Image image1 = new Image( "File:"+imgName, 145, 150, false, true);

@@ -63,4 +63,21 @@ public class SanPhamRepository {
 
         }
     }
+
+    public void updateSanPham(SanPham sp){
+        try {
+            String sql = "update sanpham set TenSP = ?, SoLuong = ?, DonGia = ?, MaLoai = ?, IMG = ? where MaSP = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1,sp.getTenSP());
+            ps.setInt(2,sp.getSoLuong());
+            ps.setInt(3,sp.getDonGia());
+            ps.setString(4,sp.getMaLoai());
+            ps.setString(5,sp.getIMG());
+            ps.setString(6,sp.getMaSP());
+            ps.executeUpdate();
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+
+    }
 }
