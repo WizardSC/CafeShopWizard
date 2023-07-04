@@ -100,6 +100,9 @@ public class SanPhamController implements Initializable {
     @FXML
     private VBox vbThongTinSanPham;
 
+    @FXML
+    private ImageView btnReset;
+
     private ObservableList<SanPham> dsSanPham;
     private ArrayList<SanPham> dssp;
     private SanPhamRepository sanPhamRepository;
@@ -130,7 +133,8 @@ public class SanPhamController implements Initializable {
             }
         });
         txtMaSP.setDisable(true);
-
+        btnSua.setDisable(true);
+        btnXoa.setDisable(true);
 
 
 
@@ -153,12 +157,18 @@ public class SanPhamController implements Initializable {
         loadDataMaSP();
     }
     public void clear(){
+        tblDSSP.getSelectionModel().clearSelection();
+
         txtMaSP.setText("");
         txtTenSP.setText("");
         txtMaLoai.setText("");
         txtDonGia.setText("");
         txtSoLuong.setText("");
         imgSanPham.setImage(null);
+        btnSua.setDisable(true);
+        btnXoa.setDisable(true);
+
+        loadDataMaSP();
     }
     //Thêm dữ liệu vào combobox
     public void addLabeltoComboBox() {
@@ -343,6 +353,9 @@ public class SanPhamController implements Initializable {
 
     @FXML
     void tblDSSPMouseClicked() {
+        btnSua.setDisable(false);
+        btnXoa.setDisable(false);
+
         SanPham sp = tblDSSP.getSelectionModel().getSelectedItem();
         int k = tblDSSP.getSelectionModel().getSelectedIndex();
         if((k-1) < -1) return;
@@ -357,4 +370,8 @@ public class SanPhamController implements Initializable {
         imgSanPham.setImage(image1);
     }
 
+    @FXML
+    void btnResetMouseClicked() {
+        clear();
+    }
 }
