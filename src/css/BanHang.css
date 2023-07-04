@@ -1,7 +1,40 @@
 .white-background{
-    background: #fff;
+    -fx-background-color: #fff;
 }
-
+.transparent{
+    -fx-background-color: transparent;
+}
 .bottom-radius{
     -fx-background-radius: 0 0 30 30;
+}
+
+.box-radius{
+    -fx-background-radius: 15;
+}
+.shadow{
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0, 0.0,0.0,10.0);
+}
+.shadow-1{
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.5),5,0,0,0);
+}
+
+.table-view .column-header-background{
+    -fx-background-color: #FFDE72;
+    -fx-background-radius: 15 15 0 0;
+}
+.table-view .column-header {
+    -fx-background-color: #FFDE72;
+    -fx-background-radius: 15 15 0 0;
+}
+
+.table-view .column-header .label {
+    -fx-padding: 5;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+.header-gio-hang{
+    -fx-background-color: linear-gradient(to right, #FFF7D4, #FFEBA3, #FFDE72);
+    -fx-background-radius: 15 15 0 0 ;
+
 }
