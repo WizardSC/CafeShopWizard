@@ -1,0 +1,14 @@
+.shadow{
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0, 0.0,0.0,10.0);
+}
+
+.white-background{
+    -fx-background-color: #fff;
+}
+
+.root{
+    -fx-background-radius: 0 0 30 30;
+    -fx-background-color: #fff;
+    /*-fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0, 0.0,0.0,10.0);*/
+}
+

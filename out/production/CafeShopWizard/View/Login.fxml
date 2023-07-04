@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
+   <children>
+      <AnchorPane minHeight="-Infinity" prefHeight="500.0" prefWidth="800.0">
+         <children>
+            <AnchorPane fx:id="DangKy" layoutX="-20.0" layoutY="19.0" prefHeight="537.0" prefWidth="400.0" styleClass="white-form" stylesheets="@../css/login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <VBox alignment="CENTER" layoutX="83.0" prefHeight="518.0" prefWidth="400.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Pane prefHeight="45.0" prefWidth="400.0" />
+                        <Label alignment="CENTER" prefHeight="34.0" prefWidth="284.0" styleClass="head-label" stylesheets="@../css/login.css" text="ĐĂNG KÝ TÀI KHOẢN">
+                           <font>
+                              <Font name="Cambria Bold" size="25.0" />
+                           </font>
+                        </Label>
+                        <VBox alignment="CENTER_LEFT" prefHeight="332.0" prefWidth="400.0" spacing="20.0">
+                           <children>
+                              <VBox alignment="CENTER" spacing="25.0">
+                                 <children>
+                                    <TextField fx:id="txtUsernameRegister" maxWidth="-Infinity" prefHeight="45.0" prefWidth="356.0" promptText="Username" styleClass="textfield-login" stylesheets="@../css/login.css">
+                                       <font>
+                                          <Font name="Cambria" size="16.0" />
+                                       </font>
+                                    </TextField>
+                                    <PasswordField fx:id="pwdPasswordRegister" maxWidth="-Infinity" prefHeight="45.0" prefWidth="357.0" promptText="Password" styleClass="textfield-login" stylesheets="@../css/login.css">
+                                       <font>
+                                          <Font name="Cambria" size="16.0" />
+                                       </font>
+                                    </PasswordField>
+                                    <ComboBox fx:id="cbxQuestion" prefHeight="45.0" prefWidth="360.0" promptText="Câu hỏi" style="-fx-font-size: 16px;" styleClass="textfield-login" stylesheets="@../css/login.css" />
+                                    <TextField fx:id="txtAnswerRegister" maxWidth="-Infinity" prefHeight="45.0" prefWidth="356.0" promptText="Câu trả lời" styleClass="textfield-login" stylesheets="@../css/login.css">
+                                       <font>
+                                          <Font name="Cambria" size="16.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="76.0" prefWidth="400.0" stylesheets="@../css/login.css">
+                           <children>
+                              <Button fx:id="btnRegister" alignment="CENTER" mnemonicParsing="false" onAction="#btnDangKyMouseClicked" prefHeight="61.0" prefWidth="180.0" styleClass="login-btn" stylesheets="@../css/login.css" text="ĐĂNG KÝ">
+                                 <font>
+                                    <Font name="Cambria" size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <Pane prefHeight="41.0" prefWidth="400.0" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="DangNhap" layoutX="460.0" layoutY="17.0" prefHeight="537.0" prefWidth="400.0" styleClass="white-form" stylesheets="@../css/login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <VBox alignment="CENTER" layoutX="83.0" layoutY="68.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Pane prefHeight="45.0" prefWidth="400.0" />
+                        <Label alignment="CENTER" prefHeight="53.0" prefWidth="224.0" styleClass="head-label" stylesheets="@../css/login.css" text="CHÀO MỪNG">
+                           <font>
+                              <Font name="Cambria Bold" size="25.0" />
+                           </font>
+                        </Label>
+                        <VBox alignment="CENTER_LEFT" prefHeight="219.0" prefWidth="400.0" spacing="20.0">
+                           <children>
+                              <VBox alignment="CENTER" spacing="25.0">
+                                 <children>
+                                    <TextField fx:id="txtUsernameLogin" maxWidth="-Infinity" prefHeight="45.0" prefWidth="356.0" promptText="Username" styleClass="textfield-login" stylesheets="@../css/login.css">
+                                       <font>
+                                          <Font name="Cambria" size="16.0" />
+                                       </font>
+                                    </TextField>
+                                    <PasswordField fx:id="pwdPasswordLogin" maxWidth="-Infinity" prefHeight="45.0" prefWidth="357.0" promptText="Password" styleClass="textfield-login" stylesheets="@../css/login.css">
+                                       <font>
+                                          <Font name="Cambria" size="16.0" />
+                                       </font>
+                                    </PasswordField>
+                                 </children>
+                              </VBox>
+                              <Hyperlink fx:id="hplForgot" onAction="#hplForgotMouseClicked" text="Quên mật khẩu?">
+                                 <font>
+                                    <Font name="Cambria" size="16.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="21.0" />
+                                 </VBox.margin>
+                              </Hyperlink>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="46.0" prefWidth="308.0" stylesheets="@../css/login.css">
+                           <children>
+                              <Button fx:id="btnLogin" alignment="CENTER" mnemonicParsing="false" onAction="#btnLoginMouseClicked" prefHeight="45.0" prefWidth="180.0" styleClass="login-btn" stylesheets="@../css/login.css" text="ĐĂNG NHẬP">
+                                 <font>
+                                    <Font name="Cambria" size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <Pane prefHeight="41.0" prefWidth="400.0" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="DangKyContainer" layoutX="-2.0" layoutY="18.0" prefHeight="518.0" prefWidth="400.0" styleClass="root" stylesheets="@../css/login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <VBox layoutX="-1.0" layoutY="3.0" prefHeight="500.0" prefWidth="400.0" spacing="25.0">
+                     <children>
+                        <Pane prefHeight="84.0" prefWidth="400.0" />
+                        <VBox alignment="CENTER" prefHeight="264.0" prefWidth="400.0" spacing="15.0">
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/icons8-cafe-100.png" />
+                                 </image>
+                              </ImageView>
+                              <Label text="QUÁN CAFE WIZARD">
+                                 <font>
+                                    <Font name="Cambria Bold" size="25.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER" prefHeight="195.0" prefWidth="400.0" spacing="15.0">
+                           <children>
+                              <Label fx:id="lblCreateAccount" alignment="CENTER" prefHeight="68.0" prefWidth="400.0" text="TẠO TÀI KHOẢN">
+                                 <font>
+                                    <Font name="Cambria Bold" size="25.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="btnCreateNewAccount" alignment="CENTER" mnemonicParsing="false" onAction="#switchForm" prefHeight="45.0" prefWidth="180.0" stylesheets="@../css/login.css" text="Tạo tài khoản mới">
+                                 <font>
+                                    <Font name="Cambria" size="16.0" />
+                                 </font>
+                                 <styleClass>
+                                    <String fx:value="transparent" />
+                                    <String fx:value="create-account-btn" />
+                                 </styleClass>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="CauHoi" layoutX="410.0" layoutY="10.0" minHeight="-Infinity" prefHeight="500.0" prefWidth="400.0" styleClass="white-form" stylesheets="@../css/login.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <VBox alignment="CENTER" layoutX="83.0" layoutY="68.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Pane prefHeight="26.0" prefWidth="400.0" />
+                        <Label alignment="CENTER" prefHeight="53.0" prefWidth="224.0" styleClass="head-label" stylesheets="@../css/login.css" text="LẤY LẠI MẬT KHẨU">
+                           <font>
+                              <Font name="Cambria Bold" size="25.0" />
+                           </font>
+                        </Label>
+                        <VBox alignment="CENTER_LEFT" prefHeight="198.0" prefWidth="400.0" spacing="20.0">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="186.0" prefWidth="400.0" spacing="25.0">
+                                 <children>
+                                    <TextField fx:id="txtUsernameForgot" maxWidth="-Infinity" prefHeight="45.0" prefWidth="356.0" promptText="Tên đăng nhập" styleClass="textfield-login" stylesheets="@../css/login.css">
+                                       <font>
+                                          <Font name="Cambria" size="16.0" />
+                                       </font>
+                                    </TextField>
+                                    <ComboBox fx:id="cbxQuestionForgot" prefHeight="45.0" prefWidth="360.0" promptText="Câu hỏi" style="-fx-font-size: 16px;" styleClass="textfield-login" stylesheets="@../css/login.css" />
+                                    <TextField fx:id="txtAnswerForgot" maxWidth="-Infinity" onAction="#txtAnswerForgotMouseClicked" prefHeight="45.0" prefWidth="356.0" promptText="Câu trả lời" styleClass="textfield-login" stylesheets="@../css/login.css">
+                                       <font>
+                                          <Font name="Cambria" size="16.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="46.0" prefWidth="308.0" stylesheets="@../css/login.css">
+                           <children>
+                              <Button fx:id="btnXacNhanForgot" alignment="CENTER" mnemonicParsing="false" onAction="#btnXacNhanForgotMouseClicked" prefHeight="45.0" prefWidth="180.0" styleClass="login-btn" stylesheets="@../css/login.css" text="XÁC NHẬN">
+                                 <font>
+                                    <Font name="Cambria" size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <Pane prefHeight="0.0" prefWidth="400.0" VBox.vgrow="ALWAYS" />
+                        <VBox alignment="CENTER" prefHeight="74.0" prefWidth="400.0" stylesheets="@../css/login.css">
+                           <children>
+                              <Button fx:id="btnQuayLaiForgot" alignment="CENTER" mnemonicParsing="false" onAction="#btnQuayLaiForgotMouseClicked" prefHeight="46.0" prefWidth="141.0" styleClass="login-btn" stylesheets="@../css/login.css" text="QUAY LẠI">
+                                 <font>
+                                    <Font name="Cambria" size="16.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/icons8-back-60.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="DoiMatKhau" layoutX="410.0" layoutY="10.0" minHeight="-Infinity" prefHeight="500.0" prefWidth="400.0" styleClass="white-form" stylesheets="@../css/login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <VBox alignment="CENTER" layoutX="83.0" layoutY="68.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Pane prefHeight="26.0" prefWidth="400.0" />
+                        <Label alignment="CENTER" prefHeight="53.0" prefWidth="224.0" styleClass="head-label" stylesheets="@../css/login.css" text="ĐỔI MẬT KHẨU">
+                           <font>
+                              <Font name="Cambria Bold" size="25.0" />
+                           </font>
+                        </Label>
+                        <VBox alignment="CENTER_LEFT" prefHeight="153.0" prefWidth="400.0" spacing="20.0">
+                           <children>
+                              <VBox alignment="CENTER" spacing="25.0">
+                                 <children>
+                                    <PasswordField fx:id="pwdOldPassword" maxWidth="-Infinity" prefHeight="45.0" prefWidth="357.0" promptText="Mật khẩu cũ" styleClass="textfield-login" stylesheets="@../css/login.css">
+                                       <font>
+                                          <Font name="Cambria" size="16.0" />
+                                       </font>
+                                    </PasswordField>
+                                    <PasswordField fx:id="pwdNewPassword" maxWidth="-Infinity" prefHeight="45.0" prefWidth="357.0" promptText="Mật khẩu mới" styleClass="textfield-login" stylesheets="@../css/login.css">
+                                       <font>
+                                          <Font name="Cambria" size="16.0" />
+                                       </font>
+                                    </PasswordField>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="46.0" prefWidth="308.0" stylesheets="@../css/login.css">
+                           <children>
+                              <Button fx:id="btnDoiMKPass" alignment="CENTER" mnemonicParsing="false" onAction="#btnDoiMKPassMouseClicked" prefHeight="45.0" prefWidth="180.0" styleClass="login-btn" stylesheets="@../css/login.css" text="ĐỔI MẬT KHẨU">
+                                 <font>
+                                    <Font name="Cambria" size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <Pane prefHeight="17.0" prefWidth="400.0" VBox.vgrow="ALWAYS" />
+                        <VBox alignment="CENTER" prefHeight="110.0" prefWidth="400.0" stylesheets="@../css/login.css">
+                           <children>
+                              <Button fx:id="btnQuayLaiChangedPass" alignment="CENTER" mnemonicParsing="false" onAction="#btnQuayLaiChangedPassMouseClicked" prefHeight="46.0" prefWidth="141.0" styleClass="login-btn" stylesheets="@../css/login.css" text="QUAY LẠI">
+                                 <font>
+                                    <Font name="Cambria" size="16.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/icons8-back-60.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
