@@ -72,4 +72,9 @@
 .pane-trung-tam-radius{
     -fx-background-radius: 0 0 30 30;
 }
+
+.hb-tool .hbox:hover{
+    -fx-background-color: #FF0000;
+
+}
 /* bảng màu: https://colorhunt.co/palette/fff7d4ffd95ac07f004c3d3d */

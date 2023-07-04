@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.MenuItem;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -22,7 +23,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class GiaoDienController implements Initializable {
-
+    @FXML
+    private HBox hbTool;
+    @FXML
+    private HBox btnExit;
     @FXML
     private HBox formBanHang;
     @FXML
@@ -83,6 +87,11 @@ public class GiaoDienController implements Initializable {
     private void showDefaultFXMl(){
         MenuItem defaultItem = menuItems.get(0);
         handleMenuItemClick(defaultItem);
+    }
+
+    @FXML
+    void btnExitMouseClicked() {
+        Platform.exit();
     }
 
 }
