@@ -1,0 +1,7 @@
+.white-background{
+    background: #fff;
+}
+
+.bottom-radius{
+    -fx-background-radius: 0 0 30 30;
+}

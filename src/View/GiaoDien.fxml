@@ -193,7 +193,7 @@
                               </HBox>
                               <HBox prefHeight="741.6" prefWidth="1111.0" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <AnchorPane fx:id="paneRoot" prefHeight="792.0" prefWidth="1111.0" stylesheets="@../css/GiaoDien.css" />
+                                    <AnchorPane fx:id="paneRoot" prefHeight="725.6" prefWidth="1111.0" stylesheets="@../css/GiaoDien.css" />
                                  </children></HBox>
                            </children>
                         </VBox>

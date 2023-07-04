@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
+<?import java.lang.String?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 
-
-<AnchorPane prefHeight="716.0" prefWidth="1091.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BanHangController">
+<AnchorPane prefHeight="725.6" prefWidth="1111.2" stylesheets="@../css/BanHang.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BanHangController">
+   <styleClass>
+      <String fx:value="white-background" />
+      <String fx:value="bottom-radius" />
+   </styleClass>
    <children>
-      <Label layoutX="163.0" layoutY="135.0" text="Label" />
-      <Label layoutX="579.0" layoutY="311.0" text="Label" />
+      <HBox layoutX="47.0" layoutY="17.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>
