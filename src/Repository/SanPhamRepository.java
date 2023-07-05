@@ -42,6 +42,28 @@ public class SanPhamRepository {
         return null;
     }
 
+    public ObservableList<SanPham> getDataSanPham_Card(){
+        try {
+            String sql = "select * from sanpham";
+            ResultSet rs = mySQLConnect.executeQuery(sql);
+            while(rs.next()){
+                SanPham sp = new SanPham(
+                        rs.getString("MaSP"),
+                        rs.getString("TenSP"),
+                        rs.getInt("DonGia"),
+                        rs.getString("IMG")
+                );
+                dsSanPham.add(sp);
+            }
+            return dsSanPham;
+        } catch(Exception ex){
+            ex.printStackTrace();
+        } finally {
+            mySQLConnect.Disconnect();
+        }
+        return null;
+    }
+
     public void insertSanPham(SanPham sp) throws SQLIntegrityConstraintViolationException {
         try {
             String sql = "insert into sanpham values(?,?,?,?,?,?)";

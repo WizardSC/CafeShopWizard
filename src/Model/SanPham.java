@@ -17,6 +17,13 @@ public class SanPham {
         this.IMG = IMG;
     }
 
+    public SanPham(String maSP, String tenSP, int donGia, String IMG) {
+        MaSP = maSP;
+        TenSP = tenSP;
+        DonGia = donGia;
+        this.IMG = IMG;
+    }
+
     public String getMaSP() {
         return MaSP;
     }
