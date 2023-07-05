@@ -36,7 +36,7 @@
                   <String fx:value="shadow-1" />
                </styleClass>
                <children>
-                  <HBox prefHeight="68.0" prefWidth="747.0" />
+                  <HBox prefHeight="47.0" prefWidth="747.0" />
                   <ScrollPane fx:id="scpMenu" prefHeight="646.0" prefWidth="747.0" stylesheets="@../css/BanHang.css" VBox.vgrow="ALWAYS">
                      <content>
                         <GridPane fx:id="grpMenu" prefHeight="36.0" prefWidth="38.0">
