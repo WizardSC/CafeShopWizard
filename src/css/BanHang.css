@@ -20,21 +20,61 @@
 
 .table-view .column-header-background{
     -fx-background-color: #FFDE72;
-    -fx-background-radius: 15 15 0 0;
+    /*-fx-background-radius: 15 15 0 0;*/
 }
 .table-view .column-header {
     -fx-background-color: #FFDE72;
-    -fx-background-radius: 15 15 0 0;
+    /*-fx-background-radius: 15 15 0 0;*/
 }
 
 .table-view .column-header .label {
     -fx-padding: 5;
     -fx-font-weight: bold;
     -fx-font-size: 14px;
+
 }
 
 .header-gio-hang{
-    -fx-background-color: linear-gradient(to right, #FFF7D4, #FFEBA3, #FFDE72);
+    -fx-background-color: linear-gradient(to top, #fff, #FFF7D4, #FFEBA3, #FFDE72);
     -fx-background-radius: 15 15 0 0 ;
+
+}
+
+.chon-khach-hang-btn{
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-font-size: 18px;
+}
+
+.chon-khach-hang-btn:hover{
+    -fx-opacity: 0.5;
+}
+
+.header-tthd {
+    -fx-background-color: linear-gradient(to bottom, #fff, #FFF7D4, #FFEBA3, #FFDE72);
+    -fx-background-radius: 0 0 15 15 ;
+}
+
+
+.header-tthd .label{
+    -fx-font-family: Cambria;
+    -fx-font-size: 15px;
+
+}
+
+.thanh-toan-btn{
+    -fx-background-color: #7CFC00;
+    -fx-background-radius: 15;
+
+
+}
+
+.thanh-toan-btn:hover{
+    -fx-background-color: #fff;
+    -fx-border-width: 1px;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
 
 }
