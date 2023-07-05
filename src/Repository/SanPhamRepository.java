@@ -64,6 +64,27 @@ public class SanPhamRepository {
         return null;
     }
 
+    public Integer getSoLuongTonkho(String MaSP){
+        try{
+            String sql = "select soluong from sanpham where MaSP = ?";
+
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1,MaSP);
+            ResultSet rs = mySQLConnect.executeQuery(sql);
+            if(rs.next()){
+                int SL = rs.getInt("SoLuong");
+                return SL;
+            } else {
+                return null;
+            }
+        } catch (Exception ex){
+            ex.printStackTrace();
+        } finally {
+            mySQLConnect.Disconnect();
+        }
+        return null;
+    }
+
     public void insertSanPham(SanPham sp) throws SQLIntegrityConstraintViolationException {
         try {
             String sql = "insert into sanpham values(?,?,?,?,?,?)";

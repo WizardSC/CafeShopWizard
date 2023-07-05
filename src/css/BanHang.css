@@ -103,3 +103,17 @@
 .in-hoa-don-btn:hover{
     -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0, 0.0,0.0,10.0);
 }
+
+#vbThongTinSP .label {
+    -fx-font-family: Cambria;
+    -fx-font-size: 15;
+    -fx-font-weight: BOLD;
+    -fx-pref-width: 70;
+
+}
+
+#vbThongTinSP .text-field{
+    -fx-font-family: Cambria;
+    -fx-font-size: 15;
+    -fx-font-weight: BOLD;
+}

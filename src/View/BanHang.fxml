@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.TextField?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
@@ -10,11 +9,13 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -54,7 +55,7 @@
                         <String fx:value="shadow" />
                      </styleClass>
                   </ScrollPane>
-                  <HBox alignment="CENTER_LEFT" prefHeight="167.0" prefWidth="747.0" spacing="15.0" stylesheets="@../css/BanHang.css" VBox.vgrow="ALWAYS">
+                  <HBox alignment="CENTER_LEFT" prefHeight="167.0" prefWidth="747.0" spacing="25.0" stylesheets="@../css/BanHang.css" VBox.vgrow="ALWAYS">
                      <styleClass>
                         <String fx:value="bottom-radius" />
                         <String fx:value="white-background" />
@@ -62,7 +63,7 @@
                      <children>
                         <HBox alignment="CENTER" fillHeight="false" minHeight="-Infinity" prefHeight="159.0" prefWidth="166.0" stylesheets="@../css/SanPham_Card.css">
                            <children>
-                              <ImageView fitHeight="144.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSanPham" fitHeight="144.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../img/SanPham/Hồng%20trà%20đào%20sữa.png" />
                                  </image>
@@ -73,41 +74,56 @@
                               <String fx:value="white-background" />
                            </styleClass>
                            <HBox.margin>
-                              <Insets bottom="5.0" top="5.0" />
+                              <Insets bottom="5.0" left="10.0" top="5.0" />
                            </HBox.margin>
                         </HBox>
-                        <VBox prefHeight="169.0" prefWidth="383.0">
+                        <VBox fx:id="vbThongTinSP" alignment="CENTER" prefHeight="166.0" prefWidth="290.0" spacing="15.0">
                            <children>
+                              <Pane prefHeight="200.0" prefWidth="200.0" />
                               <HBox>
                                  <children>
-                                    <Label text="Label" />
-                                    <TextField />
+                                    <Label prefWidth="60.0" text="Mã SP" />
+                                    <TextField fx:id="txtMaSP" />
                                  </children>
                               </HBox>
                               <HBox>
                                  <children>
-                                    <Label text="Label" />
-                                    <TextField />
+                                    <Label prefWidth="60.0" text="Tên SP" />
+                                    <TextField fx:id="txtTenSP" />
                                  </children>
                               </HBox>
                               <HBox>
                                  <children>
-                                    <Label text="Label" />
-                                    <TextField />
+                                    <Label prefWidth="60.0" text="Tồn kho" />
+                                    <TextField fx:id="txtSoLuong" />
                                  </children>
                               </HBox>
                               <HBox>
                                  <children>
-                                    <Label text="Label" />
-                                    <TextField />
+                                    <Label prefWidth="60.0" text="Đơn giá" />
+                                    <TextField fx:id="txtDonGia" />
                                  </children>
                               </HBox>
-                              <HBox>
-                                 <children>
-                                    <Label text="Label" />
-                                    <TextField />
-                                 </children>
-                              </HBox>
+                              <HBox />
+                           </children>
+                           <HBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="205.0" prefWidth="229.0" spacing="15.0">
+                           <children>
+                              <JFXButton alignment="CENTER" ellipsisString="" graphicTextGap="15.0" lineSpacing="15.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="167.0" ripplerFill="#c7c7c7" styleClass="thanh-toan-btn" stylesheets="@../css/BanHang.css" text="Thêm vào giỏ">
+                                 <graphic>
+                                    <ImageView fitHeight="15300.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/icons8-cart-50.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </JFXButton>
                            </children>
                         </VBox>
                      </children>
