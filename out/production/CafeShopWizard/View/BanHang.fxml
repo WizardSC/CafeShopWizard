@@ -37,7 +37,7 @@
                </styleClass>
                <children>
                   <HBox prefHeight="47.0" prefWidth="747.0" />
-                  <ScrollPane fx:id="scpMenu" prefHeight="646.0" prefWidth="747.0" stylesheets="@../css/BanHang.css" VBox.vgrow="ALWAYS">
+                  <ScrollPane fx:id="scpMenu" hbarPolicy="NEVER" prefHeight="480.0" prefWidth="727.0" stylesheets="@../css/BanHang.css" vbarPolicy="ALWAYS">
                      <content>
                         <GridPane fx:id="grpMenu" prefHeight="36.0" prefWidth="38.0">
                           <rowConstraints>
@@ -53,6 +53,12 @@
                         <String fx:value="shadow" />
                      </styleClass>
                   </ScrollPane>
+                  <HBox prefHeight="167.0" prefWidth="747.0" stylesheets="@../css/BanHang.css" VBox.vgrow="ALWAYS">
+                     <styleClass>
+                        <String fx:value="bottom-radius" />
+                        <String fx:value="white-background" />
+                     </styleClass>
+                  </HBox>
                </children></VBox>
             <VBox prefHeight="715.0" prefWidth="332.0" spacing="5.0" stylesheets="@../css/BanHang.css" HBox.hgrow="NEVER">
                <children>

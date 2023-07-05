@@ -26,9 +26,9 @@ public class SanPham_CardController {
         this.sanpham = sanpham;
         lblMaSP.setText(sanpham.getMaSP());
         lblTenSP.setText(sanpham.getTenSP());
-        lblDonGia.setText(sanpham.getDonGia() + Main.CURRENCY);
+        lblDonGia.setText(sanpham.getDonGia() + " " + Main.CURRENCY);
         String path = "File:" + sanpham.getIMG();
-        Image image = new Image(path, 145, 145, false, true);
+        Image image = new Image(path);
         imgSanPham.setImage(image);
     }
 }

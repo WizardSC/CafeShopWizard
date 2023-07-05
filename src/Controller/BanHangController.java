@@ -74,7 +74,7 @@ public class BanHangController implements Initializable {
                 grpMenu.setPrefHeight(Region.USE_COMPUTED_SIZE);
                 grpMenu.setMaxHeight(Region.USE_COMPUTED_SIZE);
 
-                GridPane.setMargin(anchorPane,new Insets(15,5,5,15));
+                GridPane.setMargin(anchorPane,new Insets(-10,20,30,20)); //trên, phải, dưới, trái
             }
         } catch (IOException e){
             e.printStackTrace();
