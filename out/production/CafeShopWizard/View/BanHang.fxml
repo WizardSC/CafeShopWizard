@@ -139,7 +139,7 @@
                         <Insets bottom="5.0" top="5.0" />
                      </padding>
                   </Separator>
-                  <VBox prefHeight="200.0" prefWidth="100.0" stylesheets="@../css/BanHang.css">
+                  <VBox prefHeight="254.0" prefWidth="332.0" stylesheets="@../css/BanHang.css" VBox.vgrow="ALWAYS">
                      <styleClass>
                         <String fx:value="header-tthd" />
                         <String fx:value="white-background" />
@@ -148,7 +148,7 @@
                         <Insets />
                      </VBox.margin>
                      <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="318.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="322.0">
                            <children>
                               <Label prefHeight="18.0" prefWidth="150.0" text="Tổng tiền (Tạm tính)" />
                               <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="49.0" text="30000" />
@@ -158,7 +158,7 @@
                               <Insets left="10.0" />
                            </VBox.margin>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="90.0" prefWidth="318.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="318.0">
                            <children>
                               <Label prefHeight="18.0" prefWidth="150.0" text="Khuyến mãi" />
                               <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="49.0" text="30000" />
@@ -168,7 +168,7 @@
                               <Insets left="10.0" />
                            </VBox.margin>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="69.0" prefWidth="318.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="318.0">
                            <children>
                               <Label prefHeight="18.0" prefWidth="150.0" text="Tổng tiền " />
                               <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="49.0" text="30000" />
@@ -178,39 +178,36 @@
                               <Insets left="10.0" />
                            </VBox.margin>
                         </HBox>
+                        <HBox alignment="CENTER" prefHeight="107.0" prefWidth="332.0" spacing="10.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <JFXButton alignment="CENTER" ellipsisString="" graphicTextGap="15.0" lineSpacing="15.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="154.0" ripplerFill="#c7c7c7" styleClass="thanh-toan-btn" stylesheets="@../css/BanHang.css" text="Thanh toán">
+                                 <graphic>
+                                    <ImageView fitHeight="15300.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/icons8-pay-50.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton alignment="CENTER" ellipsisString="" graphicTextGap="15.0" lineSpacing="15.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="154.0" ripplerFill="#c7c7c7" styleClass="in-hoa-don-btn" stylesheets="@../css/BanHang.css" text="Hóa đơn">
+                                 <graphic>
+                                    <ImageView fitHeight="15300.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/icons8-receipt-80.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                        </HBox>
                      </children>
                   </VBox>
-                  <HBox alignment="CENTER" prefHeight="39.0" prefWidth="332.0" VBox.vgrow="ALWAYS">
-                     <children>
-                        <JFXButton alignment="CENTER" ellipsisString="" lineSpacing="15.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="41.0" prefWidth="136.0" ripplerFill="#c7c7c7" text="Thêm">
-                           <graphic>
-                              <ImageView fitHeight="15300.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../img/icons8-add-50.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton alignment="CENTER" ellipsisString="" lineSpacing="15.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="41.0" prefWidth="136.0" ripplerFill="#c7c7c7" text="Thêm">
-                           <graphic>
-                              <ImageView fitHeight="15300.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../img/icons8-add-50.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton alignment="CENTER" ellipsisString="" lineSpacing="15.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="41.0" prefWidth="136.0" ripplerFill="#c7c7c7" text="Thêm">
-                           <graphic>
-                              <ImageView fitHeight="15300.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../img/icons8-add-50.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
-                     </children>
-                  </HBox>
                </children>
                <HBox.margin>
                   <Insets bottom="10.0" right="10.0" />

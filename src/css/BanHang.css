@@ -65,16 +65,41 @@
 }
 
 .thanh-toan-btn{
-    -fx-background-color: #7CFC00;
+    -fx-background-color: #1cd263;
     -fx-background-radius: 15;
-
-
+    -fx-font-family: Cambria;
+    -fx-font-weight: BOLD;
+    -fx-font-size: 15px;
+    -fx-text-fill: white;
 }
 
 .thanh-toan-btn:hover{
     -fx-background-color: #fff;
-    -fx-border-width: 1px;
     -fx-background-radius: 15;
-    -fx-border-radius: 15;
 
+    -fx-border-width: 1px;
+    -fx-border-color: #1cd263;
+    -fx-border-radius: 15;
+    -fx-font-family: Cambria;
+    -fx-font-weight: BOLD;
+    -fx-font-size: 15px;
+    -fx-text-fill: #000;
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0, 0.0,0.0,10.0);
+
+}
+
+.in-hoa-don-btn{
+    -fx-background-radius: 15;
+    -fx-background-color: white;
+    -fx-font-family: Cambria;
+    -fx-font-weight: BOLD;
+    -fx-font-size: 15px;
+    -fx-text-fill: red;
+    -fx-border-color: red;
+    -fx-border-width: 0.5px;
+    -fx-border-radius: 15;
+}
+
+.in-hoa-don-btn:hover{
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0, 0.0,0.0,10.0);
 }
