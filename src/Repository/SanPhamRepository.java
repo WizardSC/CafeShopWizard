@@ -66,10 +66,8 @@ public class SanPhamRepository {
 
     public Integer getSoLuongTonkho(String MaSP){
         try{
-            String sql = "select soluong from sanpham where MaSP = ?";
+            String sql = "select soluong from sanpham where MaSP = '" + MaSP +"'" ;
 
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1,MaSP);
             ResultSet rs = mySQLConnect.executeQuery(sql);
             if(rs.next()){
                 int SL = rs.getInt("SoLuong");

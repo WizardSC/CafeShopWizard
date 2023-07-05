@@ -113,7 +113,8 @@ public class BanHangController implements Initializable {
 
     public void setChosenSanPham(SanPham sp) {
         txtMaSP.setText(sp.getMaSP());
-        int SoLuong = sanPham_cardController
+        int SoLuong = sanPhamRepository.getSoLuongTonkho(sp.getMaSP());
+        txtSoLuong.setText(String.valueOf(SoLuong));
         txtTenSP.setText(sp.getTenSP());
         txtDonGia.setText(String.valueOf(sp.getDonGia()));
         String path = "File:" + sp.getIMG();
@@ -121,4 +122,6 @@ public class BanHangController implements Initializable {
         imgSanPham.setImage(img);
 
     }
+
+
 }
