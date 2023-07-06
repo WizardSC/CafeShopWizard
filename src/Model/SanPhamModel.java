@@ -1,6 +1,6 @@
 package Model;
 
-public class SanPham {
+public class SanPhamModel {
     private String MaSP;
     private String TenSP;
     private int SoLuong;
@@ -8,7 +8,7 @@ public class SanPham {
     private String MaLoai;
     private String IMG;
 
-    public SanPham(String maSP, String tenSP, int soLuong, int donGia, String maLoai, String IMG) {
+    public SanPhamModel(String maSP, String tenSP, int soLuong, int donGia, String maLoai, String IMG) {
         MaSP = maSP;
         TenSP = tenSP;
         SoLuong = soLuong;
@@ -17,7 +17,7 @@ public class SanPham {
         this.IMG = IMG;
     }
 
-    public SanPham(String maSP, String tenSP, int donGia, String IMG) {
+    public SanPhamModel(String maSP, String tenSP, int donGia, String IMG) {
         MaSP = maSP;
         TenSP = tenSP;
         DonGia = donGia;

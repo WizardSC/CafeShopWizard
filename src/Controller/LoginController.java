@@ -1,7 +1,7 @@
 package Controller;
 
-import Model.CauHoi;
-import Model.TaiKhoan;
+import Model.CauHoiModel;
+import Model.TaiKhoanModel;
 import Repository.CauHoiRepository;
 import Repository.TaiKhoanRepository;
 import javafx.animation.TranslateTransition;
@@ -12,8 +12,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
-import java.awt.event.MouseEvent;
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
@@ -101,8 +99,8 @@ public class LoginController implements Initializable {
     private TaiKhoanRepository taiKhoanRepository;
     private Alert alert;
     private String MaCH;
-    private ArrayList<TaiKhoan> dstaikhoan;
-    private ArrayList<CauHoi> dscauhoi;
+    private ArrayList<TaiKhoanModel> dstaikhoan;
+    private ArrayList<CauHoiModel> dscauhoi;
     private String TenDangNhapRegister;
     @FXML
     public void switchForm(ActionEvent event) {
@@ -162,7 +160,7 @@ public class LoginController implements Initializable {
             }
 //            dstaikhoan = taiKhoanRepository.getListTaiKhoan();
             boolean isDuplicate = false;
-            for (TaiKhoan tk : dstaikhoan) {
+            for (TaiKhoanModel tk : dstaikhoan) {
                 if (TenDangNhap.equals(tk.getTenDangNhap())) {
                     isDuplicate = true;
                     alert = new Alert(Alert.AlertType.ERROR);
@@ -176,12 +174,12 @@ public class LoginController implements Initializable {
             }
             if (!isDuplicate) {
 //                dscauhoi = cauHoiRepository.getListCauHoi();
-                for (CauHoi ch : dscauhoi) {
+                for (CauHoiModel ch : dscauhoi) {
                     if (ch.getTenCH().equals(CauHoi)) {
                         MaCH = ch.getMaCH();
                     }
                 }
-                TaiKhoan taikhoan = new TaiKhoan(MaNV, TenDangNhap, MatKhau, MaCH, CauTraLoi, NgayTao);
+                TaiKhoanModel taikhoan = new TaiKhoanModel(MaNV, TenDangNhap, MatKhau, MaCH, CauTraLoi, NgayTao);
                 taiKhoanRepository.insertTaiKhoan(taikhoan);
 
                 Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
@@ -279,7 +277,7 @@ public class LoginController implements Initializable {
         }
 
 //       dscauhoi = cauHoiRepository.getListCauHoi();
-        for (CauHoi ch : dscauhoi) {
+        for (CauHoiModel ch : dscauhoi) {
             if (ch.getTenCH().equals(TenCH)) {
                 MaCH = ch.getMaCH();
             }
@@ -287,7 +285,7 @@ public class LoginController implements Initializable {
 //        dstaikhoan = taiKhoanRepository.getListTaiKhoan();
         boolean foundCauTL = false;
         boolean foundCauHoi = false;
-        for (TaiKhoan tk : dstaikhoan) {
+        for (TaiKhoanModel tk : dstaikhoan) {
             if (tk.getTenDangNhap().equals(TenDangNhapRegister) && tk.getCauHoi().equals(MaCH)){
                 foundCauHoi = true;
                 if(tk.getCauTraLoi().equals(CauTraLoi)){
@@ -346,7 +344,7 @@ public class LoginController implements Initializable {
             return;
         }
         boolean checkMKCu = false;
-        for(TaiKhoan tk : dstaikhoan){
+        for(TaiKhoanModel tk : dstaikhoan){
             if(tk.getMatKhau().equals(MatKhauCu)){
                 checkMKCu = true;
                 taiKhoanRepository.updateMatKhau(TenDangNhapRegister,MatKhauMoi);
@@ -383,7 +381,7 @@ public class LoginController implements Initializable {
         taiKhoanRepository = new TaiKhoanRepository();
         dscauhoi = cauHoiRepository.getListCauHoi();
         dstaikhoan = taiKhoanRepository.getListTaiKhoan();
-        for (CauHoi cauhoi : dscauhoi) {
+        for (CauHoiModel cauhoi : dscauhoi) {
             String TenCH = cauhoi.getTenCH();
             cbxQuestion.getItems().add(TenCH);
             cbxQuestionForgot.getItems().add(TenCH);

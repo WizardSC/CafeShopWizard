@@ -1,26 +1,19 @@
 package Controller;
 
-import Model.MenuItem;
+import Model.MenuItemModel;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class GiaoDienController implements Initializable {
     @FXML
@@ -41,27 +34,27 @@ public class GiaoDienController implements Initializable {
     private AnchorPane paneRoot;
 
     private boolean isFormBanHangHovered = false;
-    private ArrayList<MenuItem> menuItems = new ArrayList<>();
+    private ArrayList<MenuItemModel> menuItemModels = new ArrayList<>();
 
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        MenuItem trangChuItem = new MenuItem(formTrangChu,"../View/TrangChu.fxml");
-        MenuItem banHangItem = new MenuItem(formBanHang,"../View/BanHang.fxml");
-        MenuItem sanPhamItem = new MenuItem(formSanPham,"../View/SanPham.fxml");
-        menuItems.add(trangChuItem);
-        menuItems.add(banHangItem);
-        menuItems.add(sanPhamItem);
+        MenuItemModel trangChuItem = new MenuItemModel(formTrangChu,"../View/TrangChu.fxml");
+        MenuItemModel banHangItem = new MenuItemModel(formBanHang,"../View/BanHang.fxml");
+        MenuItemModel sanPhamItem = new MenuItemModel(formSanPham,"../View/SanPham.fxml");
+        menuItemModels.add(trangChuItem);
+        menuItemModels.add(banHangItem);
+        menuItemModels.add(sanPhamItem);
 
-        for(MenuItem item : menuItems){
+        for(MenuItemModel item : menuItemModels){
             item.getHbox().setOnMouseClicked(mouseEvent -> handleMenuItemClick(item));
         }
         showDefaultFXMl();
 
     }
 
-    private void handleMenuItemClick(MenuItem selectedItem){
+    private void handleMenuItemClick(MenuItemModel selectedItem){
         paneRoot.getChildren().clear();  // Xóa giao diện hiện tại
         try {
             // Tải giao diện từ file FXML tương ứng
@@ -74,7 +67,7 @@ public class GiaoDienController implements Initializable {
             e.printStackTrace();
         }
         // Gán pseudo-class active cho HBox được chọn
-        for(MenuItem item : menuItems){
+        for(MenuItemModel item : menuItemModels){
             if(item == selectedItem){
                 item.getHbox().getStyleClass().add("hbox-hover");
             } else {
@@ -85,7 +78,7 @@ public class GiaoDienController implements Initializable {
 
     // Hiển thị giao diện mặc định
     private void showDefaultFXMl(){
-        MenuItem defaultItem = menuItems.get(1);
+        MenuItemModel defaultItem = menuItemModels.get(1);
         handleMenuItemClick(defaultItem);
     }
 

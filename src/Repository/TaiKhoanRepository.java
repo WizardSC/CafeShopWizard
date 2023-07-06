@@ -1,6 +1,6 @@
 package Repository;
 
-import Model.TaiKhoan;
+import Model.TaiKhoanModel;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -10,19 +10,19 @@ import java.util.logging.Logger;
 public class TaiKhoanRepository {
     private MySQLConnect mssql = new MySQLConnect();
     private Connection connection = mssql.getConnection();
-    private ArrayList<TaiKhoan> dstaikhoan = new ArrayList<>();
+    private ArrayList<TaiKhoanModel> dstaikhoan = new ArrayList<>();
 
 
-    public ArrayList<TaiKhoan> getListTaiKhoan() {
+    public ArrayList<TaiKhoanModel> getListTaiKhoan() {
         try {
             String sql = "select * from taikhoan";
             ResultSet rs = mssql.executeQuery(sql);
             while (rs.next()) {
-                TaiKhoan taikhoan = new TaiKhoan(
+                TaiKhoanModel taikhoan = new TaiKhoanModel(
                         rs.getString("MaNV"),
                         rs.getString("TenDangNhap"),
                         rs.getString("MatKhau"),
-                        rs.getString("CauHoi"),
+                        rs.getString("CauHoiModel"),
                         rs.getString("CauTraLoi"),
                         rs.getDate("NgayTao"));
                 dstaikhoan.add(taikhoan);
@@ -37,7 +37,7 @@ public class TaiKhoanRepository {
 
     }
 
-    public void insertTaiKhoan(TaiKhoan taikhoan) {
+    public void insertTaiKhoan(TaiKhoanModel taikhoan) {
 
         try {
             String sql = "Insert into taikhoan values(?,?,?,?,?,?)";

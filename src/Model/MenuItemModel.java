@@ -2,7 +2,7 @@ package Model;
 
 import javafx.scene.layout.HBox;
 
-public class MenuItem {
+public class MenuItemModel {
     private HBox hbox;
     private String fxmlPath;
 
@@ -22,7 +22,7 @@ public class MenuItem {
         this.fxmlPath = fxmlPath;
     }
 
-    public MenuItem(HBox hbox, String fxmlPath) {
+    public MenuItemModel(HBox hbox, String fxmlPath) {
         this.hbox = hbox;
         this.fxmlPath = fxmlPath;
     }

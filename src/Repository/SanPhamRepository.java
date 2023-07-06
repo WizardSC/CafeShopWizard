@@ -1,28 +1,25 @@
 package Repository;
 
-import Model.CauHoi;
-import Model.SanPham;
+import Model.SanPhamModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Alert;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SanPhamRepository {
     private MySQLConnect mySQLConnect = new MySQLConnect();
-    private ObservableList<SanPham> dsSanPham = FXCollections.observableArrayList();
+    private ObservableList<SanPhamModel> dsSanPham = FXCollections.observableArrayList();
 
     private Connection connection = mySQLConnect.getConnection();
 
-    public ObservableList<SanPham> getListSanPham(){
+    public ObservableList<SanPhamModel> getListSanPham(){
         try{
             String sql = "select * from sanpham";
             ResultSet rs = mySQLConnect.executeQuery(sql);
             while(rs.next()){
-                SanPham sanpham = new SanPham(
+                SanPhamModel sanpham = new SanPhamModel(
                         rs.getString("MaSP"),
                         rs.getString("TenSP"),
                         rs.getInt("SoLuong"),
@@ -42,12 +39,12 @@ public class SanPhamRepository {
         return null;
     }
 
-    public ObservableList<SanPham> getDataSanPham_Card(){
+    public ObservableList<SanPhamModel> getDataSanPham_Card(){
         try {
             String sql = "select * from sanpham";
             ResultSet rs = mySQLConnect.executeQuery(sql);
             while(rs.next()){
-                SanPham sp = new SanPham(
+                SanPhamModel sp = new SanPhamModel(
                         rs.getString("MaSP"),
                         rs.getString("TenSP"),
                         rs.getInt("DonGia"),
@@ -83,7 +80,7 @@ public class SanPhamRepository {
         return null;
     }
 
-    public void insertSanPham(SanPham sp) throws SQLIntegrityConstraintViolationException {
+    public void insertSanPham(SanPhamModel sp) throws SQLIntegrityConstraintViolationException {
         try {
             String sql = "insert into sanpham values(?,?,?,?,?,?)";
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -105,7 +102,7 @@ public class SanPhamRepository {
         }
     }
 
-    public void updateSanPham(SanPham sp){
+    public void updateSanPham(SanPhamModel sp){
         try {
             String sql = "update sanpham set TenSP = ?, SoLuong = ?, DonGia = ?, MaLoai = ?, IMG = ? where MaSP = ?";
             PreparedStatement ps = connection.prepareStatement(sql);

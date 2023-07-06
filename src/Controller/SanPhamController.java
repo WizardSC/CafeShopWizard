@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.SanPham;
+import Model.SanPhamModel;
 import Repository.SanPhamRepository;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -16,20 +16,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
-import javafx.stage.Window;
 
-import javax.imageio.ImageIO;
-import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URL;
-import java.nio.file.Path;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.scene.image.Image;
-
 
 
 public class SanPhamController implements Initializable {
@@ -59,25 +50,25 @@ public class SanPhamController implements Initializable {
 
 
     @FXML
-    private TableView<SanPham> tblDSSP;
+    private TableView<SanPhamModel> tblDSSP;
 
     @FXML
-    private TableColumn<SanPham, Integer> tcDonGia;
+    private TableColumn<SanPhamModel, Integer> tcDonGia;
 
     @FXML
-    private TableColumn<SanPham, String> tcIMG;
+    private TableColumn<SanPhamModel, String> tcIMG;
 
     @FXML
-    private TableColumn<SanPham, String> tcMaLoai;
+    private TableColumn<SanPhamModel, String> tcMaLoai;
 
     @FXML
-    private TableColumn<SanPham, String> tcMaSP;
+    private TableColumn<SanPhamModel, String> tcMaSP;
 
     @FXML
-    private TableColumn<SanPham, Integer> tcSoLuong;
+    private TableColumn<SanPhamModel, Integer> tcSoLuong;
 
     @FXML
-    private TableColumn<SanPham, String> tcTenSP;
+    private TableColumn<SanPhamModel, String> tcTenSP;
 
     @FXML
     private TextField txtDonGia;
@@ -103,8 +94,8 @@ public class SanPhamController implements Initializable {
     @FXML
     private ImageView btnReset;
 
-    private ObservableList<SanPham> dsSanPham;
-    private ArrayList<SanPham> dssp;
+    private ObservableList<SanPhamModel> dsSanPham;
+    private ArrayList<SanPhamModel> dssp;
     private SanPhamRepository sanPhamRepository;
     private Image img;
     private String path;
@@ -192,11 +183,11 @@ public class SanPhamController implements Initializable {
     }
 
     private void customizeRowHeight() {
-        tblDSSP.setRowFactory(tv -> new TableRow<SanPham>() {
+        tblDSSP.setRowFactory(tv -> new TableRow<SanPhamModel>() {
             private static final int ROW_HEIGHT = 30; // Chiều cao mong muốn cho hàng
 
             @Override
-            protected void updateItem(SanPham item, boolean empty) {
+            protected void updateItem(SanPhamModel item, boolean empty) {
                 super.updateItem(item, empty);
 //                if (empty || item == null) {
 //                    setStyle(""); // Đặt style cho hàng rỗng
@@ -213,7 +204,7 @@ public class SanPhamController implements Initializable {
 
     private void setRowClickEvent() {
         tblDSSP.setRowFactory(tv -> {
-            TableRow<SanPham> row = new TableRow<>();
+            TableRow<SanPhamModel> row = new TableRow<>();
 
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 1 && !row.isEmpty()) {
@@ -231,9 +222,9 @@ public class SanPhamController implements Initializable {
     }
 
     //Hàm load mã SP mới nhất lên form
-    public String findMissingMaSP(ObservableList<SanPham> dssp){
+    public String findMissingMaSP(ObservableList<SanPhamModel> dssp){
         Set<String> maSPSet = new HashSet<>();
-        for(SanPham sp : dssp){
+        for(SanPhamModel sp : dssp){
             maSPSet.add(sp.getMaSP());
         }
         for(int i=1 ; i <= dssp.size() + 1; i++){
@@ -255,7 +246,7 @@ public class SanPhamController implements Initializable {
             if(dsSanPham.isEmpty()){
                 txtMaSP.setText("SP001");
             } else {
-                SanPham lastSP = dsSanPham.get(dsSanPham.size()-1);
+                SanPhamModel lastSP = dsSanPham.get(dsSanPham.size()-1);
                 String MaSP = lastSP.getMaSP();
                 int sum = Integer.parseInt(MaSP.substring(3)) +1;
                 String newMaSP = String.format("SP%03d",sum);
@@ -278,7 +269,7 @@ public class SanPhamController implements Initializable {
     void btnImportImageMouseClicked(ActionEvent event) {
 
         FileChooser fileChooser = new FileChooser();
-        File initialDirectory = new File("./src/img/SanPham");
+        File initialDirectory = new File("./src/img/SanPhamModel");
         fileChooser.setInitialDirectory(initialDirectory);
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("File hình ảnh", "*.png", "*.jpg"));
         File file = fileChooser.showOpenDialog(pnSanPham.getScene().getWindow());
@@ -303,7 +294,7 @@ public class SanPhamController implements Initializable {
             imgName = path.replace("//","////");
             IMG = imgName;
         }
-        SanPham sp = new SanPham(MaSP, TenSP, SoLuong, DonGia, MaLoai, IMG);
+        SanPhamModel sp = new SanPhamModel(MaSP, TenSP, SoLuong, DonGia, MaLoai, IMG);
         sanPhamRepository.updateSanPham(sp);
         tblDSSP.getItems().clear();
         refreshForm();
@@ -328,7 +319,7 @@ public class SanPhamController implements Initializable {
         String MaLoai = txtMaLoai.getText();
         imgName = path.replace("\\","\\\\");
         String IMG = imgName;
-        SanPham sp = new SanPham(MaSP, TenSP, SoLuong, DonGia, MaLoai, IMG);
+        SanPhamModel sp = new SanPhamModel(MaSP, TenSP, SoLuong, DonGia, MaLoai, IMG);
         try {
             sanPhamRepository.insertSanPham(sp);
             tblDSSP.getItems().clear(); //Xóa dữ liệu hiện tại trong tableview
@@ -394,7 +385,7 @@ public class SanPhamController implements Initializable {
         btnSua.setDisable(false);
         btnXoa.setDisable(false);
 
-        SanPham sp = tblDSSP.getSelectionModel().getSelectedItem();
+        SanPhamModel sp = tblDSSP.getSelectionModel().getSelectedItem();
         int k = tblDSSP.getSelectionModel().getSelectedIndex();
         if((k-1) < -1) return;
         txtMaSP.setText(sp.getMaSP());

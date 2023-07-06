@@ -2,7 +2,7 @@ package Model;
 
 import java.util.Date;
 
-public class TaiKhoan {
+public class TaiKhoanModel {
     private String MaNV;
     private String TenDangNhap;
     private String MatKhau;
@@ -10,7 +10,7 @@ public class TaiKhoan {
     private String CauTraLoi;
     private Date NgayTao;
 
-    public TaiKhoan(String maNV, String tenDangNhap, String matKhau, String cauHoi, String cauTraLoi, Date ngayTao) {
+    public TaiKhoanModel(String maNV, String tenDangNhap, String matKhau, String cauHoi, String cauTraLoi, Date ngayTao) {
         MaNV = maNV;
         TenDangNhap = tenDangNhap;
         MatKhau = matKhau;

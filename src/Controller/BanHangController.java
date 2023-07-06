@@ -1,9 +1,10 @@
 package Controller;
 
-import Model.SanPham;
+import Model.SanPhamModel;
 import Repository.SanPhamRepository;
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,7 +12,6 @@ import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -38,22 +38,22 @@ public class BanHangController implements Initializable {
     private Spinner<Integer> spnSoLuong;
 
     @FXML
-    private TableView<?> tblGioHang;
+    private TableView<SanPhamModel> tblGioHang;
 
     @FXML
-    private TableColumn<?, ?> tcDonGia;
+    private TableColumn<SanPhamModel, Integer> tcDonGia;
 
     @FXML
-    private TableColumn<?, ?> tcMaSP;
+    private TableColumn<SanPhamModel,String> tcMaSP;
 
     @FXML
-    private TableColumn<?, ?> tcSoLuong;
+    private TableColumn<SanPhamModel,Integer> tcSoLuong;
 
     @FXML
-    private TableColumn<?, ?> tcTenSP;
+    private TableColumn<SanPhamModel,String> tcTenSP;
 
     @FXML
-    private TableColumn<?, ?> tcThanhTien;
+    private TableColumn<SanPhamModel,Integer> tcThanhTien;
 
     @FXML
     private TextField txtDonGia;
@@ -73,11 +73,10 @@ public class BanHangController implements Initializable {
     @FXML
     private VBox vbThongTinSP;
 
-    private ObservableList<SanPham> listSanPham_Card; //Dùng cho gridpane ds sản phẩm
+    private ObservableList<SanPhamModel> listSanPham_Card; //Dùng cho gridpane ds sản phẩm
     private SanPhamRepository sanPhamRepository;
     private SanPham_CardController sanPham_cardController;
     private int SpinnerMaxValue = 0;
-    private int previousSoLuong = -1; // Khởi tạo giá trị SoLuong trước đó là -1
 
     //Các hàm khởi tạo và phương thức initialize
     @Override
@@ -124,39 +123,38 @@ public class BanHangController implements Initializable {
     }
 
     public void checkDisablebtnThemVaoGio() {
-        if(txtMaSP.getText().isEmpty()){
+        if (txtMaSP.getText().isEmpty()) {
             btnThemVaoGio.setDisable(true);
-        } else if(!txtMaSP.getText().isEmpty() && Integer.parseInt(txtSoLuong.getText()) <= 0){
+        } else if (!txtMaSP.getText().isEmpty() && Integer.parseInt(txtSoLuong.getText()) <= 0) {
             btnThemVaoGio.setDisable(true);
         } else {
             btnThemVaoGio.setDisable(false);
         }
     }
-    public void updateSpinnerMaxValue(){
+
+    public void updateSpinnerMaxValue() {
         int SoLuong = Integer.parseInt(txtSoLuong.getText());
-        if(SoLuong != previousSoLuong){
-            if(SoLuong != 0){
-                SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,SoLuong,1);
-                spnSoLuong.setValueFactory(valueFactory);
-                spnSoLuong.setDisable(false);
-            } else {
-                SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,0,1);
-                spnSoLuong.setValueFactory(valueFactory);
-                spnSoLuong.getEditor().setText("");
-                spnSoLuong.setDisable(true);
-            }
-            previousSoLuong = SoLuong;
+        if (SoLuong != 0) {
+            SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, SoLuong, 1);
+            spnSoLuong.setValueFactory(valueFactory);
+            spnSoLuong.setDisable(false);
+        } else {
+            SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 0, 1);
+            spnSoLuong.setValueFactory(valueFactory);
+            spnSoLuong.getEditor().setText("");
+            spnSoLuong.setDisable(true);
         }
+
 
     }
 
-    public void onClickListener(SanPham sp) {
+    public void onClickListener(SanPhamModel sp) {
         setChosenSanPham(sp);
 
     }
 
     //Các hàm hỗ trợ
-    public void setChosenSanPham(SanPham sp) {
+    public void setChosenSanPham(SanPhamModel sp) {
 
         txtMaSP.setText(sp.getMaSP());
         int SoLuong = sanPhamRepository.getSoLuongTonkho(sp.getMaSP());
@@ -178,6 +176,9 @@ public class BanHangController implements Initializable {
         });
 
     }
+    @FXML
+    void btnThemVaoGioMouseClicked(ActionEvent event) {
 
+    }
 
 }

@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.SanPham;
+import Model.SanPhamModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -23,12 +23,12 @@ public class SanPham_CardController {
     @FXML
     private Label lblTenSP;
 
-    private SanPham sanpham;
-    private Consumer<SanPham> onClickListener;
-    public void setOnClickListener(Consumer<SanPham> onClickListener){
+    private SanPhamModel sanpham;
+    private Consumer<SanPhamModel> onClickListener;
+    public void setOnClickListener(Consumer<SanPhamModel> onClickListener){
         this.onClickListener = onClickListener;
     }
-    public void setData(SanPham sanpham) {
+    public void setData(SanPhamModel sanpham) {
         this.sanpham = sanpham;
         lblMaSP.setText(sanpham.getMaSP());
         lblTenSP.setText(sanpham.getTenSP());
