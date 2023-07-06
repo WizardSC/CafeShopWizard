@@ -2,6 +2,7 @@ package Controller;
 
 import Model.SanPham;
 import Repository.SanPhamRepository;
+import com.jfoenix.controls.JFXButton;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,6 +25,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class BanHangController implements Initializable {
+    @FXML
+    private JFXButton btnThemVaoGio;
+
     @FXML
     private GridPane grpMenu;
 
@@ -69,12 +73,25 @@ public class BanHangController implements Initializable {
     private ObservableList<SanPham> listSanPham_Card; //Dùng cho gridpane ds sản phẩm
     private SanPhamRepository sanPhamRepository;
     private SanPham_CardController sanPham_cardController;
+
+    //Các hàm khởi tạo và phương thức initialize
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         sanPhamRepository = new SanPhamRepository();
-        sanPham_cardController  = new SanPham_CardController();
+        sanPham_cardController = new SanPham_CardController();
 
         listSanPham_Card = sanPhamRepository.getDataSanPham_Card();
+        btnThemVaoGio.setDisable(true);
+        //Nếu mã sp trống thì tắt button thêm vào giỏ
+        txtMaSP.textProperty().addListener((observableValue, oldValue, newValue) -> {
+            checkDisablebtnThemVaoGio();
+        });
+
+        txtSoLuong.textProperty().addListener((observableValue, s, t1) -> {
+            checkDisablebtnThemVaoGio();
+
+        });
+
         int column = 0;
         int row = 1;
         try {
@@ -107,10 +124,21 @@ public class BanHangController implements Initializable {
         }
     }
 
+    public void checkDisablebtnThemVaoGio() {
+        if(txtMaSP.getText().isEmpty()){
+            btnThemVaoGio.setDisable(true);
+        } else if(!txtMaSP.getText().isEmpty() && Integer.parseInt(txtSoLuong.getText()) <= 0){
+            btnThemVaoGio.setDisable(true);
+        } else {
+            btnThemVaoGio.setDisable(false);
+        }
+    }
+
     public void onClickListener(SanPham sp) {
         setChosenSanPham(sp);
     }
 
+    //Các hàm hỗ trợ
     public void setChosenSanPham(SanPham sp) {
         txtMaSP.setText(sp.getMaSP());
         int SoLuong = sanPhamRepository.getSoLuongTonkho(sp.getMaSP());

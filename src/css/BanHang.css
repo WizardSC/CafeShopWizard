@@ -88,6 +88,30 @@
 
 }
 
+.them-vao-gio-btn{
+    -fx-background-color: #1cd263;
+    -fx-background-radius: 15;
+    -fx-font-family: Cambria;
+    -fx-font-weight: BOLD;
+    -fx-font-size: 15px;
+    -fx-text-fill: white;
+}
+
+.them-vao-gio-btn:hover{
+    -fx-background-color: #fff;
+    -fx-background-radius: 15;
+
+    -fx-border-width: 1px;
+    -fx-border-color: #1cd263;
+    -fx-border-radius: 15;
+    -fx-font-family: Cambria;
+    -fx-font-weight: BOLD;
+    -fx-font-size: 15px;
+    -fx-text-fill: #000;
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0, 0.0,0.0,10.0);
+
+}
+
 .in-hoa-don-btn{
     -fx-background-radius: 15;
     -fx-background-color: white;

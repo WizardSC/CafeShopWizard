@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -110,9 +111,20 @@
                               <Insets bottom="5.0" top="5.0" />
                            </HBox.margin>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="205.0" prefWidth="229.0" spacing="15.0">
+                        <Separator orientation="VERTICAL" prefHeight="205.0" prefWidth="33.0">
+                           <HBox.margin>
+                              <Insets left="-20.0" right="-20.0" />
+                           </HBox.margin>
+                        </Separator>
+                        <VBox alignment="CENTER" prefHeight="205.0" prefWidth="255.0" spacing="15.0">
                            <children>
-                              <JFXButton alignment="CENTER" ellipsisString="" graphicTextGap="15.0" lineSpacing="15.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="167.0" ripplerFill="#c7c7c7" styleClass="thanh-toan-btn" stylesheets="@../css/BanHang.css" text="Thêm vào giỏ">
+                              <VBox prefHeight="98.0" prefWidth="240.0">
+                                 <children>
+                                    <Label text="Label" />
+                                    <Spinner />
+                                 </children>
+                              </VBox>
+                              <JFXButton fx:id="btnThemVaoGio" alignment="CENTER" ellipsisString="" graphicTextGap="15.0" lineSpacing="15.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="167.0" ripplerFill="#c7c7c7" styleClass="them-vao-gio-btn" stylesheets="@../css/BanHang.css" text="Thêm vào giỏ">
                                  <graphic>
                                     <ImageView fitHeight="15300.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
