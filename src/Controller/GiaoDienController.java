@@ -85,7 +85,7 @@ public class GiaoDienController implements Initializable {
 
     // Hiển thị giao diện mặc định
     private void showDefaultFXMl(){
-        MenuItem defaultItem = menuItems.get(0);
+        MenuItem defaultItem = menuItems.get(1);
         handleMenuItemClick(defaultItem);
     }
 

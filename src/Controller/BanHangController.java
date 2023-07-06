@@ -77,6 +77,7 @@ public class BanHangController implements Initializable {
     private SanPhamRepository sanPhamRepository;
     private SanPham_CardController sanPham_cardController;
     private int SpinnerMaxValue = 0;
+    private int previousSoLuong = -1; // Khởi tạo giá trị SoLuong trước đó là -1
 
     //Các hàm khởi tạo và phương thức initialize
     @Override
@@ -133,15 +134,20 @@ public class BanHangController implements Initializable {
     }
     public void updateSpinnerMaxValue(){
         int SoLuong = Integer.parseInt(txtSoLuong.getText());
-        if(SoLuong != 0){
-            SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,SoLuong,1);
-            spnSoLuong.setValueFactory(valueFactory);
-            spnSoLuong.setDisable(false);
-        } else {
-            spnSoLuong.setValueFactory(null);
-            spnSoLuong.getEditor().setText("");
-            spnSoLuong.setDisable(true);
+        if(SoLuong != previousSoLuong){
+            if(SoLuong != 0){
+                SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,SoLuong,1);
+                spnSoLuong.setValueFactory(valueFactory);
+                spnSoLuong.setDisable(false);
+            } else {
+                SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,0,1);
+                spnSoLuong.setValueFactory(valueFactory);
+                spnSoLuong.getEditor().setText("");
+                spnSoLuong.setDisable(true);
+            }
+            previousSoLuong = SoLuong;
         }
+
     }
 
     public void onClickListener(SanPham sp) {

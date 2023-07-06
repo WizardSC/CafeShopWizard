@@ -121,10 +121,10 @@
                               <VBox fx:id="vbSoLuongCanThem" alignment="CENTER_LEFT" prefHeight="98.0" prefWidth="240.0" spacing="10.0">
                                  <children>
                                     <Label text="Nhập số lượng" />
-                                    <Spinner fx:id="spnSoLuong" editable="true" prefHeight="26.0" prefWidth="158.0" />
+                                    <Spinner fx:id="spnSoLuong" prefHeight="26.0" prefWidth="158.0" />
                                  </children>
                               </VBox>
-                              <JFXButton fx:id="btnThemVaoGio" alignment="CENTER" ellipsisString="" graphicTextGap="15.0" lineSpacing="15.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="167.0" ripplerFill="#c7c7c7" styleClass="them-vao-gio-btn" stylesheets="@../css/BanHang.css" text="Thêm vào giỏ">
+                              <JFXButton fx:id="btnThemVaoGio" alignment="CENTER" disable="true" ellipsisString="" graphicTextGap="15.0" lineSpacing="15.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="167.0" ripplerFill="#c7c7c7" styleClass="them-vao-gio-btn" stylesheets="@../css/BanHang.css" text="Thêm vào giỏ">
                                  <graphic>
                                     <ImageView fitHeight="15300.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
