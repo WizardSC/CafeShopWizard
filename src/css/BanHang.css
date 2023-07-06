@@ -141,3 +141,10 @@
     -fx-font-size: 15;
     -fx-font-weight: BOLD;
 }
+
+#vbSoLuongCanThem .label{
+    -fx-font-weight: BOLD;
+    -fx-font-family: Cambria;
+    -fx-font-size: 15;
+}
+

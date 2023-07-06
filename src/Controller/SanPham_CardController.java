@@ -38,6 +38,7 @@ public class SanPham_CardController {
         imgSanPham.setImage(image);
     }
 
+
     @FXML
     void SPMouseClicked(MouseEvent event) {
          if(onClickListener != null){
