@@ -17,6 +17,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -37,6 +38,9 @@ public class BanHangController implements Initializable {
 
     @FXML
     private ImageView imgSanPham;
+
+    @FXML
+    private ImageView imgRemove;
 
     @FXML
     private Label lblMaHD;
@@ -72,7 +76,7 @@ public class BanHangController implements Initializable {
     private TableColumn<CTHoaDonModel, Integer> tcDonGia;
 
     @FXML
-    private TableColumn<CTHoaDonModel,String> tcMaSP;
+    private TableColumn<CTHoaDonModel, String> tcMaSP;
 
     @FXML
     private TableColumn<CTHoaDonModel, Integer> tcSoLuong;
@@ -107,6 +111,7 @@ public class BanHangController implements Initializable {
     private int SpinnerMaxValue = 0;
     private int SoLuongTonKho = 0;
     private ObservableList<CTHoaDonModel> tempList;
+    private TableRow<CTHoaDonModel> selectedRow; //dùng dể lưu trữ dòng hiện tại đang được chọn
     //Các hàm khởi tạo và phương thức initialize
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -117,6 +122,7 @@ public class BanHangController implements Initializable {
         btnThemVaoGio.setDisable(true);
         txtSoLuong.setText("0");
         checkNgayThang();
+        clickRow();
         int column = 0;
         int row = 1;
         try {
@@ -150,24 +156,51 @@ public class BanHangController implements Initializable {
         }
 
     }
-    public void checkNgayThang(){
+
+    //Hiển thị button xóa khi click vào 1 dòng trong Giỏ hàng
+    public void clickRow() {
+
+        tblGioHang.setRowFactory(tv -> {
+            TableRow<CTHoaDonModel> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (!row.isEmpty() && event.getButton() == MouseButton.PRIMARY) {
+                    selectedRow = row; //lưu trữ dòng hiện tại
+                    CTHoaDonModel rowData = row.getItem();
+                    imgRemove.setVisible(true);
+                }
+            });
+
+            row.selectedProperty().addListener(((observableValue, wasSelected, isSelected) -> {
+                if(!isSelected){
+                    imgRemove.setVisible(false);
+                }
+            }));
+            return row;
+        });
+
+
+
+    }
+
+    public void checkNgayThang() {
         int day = Main.day;
         int month = Main.month;
         String day1;
         String month1;
-        if(day < 10){
+        if (day < 10) {
             day1 = "0" + String.valueOf(day);
         } else {
             day1 = String.valueOf(day);
         }
-        if(month < 10){
+        if (month < 10) {
             month1 = "0" + String.valueOf(month);
         } else {
             month1 = String.valueOf(month);
         }
-        lblNgayLap.setText(day1+"/"+month1+"/"+String.valueOf(Main.year));
+        lblNgayLap.setText(day1 + "/" + month1 + "/" + String.valueOf(Main.year));
 
     }
+
     public void checkDisablebtnThemVaoGio() {
         if (txtMaSP.getText().isEmpty()) {
             btnThemVaoGio.setDisable(true);
@@ -179,7 +212,7 @@ public class BanHangController implements Initializable {
     }
 
     public void updateSpinnerMaxValue() {
-        SoLuongTonKho= Integer.parseInt(txtSoLuong.getText());
+        SoLuongTonKho = Integer.parseInt(txtSoLuong.getText());
 
         if (SoLuongTonKho != 0) {
             SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, SoLuongTonKho, 1);
@@ -222,11 +255,9 @@ public class BanHangController implements Initializable {
         imgSanPham.setImage(img);
 
 
-
-
     }
 
-    public void loadDataTotblGioHang(){
+    public void loadDataTotblGioHang() {
 
         tcMaSP.setCellValueFactory(new PropertyValueFactory<>("maSP"));
         tcTenSP.setCellValueFactory(new PropertyValueFactory<>("tenSP"));
@@ -236,6 +267,9 @@ public class BanHangController implements Initializable {
 
         tblGioHang.setItems(tempList);
     }
+
+
+    //Các hàm xử lý sự kiện
     @FXML
     void btnThemVaoGioMouseClicked(ActionEvent event) {
         String MaHD = lblMaHD.getText();
@@ -247,9 +281,9 @@ public class BanHangController implements Initializable {
 
         //Kiểm tra sản phẩm đã đang có trong list giỏ hàng chưa
         boolean flag = true;
-        for(CTHoaDonModel cthd : tempList){
+        for (CTHoaDonModel cthd : tempList) {
 
-            if(cthd.getMaSP().equals(MaSP)){
+            if (cthd.getMaSP().equals(MaSP)) {
                 int SoLuongCu = cthd.getSoLuong();
                 cthd.setSoLuong(SoLuongCu + SoLuong);
 
@@ -258,15 +292,15 @@ public class BanHangController implements Initializable {
                 break;
             }
         }
-        if(flag){
-            tempList.add(new CTHoaDonModel(MaHD,MaSP,TenSP,SoLuong,DonGia,ThanhTien));
+        if (flag) {
+            tempList.add(new CTHoaDonModel(MaHD, MaSP, TenSP, SoLuong, DonGia, ThanhTien));
 
 
         }
         tblGioHang.refresh();
         loadDataTotblGioHang();
         int TongTien = 0;
-        for(CTHoaDonModel cthd : tempList){
+        for (CTHoaDonModel cthd : tempList) {
             TongTien = TongTien + cthd.getThanhTien();
             lblTongTienTruocKM.setText(String.valueOf(TongTien));
         }
@@ -278,9 +312,20 @@ public class BanHangController implements Initializable {
         imgSanPham.setImage(null);
         spnSoLuong.setValueFactory(null);
 
-        float MaKM = Integer.parseInt(lblMaKM.getText())/100f;
-        int TongTienSauKM = Math.round(TongTien - ( TongTien* MaKM));
+        float MaKM = Integer.parseInt(lblMaKM.getText()) / 100f;
+        int TongTienSauKM = Math.round(TongTien - (TongTien * MaKM));
         lblTongTienSauKM.setText(String.valueOf(TongTienSauKM));
     }
+
+    @FXML
+    void imgRemoveMouseClicked() {
+        if(selectedRow != null){
+            CTHoaDonModel rowData = selectedRow.getItem();
+            tblGioHang.getItems().remove(rowData);
+            selectedRow = null;
+            tblGioHang.getSelectionModel().clearSelection();
+        }
+    }
+
 
 }

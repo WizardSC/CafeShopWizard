@@ -18,6 +18,10 @@
     -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.5),5,0,0,0);
 }
 
+.hand-cursor{
+    -fx-cursor: hand;
+}
+
 .table-view .column-header-background{
     -fx-background-color: #FFDE72;
     /*-fx-background-radius: 15 15 0 0;*/
@@ -112,6 +116,7 @@
 
 }
 
+
 .in-hoa-don-btn{
     -fx-background-radius: 15;
     -fx-background-color: white;
@@ -147,4 +152,5 @@
     -fx-font-family: Cambria;
     -fx-font-size: 15;
 }
+
 
