@@ -5,6 +5,7 @@ import Model.HoaDonModel;
 import Model.SanPhamModel;
 import Repository.SanPhamRepository;
 import com.jfoenix.controls.JFXButton;
+import com.sun.scenario.effect.impl.prism.ps.PPSBlend_ADDPeer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,9 +21,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import sample.Main;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class BanHangController implements Initializable {
@@ -112,10 +115,8 @@ public class BanHangController implements Initializable {
         tempList = FXCollections.observableArrayList();
         listSanPham_Card = sanPhamRepository.getDataSanPham_Card();
         btnThemVaoGio.setDisable(true);
-        //Nếu mã sp trống thì tắt button thêm vào giỏ
         txtSoLuong.setText("0");
-        checkDisablebtnThemVaoGio();
-
+        checkNgayThang();
         int column = 0;
         int row = 1;
         try {
@@ -149,7 +150,24 @@ public class BanHangController implements Initializable {
         }
 
     }
+    public void checkNgayThang(){
+        int day = Main.day;
+        int month = Main.month;
+        String day1;
+        String month1;
+        if(day < 10){
+            day1 = "0" + String.valueOf(day);
+        } else {
+            day1 = String.valueOf(day);
+        }
+        if(month < 10){
+            month1 = "0" + String.valueOf(month);
+        } else {
+            month1 = String.valueOf(month);
+        }
+        lblNgayLap.setText(day1+"/"+month1+"/"+String.valueOf(Main.year));
 
+    }
     public void checkDisablebtnThemVaoGio() {
         if (txtMaSP.getText().isEmpty()) {
             btnThemVaoGio.setDisable(true);
@@ -253,12 +271,12 @@ public class BanHangController implements Initializable {
             lblTongTienTruocKM.setText(String.valueOf(TongTien));
         }
 
-
-
-
-
-
-
+        txtSoLuong.setText("0");
+        txtDonGia.setText("");
+        txtTenSP.setText("");
+        txtMaSP.setText("");
+        imgSanPham.setImage(null);
+        spnSoLuong.setValueFactory(null);
     }
 
 }

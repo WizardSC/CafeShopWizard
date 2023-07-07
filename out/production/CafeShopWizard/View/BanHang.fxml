@@ -272,7 +272,7 @@
                         <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="322.0">
                            <children>
                               <Label prefHeight="18.0" prefWidth="150.0" text="Tổng tiền (Tạm tính)" />
-                              <Label fx:id="lblTongTienTruocKM" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="49.0" text="30000" />
+                              <Label fx:id="lblTongTienTruocKM" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="80.0" text="30000" />
                               <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="32.0" text="VNĐ" />
                            </children>
                            <VBox.margin>
@@ -282,7 +282,7 @@
                         <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="318.0">
                            <children>
                               <Label prefHeight="18.0" prefWidth="150.0" text="Khuyến mãi" />
-                              <Label fx:id="lblMaKM" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="49.0" text="30000" />
+                              <Label fx:id="lblMaKM" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="80.0" text="30000" />
                               <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="32.0" text="VNĐ" />
                            </children>
                            <VBox.margin>
@@ -292,7 +292,7 @@
                         <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="318.0">
                            <children>
                               <Label prefHeight="18.0" prefWidth="150.0" text="Tổng tiền " />
-                              <Label fx:id="lblTongTienSauKM" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="49.0" text="30000" />
+                              <Label fx:id="lblTongTienSauKM" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="80.0" text="30000" />
                               <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="32.0" text="VNĐ" />
                            </children>
                            <VBox.margin>
