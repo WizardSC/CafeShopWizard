@@ -311,7 +311,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="107.0" prefWidth="332.0" spacing="10.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <JFXButton alignment="CENTER" ellipsisString="" graphicTextGap="15.0" lineSpacing="15.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="154.0" ripplerFill="#c7c7c7" stylesheets="@../css/BanHang.css" text="Thanh toán">
+                              <JFXButton fx:id="btnThanhToan" alignment="CENTER" ellipsisString="" graphicTextGap="15.0" lineSpacing="15.0" maxHeight="-Infinity" minHeight="-Infinity" onAction="#btnThanhToanMouseClicked" prefHeight="50.0" prefWidth="154.0" ripplerFill="#c7c7c7" stylesheets="@../css/BanHang.css" text="Thanh toán">
                                  <graphic>
                                     <ImageView fitHeight="15300.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                        <image>

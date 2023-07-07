@@ -27,6 +27,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class BanHangController implements Initializable {
+
+    @FXML
+    private JFXButton btnThanhToan;
+
     @FXML
     private JFXButton btnThemVaoGio;
 
@@ -285,6 +289,7 @@ public class BanHangController implements Initializable {
 
 
     //Các hàm xử lý sự kiện
+
     @FXML
     void btnThemVaoGioMouseClicked(ActionEvent event) {
         String MaHD = lblMaHD.getText();
@@ -333,6 +338,7 @@ public class BanHangController implements Initializable {
             CTHoaDonModel rowData = selectedRow.getItem();
             String MaSP = rowData.getMaSP();
             int SoLuongBan = rowData.getSoLuong();
+            int SoLuongTonKho = sanPhamRepository.getSoLuongTonkho(MaSP);
             for(CTHoaDonModel cthd : tempList){
                 if(cthd.getMaSP().equals(MaSP)){
                     TongTien = TongTien - cthd.getThanhTien();
@@ -347,6 +353,12 @@ public class BanHangController implements Initializable {
             tblGioHang.getSelectionModel().clearSelection();
         }
     }
+
+    @FXML
+    void btnThanhToanMouseClicked(ActionEvent event) {
+
+    }
+
 
 
 }
