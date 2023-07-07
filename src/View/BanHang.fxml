@@ -148,14 +148,23 @@
                <children>
                   <VBox prefHeight="122.0" prefWidth="332.0" spacing="10.0" styleClass="header-gio-hang" stylesheets="@../css/BanHang.css">
                      <children>
-                        <Label text="Đơn hàng mới #HD001">
+                        <HBox>
                            <VBox.margin>
                               <Insets left="10.0" />
                            </VBox.margin>
-                           <font>
-                              <Font name="Cambria Bold" size="18.0" />
-                           </font>
-                        </Label>
+                           <children>
+                              <Label text="Đơn hàng mới #">
+                                 <font>
+                                    <Font name="Cambria Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblMaHD" text="HD001">
+                                 <font>
+                                    <Font name="Cambria Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
                         <HBox>
                            <children>
                               <Label prefHeight="20.0" prefWidth="95.0" text="Ngày lập: ">
@@ -163,7 +172,7 @@
                                     <Font name="Cambria" size="15.0" />
                                  </font>
                               </Label>
-                              <Label text="05/07/2023">
+                              <Label fx:id="lblNgayLap" text="05/07/2023">
                                  <font>
                                     <Font name="Cambria" size="15.0" />
                                  </font>
@@ -180,7 +189,7 @@
                                     <Font name="Cambria" size="15.0" />
                                  </font>
                               </Label>
-                              <Label prefHeight="20.0" prefWidth="104.0" text="NV001">
+                              <Label fx:id="lblMaNV" prefHeight="20.0" prefWidth="104.0" text="NV001">
                                  <font>
                                     <Font name="Cambria" size="15.0" />
                                  </font>
@@ -197,7 +206,7 @@
                                     <Font name="Cambria" size="15.0" />
                                  </font>
                               </Label>
-                              <Label prefWidth="104.0" text="KH002">
+                              <Label fx:id="lblMaKH" prefWidth="104.0" text="KH002">
                                  <font>
                                     <Font name="Cambria" size="15.0" />
                                  </font>
@@ -263,7 +272,7 @@
                         <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="322.0">
                            <children>
                               <Label prefHeight="18.0" prefWidth="150.0" text="Tổng tiền (Tạm tính)" />
-                              <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="49.0" text="30000" />
+                              <Label fx:id="lblTongTienTruocKM" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="49.0" text="30000" />
                               <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="32.0" text="VNĐ" />
                            </children>
                            <VBox.margin>
@@ -273,7 +282,7 @@
                         <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="318.0">
                            <children>
                               <Label prefHeight="18.0" prefWidth="150.0" text="Khuyến mãi" />
-                              <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="49.0" text="30000" />
+                              <Label fx:id="lblMaKM" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="49.0" text="30000" />
                               <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="32.0" text="VNĐ" />
                            </children>
                            <VBox.margin>
@@ -283,7 +292,7 @@
                         <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="318.0">
                            <children>
                               <Label prefHeight="18.0" prefWidth="150.0" text="Tổng tiền " />
-                              <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="49.0" text="30000" />
+                              <Label fx:id="lblTongTienSauKM" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="49.0" text="30000" />
                               <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="32.0" text="VNĐ" />
                            </children>
                            <VBox.margin>

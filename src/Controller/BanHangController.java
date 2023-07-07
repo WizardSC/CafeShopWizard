@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.CTHoaDonModel;
 import Model.SanPhamModel;
 import Repository.SanPhamRepository;
 import com.jfoenix.controls.JFXButton;
@@ -32,28 +33,49 @@ public class BanHangController implements Initializable {
     private ImageView imgSanPham;
 
     @FXML
+    private Label lblMaHD;
+
+    @FXML
+    private Label lblMaKH;
+
+    @FXML
+    private Label lblMaKM;
+
+    @FXML
+    private Label lblMaNV;
+
+    @FXML
+    private Label lblNgayLap;
+
+    @FXML
+    private Label lblTongTienSauKM;
+
+    @FXML
+    private Label lblTongTienTruocKM;
+
+    @FXML
     private ScrollPane scpMenu;
 
     @FXML
     private Spinner<Integer> spnSoLuong;
 
     @FXML
-    private TableView<SanPhamModel> tblGioHang;
+    private TableView<CTHoaDonModel> tblGioHang;
 
     @FXML
-    private TableColumn<SanPhamModel, Integer> tcDonGia;
+    private TableColumn<CTHoaDonModel, Integer> tcDonGia;
 
     @FXML
-    private TableColumn<SanPhamModel,String> tcMaSP;
+    private TableColumn<CTHoaDonModel,String> tcMaSP;
 
     @FXML
-    private TableColumn<SanPhamModel,Integer> tcSoLuong;
+    private TableColumn<CTHoaDonModel, Integer> tcSoLuong;
 
     @FXML
-    private TableColumn<SanPhamModel,String> tcTenSP;
+    private TableColumn<CTHoaDonModel, String> tcTenSP;
 
     @FXML
-    private TableColumn<SanPhamModel,Integer> tcThanhTien;
+    private TableColumn<CTHoaDonModel, Integer> tcThanhTien;
 
     @FXML
     private TextField txtDonGia;
@@ -178,6 +200,12 @@ public class BanHangController implements Initializable {
     }
     @FXML
     void btnThemVaoGioMouseClicked(ActionEvent event) {
+        String MaHD = lblMaHD.getText();
+        String MaSP = txtMaSP.getText();
+        String TenSP = txtTenSP.getText();
+        int SoLuong = spnSoLuong.getValue();
+        int DonGia = Integer.parseInt(txtDonGia.getText());
+        System.out.println(SoLuong);
 
     }
 

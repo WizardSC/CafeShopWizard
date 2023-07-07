@@ -5,18 +5,28 @@ import java.util.Date;
 public class HoaDonModel {
     private String MaHD;
     private Date NgayLap;
-    private int TongTien;
+    private int TongTienTruocKM;
+    private float TongTienSauKM;
     private String MaNV;
     private String MaKH;
     private String MaKM;
 
-    public HoaDonModel(String maHD, Date ngayLap, int tongTien, String maNV, String maKH, String maKM) {
+    public HoaDonModel(String maHD, Date ngayLap, int tongTienTruocKM, float tongTienSauKM, String maNV, String maKH, String maKM) {
         MaHD = maHD;
         NgayLap = ngayLap;
-        TongTien = tongTien;
+        TongTienTruocKM = tongTienTruocKM;
+        TongTienSauKM = tongTienSauKM;
         MaNV = maNV;
         MaKH = maKH;
         MaKM = maKM;
+    }
+
+    public float getTongTienSauKM() {
+        return TongTienSauKM;
+    }
+
+    public void setTongTienSauKM(float tongTienSauKM) {
+        TongTienSauKM = tongTienSauKM;
     }
 
     public String getMaHD() {
@@ -35,12 +45,12 @@ public class HoaDonModel {
         NgayLap = ngayLap;
     }
 
-    public int getTongTien() {
-        return TongTien;
+    public int getTongTienTruocKM() {
+        return TongTienTruocKM;
     }
 
-    public void setTongTien(int tongTien) {
-        TongTien = tongTien;
+    public void setTongTienTruocKM(int tongTienTruocKM) {
+        TongTienTruocKM = tongTienTruocKM;
     }
 
     public String getMaNV() {
