@@ -1,11 +1,9 @@
 package Controller;
 
 import Model.CTHoaDonModel;
-import Model.HoaDonModel;
 import Model.SanPhamModel;
 import Repository.SanPhamRepository;
 import com.jfoenix.controls.JFXButton;
-import com.sun.scenario.effect.impl.prism.ps.PPSBlend_ADDPeer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,7 +24,6 @@ import sample.Main;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class BanHangController implements Initializable {
@@ -167,16 +164,19 @@ public class BanHangController implements Initializable {
                     selectedRow = row; //lưu trữ dòng hiện tại
                     CTHoaDonModel rowData = row.getItem();
                     imgRemove.setVisible(true);
+                    clearFields();
                 }
             });
 
             row.selectedProperty().addListener(((observableValue, wasSelected, isSelected) -> {
                 if(!isSelected){
                     imgRemove.setVisible(false);
+                    clearFields();
                 }
             }));
             return row;
         });
+
 
 
 
@@ -234,6 +234,15 @@ public class BanHangController implements Initializable {
     }
 
     //Các hàm hỗ trợ
+
+    public void clearFields(){
+        txtSoLuong.setText("0");
+        txtDonGia.setText("");
+        txtTenSP.setText("");
+        txtMaSP.setText("");
+        imgSanPham.setImage(null);
+        spnSoLuong.setValueFactory(null);
+    }
     public void setChosenSanPham(SanPhamModel sp) {
         txtSoLuong.textProperty().addListener((observableValue, s, t1) -> {
             updateSpinnerMaxValue();
@@ -284,7 +293,8 @@ public class BanHangController implements Initializable {
         int SoLuong = spnSoLuong.getValue();
         int DonGia = Integer.parseInt(txtDonGia.getText());
         int ThanhTien = SoLuong * DonGia;
-
+//
+        sanPhamRepository.capNhatSoLuongBanHang(MaSP,SoLuong,SoLuongTonKho);
         //Kiểm tra sản phẩm đã đang có trong list giỏ hàng chưa
         boolean flag = true;
         for (CTHoaDonModel cthd : tempList) {
@@ -300,8 +310,6 @@ public class BanHangController implements Initializable {
         }
         if (flag) {
             tempList.add(new CTHoaDonModel(MaHD, MaSP, TenSP, SoLuong, DonGia, ThanhTien));
-
-
         }
         tblGioHang.refresh();
         loadDataTotblGioHang();
@@ -311,13 +319,7 @@ public class BanHangController implements Initializable {
             lblTongTienTruocKM.setText(String.valueOf(TongTien));
         }
 
-        txtSoLuong.setText("0");
-        txtDonGia.setText("");
-        txtTenSP.setText("");
-        txtMaSP.setText("");
-        imgSanPham.setImage(null);
-        spnSoLuong.setValueFactory(null);
-        updateTongTienSauKM(TongTien);
+        clearFields();
 
     }
 
@@ -325,10 +327,12 @@ public class BanHangController implements Initializable {
 
     @FXML
     void imgRemoveMouseClicked() {
+
         int TongTien = Integer.parseInt(lblTongTienTruocKM.getText());
         if(selectedRow != null){
             CTHoaDonModel rowData = selectedRow.getItem();
             String MaSP = rowData.getMaSP();
+            int SoLuongBan = rowData.getSoLuong();
             for(CTHoaDonModel cthd : tempList){
                 if(cthd.getMaSP().equals(MaSP)){
                     TongTien = TongTien - cthd.getThanhTien();
@@ -338,7 +342,7 @@ public class BanHangController implements Initializable {
                 }
             }
             tblGioHang.getItems().remove(rowData);
-
+            sanPhamRepository.capNhatSoLuongBanHang(MaSP,-SoLuongBan,SoLuongTonKho);
             selectedRow = null;
             tblGioHang.getSelectionModel().clearSelection();
         }

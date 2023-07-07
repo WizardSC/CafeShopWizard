@@ -129,4 +129,16 @@ public class SanPhamRepository {
             ex.printStackTrace();
         }
     }
+
+    public void capNhatSoLuongBanHang(String MaSP, int SoLuongBan, int SoLuongTrongKho){
+        try {
+            String sql = "update sanpham set SoLuong = ? where MaSP = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1,SoLuongTrongKho - SoLuongBan);
+            ps.setString(2, MaSP);
+            ps.executeUpdate();
+        } catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
 }
