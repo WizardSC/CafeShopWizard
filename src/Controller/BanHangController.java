@@ -1,9 +1,11 @@
 package Controller;
 
 import Model.CTHoaDonModel;
+import Model.HoaDonModel;
 import Model.SanPhamModel;
 import Repository.SanPhamRepository;
 import com.jfoenix.controls.JFXButton;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -99,16 +102,19 @@ public class BanHangController implements Initializable {
     private SanPhamRepository sanPhamRepository;
     private SanPham_CardController sanPham_cardController;
     private int SpinnerMaxValue = 0;
-
+    private int SoLuongTonKho = 0;
+    private ObservableList<CTHoaDonModel> tempList;
     //Các hàm khởi tạo và phương thức initialize
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         sanPhamRepository = new SanPhamRepository();
         sanPham_cardController = new SanPham_CardController();
-
+        tempList = FXCollections.observableArrayList();
         listSanPham_Card = sanPhamRepository.getDataSanPham_Card();
         btnThemVaoGio.setDisable(true);
         //Nếu mã sp trống thì tắt button thêm vào giỏ
+        txtSoLuong.setText("0");
+        checkDisablebtnThemVaoGio();
 
         int column = 0;
         int row = 1;
@@ -155,9 +161,10 @@ public class BanHangController implements Initializable {
     }
 
     public void updateSpinnerMaxValue() {
-        int SoLuong = Integer.parseInt(txtSoLuong.getText());
-        if (SoLuong != 0) {
-            SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, SoLuong, 1);
+        SoLuongTonKho= Integer.parseInt(txtSoLuong.getText());
+
+        if (SoLuongTonKho != 0) {
+            SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, SoLuongTonKho, 1);
             spnSoLuong.setValueFactory(valueFactory);
             spnSoLuong.setDisable(false);
         } else {
@@ -177,7 +184,15 @@ public class BanHangController implements Initializable {
 
     //Các hàm hỗ trợ
     public void setChosenSanPham(SanPhamModel sp) {
+        txtSoLuong.textProperty().addListener((observableValue, s, t1) -> {
+            updateSpinnerMaxValue();
+            checkDisablebtnThemVaoGio();
 
+        });
+        txtMaSP.textProperty().addListener((observableValue, oldValue, newValue) -> {
+
+            checkDisablebtnThemVaoGio();
+        });
         txtMaSP.setText(sp.getMaSP());
         int SoLuong = sanPhamRepository.getSoLuongTonkho(sp.getMaSP());
 
@@ -188,15 +203,20 @@ public class BanHangController implements Initializable {
         Image img = new Image(path);
         imgSanPham.setImage(img);
 
-        txtMaSP.textProperty().addListener((observableValue, oldValue, newValue) -> {
-            checkDisablebtnThemVaoGio();
-        });
 
-        txtSoLuong.textProperty().addListener((observableValue, s, t1) -> {
-            checkDisablebtnThemVaoGio();
-            updateSpinnerMaxValue();
-        });
 
+
+    }
+
+    public void loadDataTotblGioHang(){
+
+        tcMaSP.setCellValueFactory(new PropertyValueFactory<>("maSP"));
+        tcTenSP.setCellValueFactory(new PropertyValueFactory<>("tenSP"));
+        tcSoLuong.setCellValueFactory(new PropertyValueFactory<>("soLuong"));
+        tcDonGia.setCellValueFactory(new PropertyValueFactory<>("donGia"));
+        tcThanhTien.setCellValueFactory(new PropertyValueFactory<>("thanhTien"));
+
+        tblGioHang.setItems(tempList);
     }
     @FXML
     void btnThemVaoGioMouseClicked(ActionEvent event) {
@@ -205,7 +225,39 @@ public class BanHangController implements Initializable {
         String TenSP = txtTenSP.getText();
         int SoLuong = spnSoLuong.getValue();
         int DonGia = Integer.parseInt(txtDonGia.getText());
-        System.out.println(SoLuong);
+        int ThanhTien = SoLuong * DonGia;
+
+        //Kiểm tra sản phẩm đã đang có trong list giỏ hàng chưa
+        boolean flag = true;
+        for(CTHoaDonModel cthd : tempList){
+
+            if(cthd.getMaSP().equals(MaSP)){
+                int SoLuongCu = cthd.getSoLuong();
+                cthd.setSoLuong(SoLuongCu + SoLuong);
+
+                cthd.setThanhTien(cthd.getSoLuong() * DonGia);
+                flag = false;
+                break;
+            }
+        }
+        if(flag){
+            tempList.add(new CTHoaDonModel(MaHD,MaSP,TenSP,SoLuong,DonGia,ThanhTien));
+
+
+        }
+        tblGioHang.refresh();
+        loadDataTotblGioHang();
+        int TongTien = 0;
+        for(CTHoaDonModel cthd : tempList){
+            TongTien = TongTien + cthd.getThanhTien();
+            lblTongTienTruocKM.setText(String.valueOf(TongTien));
+        }
+
+
+
+
+
+
 
     }
 
