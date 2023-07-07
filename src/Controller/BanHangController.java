@@ -277,6 +277,10 @@ public class BanHangController implements Initializable {
         txtMaSP.setText("");
         imgSanPham.setImage(null);
         spnSoLuong.setValueFactory(null);
+
+        float MaKM = Integer.parseInt(lblMaKM.getText())/100f;
+        int TongTienSauKM = Math.round(TongTien - ( TongTien* MaKM));
+        lblTongTienSauKM.setText(String.valueOf(TongTienSauKM));
     }
 
 }

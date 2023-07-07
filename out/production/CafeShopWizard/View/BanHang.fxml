@@ -282,8 +282,8 @@
                         <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="318.0">
                            <children>
                               <Label prefHeight="18.0" prefWidth="150.0" text="Khuyến mãi" />
-                              <Label fx:id="lblMaKM" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="80.0" text="30000" />
-                              <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="32.0" text="VNĐ" />
+                              <Label fx:id="lblMaKM" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="80.0" text="5" />
+                              <Label prefHeight="18.0" prefWidth="32.0" text="\%" />
                            </children>
                            <VBox.margin>
                               <Insets left="10.0" />

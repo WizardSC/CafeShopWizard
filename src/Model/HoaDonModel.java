@@ -6,12 +6,12 @@ public class HoaDonModel {
     private String MaHD;
     private Date NgayLap;
     private int TongTienTruocKM;
-    private float TongTienSauKM;
+    private int TongTienSauKM;
     private String MaNV;
     private String MaKH;
     private String MaKM;
 
-    public HoaDonModel(String maHD, Date ngayLap, int tongTienTruocKM, float tongTienSauKM, String maNV, String maKH, String maKM) {
+    public HoaDonModel(String maHD, Date ngayLap, int tongTienTruocKM, int tongTienSauKM, String maNV, String maKH, String maKM) {
         MaHD = maHD;
         NgayLap = ngayLap;
         TongTienTruocKM = tongTienTruocKM;
@@ -25,7 +25,7 @@ public class HoaDonModel {
         return TongTienSauKM;
     }
 
-    public void setTongTienSauKM(float tongTienSauKM) {
+    public void setTongTienSauKM(int tongTienSauKM) {
         TongTienSauKM = tongTienSauKM;
     }
 
