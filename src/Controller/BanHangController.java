@@ -268,6 +268,12 @@ public class BanHangController implements Initializable {
         tblGioHang.setItems(tempList);
     }
 
+    public void updateTongTienSauKM(int tongTien){
+        float MaKM = Integer.parseInt(lblMaKM.getText())/100f;
+        int TongTienSauKM = Math.round(tongTien - (tongTien*MaKM));
+        lblTongTienSauKM.setText(String.valueOf(TongTienSauKM));
+    }
+
 
     //Các hàm xử lý sự kiện
     @FXML
@@ -311,17 +317,28 @@ public class BanHangController implements Initializable {
         txtMaSP.setText("");
         imgSanPham.setImage(null);
         spnSoLuong.setValueFactory(null);
+        updateTongTienSauKM(TongTien);
 
-        float MaKM = Integer.parseInt(lblMaKM.getText()) / 100f;
-        int TongTienSauKM = Math.round(TongTien - (TongTien * MaKM));
-        lblTongTienSauKM.setText(String.valueOf(TongTienSauKM));
     }
+
+
 
     @FXML
     void imgRemoveMouseClicked() {
+        int TongTien = Integer.parseInt(lblTongTienTruocKM.getText());
         if(selectedRow != null){
             CTHoaDonModel rowData = selectedRow.getItem();
+            String MaSP = rowData.getMaSP();
+            for(CTHoaDonModel cthd : tempList){
+                if(cthd.getMaSP().equals(MaSP)){
+                    TongTien = TongTien - cthd.getThanhTien();
+                    lblTongTienTruocKM.setText(String.valueOf(TongTien));
+                    updateTongTienSauKM(TongTien);
+
+                }
+            }
             tblGioHang.getItems().remove(rowData);
+
             selectedRow = null;
             tblGioHang.getSelectionModel().clearSelection();
         }
