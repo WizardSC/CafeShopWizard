@@ -24,6 +24,10 @@ import sample.Main;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class BanHangController implements Initializable {
@@ -356,6 +360,28 @@ public class BanHangController implements Initializable {
 
     @FXML
     void btnThanhToanMouseClicked(ActionEvent event) {
+        //ngày lập
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
+        Date NgayLap;
+        try {
+            NgayLap = dateFormat.parse(lblNgayLap.getText());
+            String NgayLap1 = dateFormat1.format(NgayLap);
+            System.out.println(NgayLap1);
+        } catch (ParseException e){
+            e.printStackTrace();
+        }
+
+        String MaHD = lblMaHD.getText();
+        int TongTienTruocKM = Integer.parseInt(lblTongTienTruocKM.getText());
+        int TongTienSauKM = Integer.parseInt(lblTongTienSauKM.getText());
+        String MaNV = lblMaNV.getText();
+        String MaKH = lblMaKH.getText();
+        String MaKM = "null";
+
+
+
+
 
     }
 

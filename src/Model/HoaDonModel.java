@@ -21,7 +21,7 @@ public class HoaDonModel {
         MaKM = maKM;
     }
 
-    public float getTongTienSauKM() {
+    public int getTongTienSauKM() {
         return TongTienSauKM;
     }
 
