@@ -3,6 +3,7 @@ package Controller;
 import Model.CTHoaDonModel;
 import Model.HoaDonModel;
 import Model.SanPhamModel;
+import Repository.CTHoaDonRepository;
 import Repository.HoaDonRepository;
 import Repository.SanPhamRepository;
 import com.jfoenix.controls.JFXButton;
@@ -115,6 +116,7 @@ public class BanHangController implements Initializable {
     private ObservableList<SanPhamModel> listSanPham_Card; //Dùng cho gridpane ds sản phẩm
     private SanPhamRepository sanPhamRepository;
     private HoaDonRepository hoaDonRepository;
+    private CTHoaDonRepository ctHoaDonRepository;
     private SanPham_CardController sanPham_cardController;
     private int SpinnerMaxValue = 0;
     private int SoLuongTonKho = 0;
@@ -127,6 +129,7 @@ public class BanHangController implements Initializable {
 
         sanPhamRepository = new SanPhamRepository();
         hoaDonRepository = new HoaDonRepository();
+        ctHoaDonRepository = new CTHoaDonRepository();
         sanPham_cardController = new SanPham_CardController();
         tempList = FXCollections.observableArrayList();
         listSanPham_Card = sanPhamRepository.getDataSanPham_Card();
@@ -383,9 +386,24 @@ public class BanHangController implements Initializable {
         String MaNV = lblMaNV.getText();
         String MaKH = lblMaKH.getText();
         String MaKM = "null";
+
         HoaDonModel hd = new HoaDonModel(MaHD, NgayLap, TongTienTruocKM, TongTienSauKM, MaNV, MaKH, MaKM);
         hoaDonRepository.insertHoaDon(hd);
         System.out.println("Thành công");
+
+        for(CTHoaDonModel cthd : tempList){
+            String MaHDinCTHD = cthd.getMaHD();
+            String MaSPinCTHD = cthd.getMaSP();
+            String TenSPinCTHD = cthd.getTenSP();
+            int SoLuonginCTHD = cthd.getSoLuong();
+            int DonGiainCTHD = cthd.getDonGia();
+            int ThanhTieninCTHD = cthd.getThanhTien();
+
+            ctHoaDonRepository.insertCTHD(cthd);
+            System.out.println("Thành công thêm CTHD");
+        }
+
+
 
 
 
