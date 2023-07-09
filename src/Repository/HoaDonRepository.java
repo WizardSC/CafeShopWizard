@@ -4,10 +4,7 @@ import Model.HoaDonModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.ZoneId;
 
 public class HoaDonRepository {
@@ -16,6 +13,31 @@ public class HoaDonRepository {
 
     private Connection connection = mssql.getConnection();
 
+    public ObservableList<HoaDonModel> getListHoaDon(){
+        try {
+            ObservableList<HoaDonModel> dsHoaDon = FXCollections.observableArrayList();
+            String sql = "select * from hoadon";
+            ResultSet rs = mssql.executeQuery(sql);
+            while(rs.next()){
+                HoaDonModel hd = new HoaDonModel(
+                       rs.getString("MaHD"),
+                        rs.getDate("NgayLap"),
+                        rs.getInt("TongTienTruocKM"),
+                        rs.getInt("TongTienSauKM"),
+                        rs.getString("MaNV"),
+                        rs.getString("MaKH"),
+                        rs.getString("MaKM")
+                );
+                dsHoaDon.add(hd);
+            }
+            return dsHoaDon;
+        } catch (SQLException e){
+            e.printStackTrace();
+        } finally {
+            mssql.Disconnect();
+        }
+        return null;
+    }
     public void insertHoaDon(HoaDonModel hd){
         try {
             String sql = "Insert into hoadon values(?,?,?,?,?,?,?)";
@@ -32,5 +54,6 @@ public class HoaDonRepository {
             e.printStackTrace();
         }
     }
+
 
 }

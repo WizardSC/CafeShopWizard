@@ -117,11 +117,14 @@ public class BanHangController implements Initializable {
     private SanPhamRepository sanPhamRepository;
     private HoaDonRepository hoaDonRepository;
     private CTHoaDonRepository ctHoaDonRepository;
+
     private SanPham_CardController sanPham_cardController;
     private int SpinnerMaxValue = 0;
     private int SoLuongTonKho = 0;
     private ObservableList<CTHoaDonModel> tempList;
+    private ObservableList<HoaDonModel> dshoadon;
     private TableRow<CTHoaDonModel> selectedRow; //dùng dể lưu trữ dòng hiện tại đang được chọn
+
     //Các hàm khởi tạo và phương thức initialize
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -132,10 +135,13 @@ public class BanHangController implements Initializable {
         ctHoaDonRepository = new CTHoaDonRepository();
         sanPham_cardController = new SanPham_CardController();
         tempList = FXCollections.observableArrayList();
+        dshoadon = FXCollections.observableArrayList();
+        dshoadon = hoaDonRepository.getListHoaDon();
         listSanPham_Card = sanPhamRepository.getDataSanPham_Card();
         btnThemVaoGio.setDisable(true);
         txtSoLuong.setText("0");
         clickRow();
+        loadMaHD();
         int column = 0;
         int row = 1;
         try {
@@ -185,15 +191,13 @@ public class BanHangController implements Initializable {
             });
 
             row.selectedProperty().addListener(((observableValue, wasSelected, isSelected) -> {
-                if(!isSelected){
+                if (!isSelected) {
                     imgRemove.setVisible(false);
                     clearFields();
                 }
             }));
             return row;
         });
-
-
 
 
     }
@@ -249,9 +253,24 @@ public class BanHangController implements Initializable {
 
     }
 
+    public void loadMaHD() {
+        dshoadon = hoaDonRepository.getListHoaDon();
+        if (dshoadon.isEmpty()) {
+            lblMaHD.setText("HD001");
+            return;
+        }
+        HoaDonModel hd = dshoadon.get(dshoadon.size() - 1);
+        String MaHD = hd.getMaHD();
+        int sum = Integer.parseInt(MaHD.substring(3)) + 1;
+        if (sum < 10) {
+            lblMaHD.setText("HD00" + sum);
+        } else {
+            lblMaHD.setText("HD0" + sum);
+        }
+    }
     //Các hàm hỗ trợ
 
-    public void clearFields(){
+    public void clearFields() {
         txtSoLuong.setText("0");
         txtDonGia.setText("");
         txtTenSP.setText("");
@@ -259,6 +278,7 @@ public class BanHangController implements Initializable {
         imgSanPham.setImage(null);
         spnSoLuong.setValueFactory(null);
     }
+
     public void setChosenSanPham(SanPhamModel sp) {
         txtSoLuong.textProperty().addListener((observableValue, s, t1) -> {
             updateSpinnerMaxValue();
@@ -293,9 +313,9 @@ public class BanHangController implements Initializable {
         tblGioHang.setItems(tempList);
     }
 
-    public void updateTongTienSauKM(int tongTien){
-        float MaKM = Integer.parseInt(lblMaKM.getText())/100f;
-        int TongTienSauKM = Math.round(tongTien - (tongTien*MaKM));
+    public void updateTongTienSauKM(int tongTien) {
+        float MaKM = Integer.parseInt(lblMaKM.getText()) / 100f;
+        int TongTienSauKM = Math.round(tongTien - (tongTien * MaKM));
         lblTongTienSauKM.setText(String.valueOf(TongTienSauKM));
     }
 
@@ -311,7 +331,7 @@ public class BanHangController implements Initializable {
         int DonGia = Integer.parseInt(txtDonGia.getText());
         int ThanhTien = SoLuong * DonGia;
 //
-        sanPhamRepository.capNhatSoLuongBanHang(MaSP,SoLuong,SoLuongTonKho);
+        sanPhamRepository.capNhatSoLuongBanHang(MaSP, SoLuong, SoLuongTonKho);
         //Kiểm tra sản phẩm đã đang có trong list giỏ hàng chưa
         boolean flag = true;
         for (CTHoaDonModel cthd : tempList) {
@@ -342,18 +362,17 @@ public class BanHangController implements Initializable {
     }
 
 
-
     @FXML
     void imgRemoveMouseClicked() {
 
         int TongTien = Integer.parseInt(lblTongTienTruocKM.getText());
-        if(selectedRow != null){
+        if (selectedRow != null) {
             CTHoaDonModel rowData = selectedRow.getItem();
             String MaSP = rowData.getMaSP();
             int SoLuongBan = rowData.getSoLuong();
             int SoLuongTonKho = sanPhamRepository.getSoLuongTonkho(MaSP);
-            for(CTHoaDonModel cthd : tempList){
-                if(cthd.getMaSP().equals(MaSP)){
+            for (CTHoaDonModel cthd : tempList) {
+                if (cthd.getMaSP().equals(MaSP)) {
                     TongTien = TongTien - cthd.getThanhTien();
                     lblTongTienTruocKM.setText(String.valueOf(TongTien));
                     updateTongTienSauKM(TongTien);
@@ -361,7 +380,7 @@ public class BanHangController implements Initializable {
                 }
             }
             tblGioHang.getItems().remove(rowData);
-            sanPhamRepository.capNhatSoLuongBanHang(MaSP,-SoLuongBan,SoLuongTonKho);
+            sanPhamRepository.capNhatSoLuongBanHang(MaSP, -SoLuongBan, SoLuongTonKho);
             selectedRow = null;
             tblGioHang.getSelectionModel().clearSelection();
         }
@@ -377,7 +396,7 @@ public class BanHangController implements Initializable {
             SimpleDateFormat mysqlDateFormat = new SimpleDateFormat("yyyy-MM-dd");
             String mysqlFormattedDate = mysqlDateFormat.format(NgayLap);
             NgayLap = java.sql.Date.valueOf(mysqlFormattedDate);
-        } catch (ParseException e){
+        } catch (ParseException e) {
             e.printStackTrace();
         }
         String MaHD = lblMaHD.getText();
@@ -389,9 +408,8 @@ public class BanHangController implements Initializable {
 
         HoaDonModel hd = new HoaDonModel(MaHD, NgayLap, TongTienTruocKM, TongTienSauKM, MaNV, MaKH, MaKM);
         hoaDonRepository.insertHoaDon(hd);
-        System.out.println("Thành công");
 
-        for(CTHoaDonModel cthd : tempList){
+        for (CTHoaDonModel cthd : tempList) {
             String MaHDinCTHD = cthd.getMaHD();
             String MaSPinCTHD = cthd.getMaSP();
             String TenSPinCTHD = cthd.getTenSP();
@@ -400,16 +418,12 @@ public class BanHangController implements Initializable {
             int ThanhTieninCTHD = cthd.getThanhTien();
 
             ctHoaDonRepository.insertCTHD(cthd);
-            System.out.println("Thành công thêm CTHD");
         }
-
-
-
-
+        //sau khi hoàn tất thì load lại mã hd mới
+        loadMaHD();
 
 
     }
-
 
 
 }
