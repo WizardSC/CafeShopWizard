@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 public class MySQLConnect {
     private String user = "root";
     private String password = "";
-    private String url = "jdbc:mysql://localhost:3306/cafeshopwizard?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull&autoReconnect=true";
+    private String url = "jdbc:mysql://localhost:3306/cafeshopwizard?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Ho_Chi_Minh&zeroDateTimeBehavior=convertToNull&autoReconnect=true";
     private Connection connection = null;
     private Statement statement = null;
     private PreparedStatement pstatement = null;

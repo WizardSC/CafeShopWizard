@@ -162,7 +162,7 @@
                                     <Font name="Cambria Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblMaHD" text="HD001">
+                              <Label fx:id="lblMaHD" text="HD002">
                                  <font>
                                     <Font name="Cambria Bold" size="18.0" />
                                  </font>

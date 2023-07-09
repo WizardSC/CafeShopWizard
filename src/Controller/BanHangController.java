@@ -1,7 +1,9 @@
 package Controller;
 
 import Model.CTHoaDonModel;
+import Model.HoaDonModel;
 import Model.SanPhamModel;
+import Repository.HoaDonRepository;
 import Repository.SanPhamRepository;
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
@@ -112,6 +114,7 @@ public class BanHangController implements Initializable {
 
     private ObservableList<SanPhamModel> listSanPham_Card; //Dùng cho gridpane ds sản phẩm
     private SanPhamRepository sanPhamRepository;
+    private HoaDonRepository hoaDonRepository;
     private SanPham_CardController sanPham_cardController;
     private int SpinnerMaxValue = 0;
     private int SoLuongTonKho = 0;
@@ -120,13 +123,15 @@ public class BanHangController implements Initializable {
     //Các hàm khởi tạo và phương thức initialize
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        checkNgayThang();
+
         sanPhamRepository = new SanPhamRepository();
+        hoaDonRepository = new HoaDonRepository();
         sanPham_cardController = new SanPham_CardController();
         tempList = FXCollections.observableArrayList();
         listSanPham_Card = sanPhamRepository.getDataSanPham_Card();
         btnThemVaoGio.setDisable(true);
         txtSoLuong.setText("0");
-        checkNgayThang();
         clickRow();
         int column = 0;
         int row = 1;
@@ -326,6 +331,7 @@ public class BanHangController implements Initializable {
         for (CTHoaDonModel cthd : tempList) {
             TongTien = TongTien + cthd.getThanhTien();
             lblTongTienTruocKM.setText(String.valueOf(TongTien));
+            updateTongTienSauKM(TongTien);
         }
 
         clearFields();
@@ -362,23 +368,24 @@ public class BanHangController implements Initializable {
     void btnThanhToanMouseClicked(ActionEvent event) {
         //ngày lập
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        SimpleDateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
-        Date NgayLap;
+        Date NgayLap = null;
         try {
             NgayLap = dateFormat.parse(lblNgayLap.getText());
-            String NgayLap1 = dateFormat1.format(NgayLap);
-            System.out.println(NgayLap1);
+            SimpleDateFormat mysqlDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String mysqlFormattedDate = mysqlDateFormat.format(NgayLap);
+            NgayLap = java.sql.Date.valueOf(mysqlFormattedDate);
         } catch (ParseException e){
             e.printStackTrace();
         }
-
         String MaHD = lblMaHD.getText();
         int TongTienTruocKM = Integer.parseInt(lblTongTienTruocKM.getText());
         int TongTienSauKM = Integer.parseInt(lblTongTienSauKM.getText());
         String MaNV = lblMaNV.getText();
         String MaKH = lblMaKH.getText();
         String MaKM = "null";
-
+        HoaDonModel hd = new HoaDonModel(MaHD, NgayLap, TongTienTruocKM, TongTienSauKM, MaNV, MaKH, MaKM);
+        hoaDonRepository.insertHoaDon(hd);
+        System.out.println("Thành công");
 
 
 
