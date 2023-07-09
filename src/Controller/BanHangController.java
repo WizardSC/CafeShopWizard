@@ -419,9 +419,14 @@ public class BanHangController implements Initializable {
 
             ctHoaDonRepository.insertCTHD(cthd);
         }
-        //sau khi hoàn tất thì load lại mã hd mới
+        //sau khi hoàn tất thì load lại mã hd mới, xóa dữ liệu trong tempList, tableView
         loadMaHD();
-
+        clearFields();
+        tempList.clear();
+        tblGioHang.getItems().clear();
+        tblGioHang.refresh();
+        lblTongTienTruocKM.setText("0");
+        lblTongTienSauKM.setText("0");
 
     }
 
