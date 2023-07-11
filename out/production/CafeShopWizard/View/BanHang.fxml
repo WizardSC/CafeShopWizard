@@ -245,7 +245,7 @@
                   </VBox>
                   <VBox prefHeight="303.0" prefWidth="334.0" styleClass="white-background" stylesheets="@../css/BanHang.css">
                      <children>
-                        <TableView fx:id="tblGioHang" prefHeight="297.0" prefWidth="332.0" stylesheets="@../css/BanHang.css">
+                        <TableView fx:id="tblGioHang" prefHeight="302.0" prefWidth="332.0" stylesheets="@../css/BanHang.css">
                           <columns>
                             <TableColumn fx:id="tcMaSP" prefWidth="75.0" text="Mã SP" visible="false" />
                             <TableColumn fx:id="tcTenSP" prefWidth="118.0" resizable="false" text="Tên SP" />

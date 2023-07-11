@@ -17,8 +17,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pnSanPham" prefHeight="725.6" prefWidth="1111.2" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SanPhamController">
+<AnchorPane fx:id="pnSanPham" prefHeight="725.6" prefWidth="1111.2" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SanPhamController">
    <children>
       <HBox fillHeight="false" layoutX="-7.0" prefHeight="725.6" prefWidth="625.0" spacing="10.0" stylesheets="@../css/SanPham.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -113,6 +114,9 @@
                                              </image>
                                           </ImageView>
                                        </graphic>
+                                       <font>
+                                          <Font name="Cambria" size="14.0" />
+                                       </font>
                                     </JFXButton>
                                  </children>
                               </VBox>
@@ -196,6 +200,9 @@
                                        </image>
                                     </ImageView>
                                  </graphic>
+                                 <font>
+                                    <Font name="Cambria" size="14.0" />
+                                 </font>
                               </JFXButton>
                               <JFXButton fx:id="btnXoa" alignment="CENTER" lineSpacing="15.0" maxHeight="-Infinity" minHeight="-Infinity" onAction="#btnXoaMouseClicked" prefHeight="41.0" prefWidth="136.0" text="Xóa">
                                  <graphic>
@@ -205,6 +212,9 @@
                                        </image>
                                     </ImageView>
                                  </graphic>
+                                 <font>
+                                    <Font name="Cambria" size="14.0" />
+                                 </font>
                               </JFXButton>
                               <JFXButton fx:id="btnSua" alignment="CENTER" lineSpacing="15.0" maxHeight="-Infinity" minHeight="-Infinity" onAction="#btnSuaMouseClicked" prefHeight="41.0" prefWidth="136.0" text="Sửa">
                                  <graphic>
@@ -214,6 +224,9 @@
                                        </image>
                                     </ImageView>
                                  </graphic>
+                                 <font>
+                                    <Font name="Cambria" size="14.0" />
+                                 </font>
                               </JFXButton>
                            </children>
                         </VBox>
