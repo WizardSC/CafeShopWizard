@@ -64,6 +64,7 @@
 
 .header-tthd .label{
     -fx-font-family: Cambria;
+    /*-fx-font-weight: BOLD;*/
     -fx-font-size: 15px;
 
 }

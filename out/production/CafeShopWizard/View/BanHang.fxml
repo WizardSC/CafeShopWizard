@@ -173,7 +173,7 @@
                            <children>
                               <Label prefHeight="20.0" prefWidth="95.0" text="Ngày lập: ">
                                  <font>
-                                    <Font name="Cambria" size="15.0" />
+                                    <Font size="15.0" />
                                  </font>
                               </Label>
                               <Label fx:id="lblNgayLap" text="05/07/2023">
@@ -207,7 +207,7 @@
                            <children>
                               <Label prefHeight="20.0" prefWidth="95.0" text="Khách hàng:">
                                  <font>
-                                    <Font name="Cambria" size="15.0" />
+                                    <Font size="15.0" />
                                  </font>
                               </Label>
                               <Label fx:id="lblMaKH" prefHeight="20.0" prefWidth="71.0" text="KH002">
