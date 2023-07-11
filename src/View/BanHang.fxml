@@ -21,10 +21,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="725.6" prefWidth="1111.2" stylesheets="@../css/BanHang.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BanHangController">
+<AnchorPane prefHeight="725.6" prefWidth="1111.2" stylesheets="@../css/BanHang.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BanHangController">
    <styleClass>
       <String fx:value="white-background" />
       <String fx:value="bottom-radius" />
+      <String fx:value="label" />
    </styleClass>
    <children>
       <HBox layoutX="47.0" layoutY="17.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" stylesheets="@../css/BanHang.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -173,12 +174,12 @@
                            <children>
                               <Label prefHeight="20.0" prefWidth="95.0" text="Ngày lập: ">
                                  <font>
-                                    <Font size="15.0" />
+                                    <Font name="Cambria" size="16.0" />
                                  </font>
                               </Label>
                               <Label fx:id="lblNgayLap" text="05/07/2023">
                                  <font>
-                                    <Font name="Cambria" size="15.0" />
+                                    <Font name="Cambria" size="16.0" />
                                  </font>
                               </Label>
                            </children>
@@ -190,12 +191,12 @@
                            <children>
                               <Label prefHeight="20.0" prefWidth="95.0" text="Nhân viên:">
                                  <font>
-                                    <Font name="Cambria" size="15.0" />
+                                    <Font name="Cambria" size="16.0" />
                                  </font>
                               </Label>
                               <Label fx:id="lblMaNV" prefHeight="20.0" prefWidth="104.0" text="NV001">
                                  <font>
-                                    <Font name="Cambria" size="15.0" />
+                                    <Font name="Cambria" size="16.0" />
                                  </font>
                               </Label>
                            </children>
@@ -207,12 +208,12 @@
                            <children>
                               <Label prefHeight="20.0" prefWidth="95.0" text="Khách hàng:">
                                  <font>
-                                    <Font size="15.0" />
+                                    <Font name="Cambria" size="16.0" />
                                  </font>
                               </Label>
                               <Label fx:id="lblMaKH" prefHeight="20.0" prefWidth="71.0" text="KH002">
                                  <font>
-                                    <Font name="Cambria" size="15.0" />
+                                    <Font name="Cambria" size="16.0" />
                                  </font>
                               </Label>
                               <Button alignment="TOP_CENTER" contentDisplay="TOP" graphicTextGap="0.0" minHeight="12.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="42.0" styleClass="chon-khach-hang-btn" stylesheets="@../css/BanHang.css" text="..." textAlignment="CENTER">
@@ -271,19 +272,24 @@
                      </padding>
                   </Separator>
                   <VBox prefHeight="254.0" prefWidth="332.0" stylesheets="@../css/BanHang.css" VBox.vgrow="ALWAYS">
-                     <styleClass>
-                        <String fx:value="header-tthd" />
-                        <String fx:value="white-background" />
-                     </styleClass>
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
                      <children>
                         <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="322.0">
                            <children>
-                              <Label prefHeight="18.0" prefWidth="150.0" text="Tổng tiền (Tạm tính)" />
-                              <Label fx:id="lblTongTienTruocKM" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="80.0" text="0" />
-                              <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="32.0" text="VNĐ" />
+                              <Label prefHeight="18.0" prefWidth="150.0" text="Tổng tiền (Tạm tính)">
+                                 <font>
+                                    <Font name="Cambria" size="12.0" />
+                                 </font></Label>
+                              <Label fx:id="lblTongTienTruocKM" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="80.0" text="0">
+                                 <font>
+                                    <Font name="Cambria" size="12.0" />
+                                 </font></Label>
+                              <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="32.0" text="VNĐ">
+                                 <font>
+                                    <Font name="Cambria" size="12.0" />
+                                 </font></Label>
                            </children>
                            <VBox.margin>
                               <Insets left="10.0" />
@@ -291,9 +297,18 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="318.0">
                            <children>
-                              <Label prefHeight="18.0" prefWidth="150.0" text="Khuyến mãi" />
-                              <Label fx:id="lblMaKM" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="80.0" text="5" />
-                              <Label prefHeight="18.0" prefWidth="32.0" text="\%" />
+                              <Label prefHeight="18.0" prefWidth="150.0" text="Khuyến mãi">
+                                 <font>
+                                    <Font name="Cambria" size="12.0" />
+                                 </font></Label>
+                              <Label fx:id="lblMaKM" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="80.0" text="5">
+                                 <font>
+                                    <Font name="Cambria" size="12.0" />
+                                 </font></Label>
+                              <Label prefHeight="18.0" prefWidth="32.0" text="\%">
+                                 <font>
+                                    <Font name="Cambria" size="12.0" />
+                                 </font></Label>
                            </children>
                            <VBox.margin>
                               <Insets left="10.0" />
@@ -301,9 +316,18 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="318.0">
                            <children>
-                              <Label prefHeight="18.0" prefWidth="150.0" text="Tổng tiền " />
-                              <Label fx:id="lblTongTienSauKM" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="80.0" text="0" />
-                              <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="32.0" text="VNĐ" />
+                              <Label prefHeight="18.0" prefWidth="150.0" text="Tổng tiền ">
+                                 <font>
+                                    <Font name="Cambria" size="12.0" />
+                                 </font></Label>
+                              <Label fx:id="lblTongTienSauKM" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="80.0" text="0">
+                                 <font>
+                                    <Font name="Cambria" size="12.0" />
+                                 </font></Label>
+                              <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="32.0" text="VNĐ">
+                                 <font>
+                                    <Font name="Cambria" size="12.0" />
+                                 </font></Label>
                            </children>
                            <VBox.margin>
                               <Insets left="10.0" />
@@ -346,6 +370,10 @@
                            </children>
                         </HBox>
                      </children>
+                     <styleClass>
+                        <String fx:value="white-background" />
+                        <String fx:value="header-tthd" />
+                     </styleClass>
                   </VBox>
                </children>
                <HBox.margin>

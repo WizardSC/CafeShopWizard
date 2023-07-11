@@ -1,7 +1,8 @@
 
-.card {
+.card{
     -fx-background-radius: 20;
     -fx-background-color: #fff;
+
 }
 
 .shadow {
@@ -11,4 +12,6 @@
 .card:hover{
     -fx-opacity: 0.9;
     -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.5),5,0,0,0);
+    -fx-font-family: Cambria;
+
 }
