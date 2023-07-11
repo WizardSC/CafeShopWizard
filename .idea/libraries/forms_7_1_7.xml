@@ -1,0 +1,24 @@
+<component name="libraryTable">
+  <library name="forms-7.1.7">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/New folder/forms-7.1.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/New folder/barcodes-7.1.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/New folder/io-7.1.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/New folder/kernel-7.1.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/New folder/layout-7.1.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/New folder/pdfa-7.1.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/New folder/pdftest-7.1.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/New folder/sign-7.1.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/New folder/styled-xml-parser-7.1.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/New folder/svg-7.1.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slf4j.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/logback.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/itextpdf-5.4.0.jar!/" />
+      <root url="file://$PROJECT_DIR$" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/src" />
+    </SOURCES>
+  </library>
+</component>
