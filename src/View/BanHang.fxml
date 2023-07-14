@@ -351,7 +351,7 @@
                                     <String fx:value="hand-cursor" />
                                  </styleClass>
                               </JFXButton>
-                              <JFXButton alignment="CENTER" ellipsisString="" graphicTextGap="15.0" lineSpacing="15.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="154.0" ripplerFill="#c7c7c7" stylesheets="@../css/BanHang.css" text="Hóa đơn">
+                              <JFXButton fx:id="btnInHoaDon" alignment="CENTER" ellipsisString="" graphicTextGap="15.0" lineSpacing="15.0" maxHeight="-Infinity" minHeight="-Infinity" onAction="#btnInHoaDonMouseClicked" prefHeight="50.0" prefWidth="154.0" ripplerFill="#c7c7c7" stylesheets="@../css/BanHang.css" text="Hóa đơn">
                                  <graphic>
                                     <ImageView fitHeight="15300.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                        <image>

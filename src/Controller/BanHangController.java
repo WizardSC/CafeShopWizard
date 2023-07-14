@@ -6,6 +6,7 @@ import Model.SanPhamModel;
 import Repository.CTHoaDonRepository;
 import Repository.HoaDonRepository;
 import Repository.SanPhamRepository;
+import Service.InHoaDonService;
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -34,6 +35,8 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 public class BanHangController implements Initializable {
+    @FXML
+    private JFXButton btnInHoaDon;
 
     @FXML
     private JFXButton btnThanhToan;
@@ -117,7 +120,7 @@ public class BanHangController implements Initializable {
     private SanPhamRepository sanPhamRepository;
     private HoaDonRepository hoaDonRepository;
     private CTHoaDonRepository ctHoaDonRepository;
-
+    private InHoaDonService inHoaDonService;
     private SanPham_CardController sanPham_cardController;
     private int SpinnerMaxValue = 0;
     private int SoLuongTonKho = 0;
@@ -129,7 +132,7 @@ public class BanHangController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         checkNgayThang();
-
+        inHoaDonService = new InHoaDonService();
         sanPhamRepository = new SanPhamRepository();
         hoaDonRepository = new HoaDonRepository();
         ctHoaDonRepository = new CTHoaDonRepository();
@@ -429,6 +432,10 @@ public class BanHangController implements Initializable {
         lblTongTienSauKM.setText("0");
 
     }
-
+    @FXML
+    void btnInHoaDonMouseClicked(ActionEvent event) {
+        inHoaDonService.ExportPDF();
+        System.out.println("Thành công");
+    }
 
 }
