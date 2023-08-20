@@ -132,7 +132,6 @@ public class BanHangController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         checkNgayThang();
-        inHoaDonService = new InHoaDonService();
         sanPhamRepository = new SanPhamRepository();
         hoaDonRepository = new HoaDonRepository();
         ctHoaDonRepository = new CTHoaDonRepository();
@@ -434,7 +433,13 @@ public class BanHangController implements Initializable {
     }
     @FXML
     void btnInHoaDonMouseClicked(ActionEvent event) {
-        inHoaDonService.ExportPDF();
+        String NgayLap = lblNgayLap.getText();
+        inHoaDonService = new InHoaDonService(NgayLap);
+        try {
+            inHoaDonService.ExportPDF();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         System.out.println("Thành công");
     }
 
